@@ -1,3 +1,3 @@
-export default class Product {
+export default interface Product {
   name: string
 }

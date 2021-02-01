@@ -2,7 +2,7 @@ import { AxiosInstance } from 'axios'
 import Product from './product.model'
 
 export default class ProductEndpoint {
-  private readonly $axios: AxiosInstance
+  private readonly $axios!: AxiosInstance
 
   public find () {
     return this.$axios.get<Product[]>('/products')
