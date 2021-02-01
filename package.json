@@ -1,0 +1,30 @@
+{
+  "name": "@sk-merkaly/sdk-js",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sk-merkaly/sdk-js.git"
+  },
+  "keywords": [
+    "sdk",
+    "api",
+    "merkaly"
+  ],
+  "author": "Randy Tellez Galan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sk-merkaly/sdk-js/issues"
+  },
+  "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
