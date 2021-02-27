@@ -26,6 +26,10 @@
   },
   "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
   "dependencies": {
+    "@sk-merkaly/server": "git+https://be21af824cdaaa544cce025680ad5ed23f1d115e@github.com/sk-merkaly/server.git",
     "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "class-transformer": "^0.2.0"
   }
 }
