@@ -1,22 +1,31 @@
-import { AxiosInstance } from 'axios'
+import { CreateProductValidator, UpdateProductValidator } from '@sk-merkaly/server/src/product/product.validator'
+import { join } from 'path'
+import { EndpointInterface } from '../../index'
+import $axios from '../plugins/axios'
 import Product from './product.model'
 
-export default class ProductEndpoint {
-  private readonly $axios!: AxiosInstance
+const prefix = 'products'
 
-  public find () {
-    return this.$axios.get<Product[]>('/products')
-  }
+const endpoint: EndpointInterface<Product> = {
+  find () {
+    return $axios.get(prefix)
+  },
 
-  public read (id: string) {
-    return this.$axios.get<Product>(`/products/${id}`)
-  }
+  read (id: string) {
+    return $axios.get(join(prefix, id))
+  },
 
-  public update (id: string, payload: Partial<Product>) {
-    return this.$axios.patch<Product>(`/products/${id}`, payload)
-  }
+  create (payload: CreateProductValidator) {
+    return $axios.post(prefix, payload)
+  },
 
-  public remove (id: string) {
-    return this.$axios.delete<void>(`/products/${id}`)
+  update (id: string, payload: UpdateProductValidator) {
+    return $axios.put(join(prefix, id), payload)
+  },
+
+  remove (id: string) {
+    return $axios.delete(join(prefix, id))
   }
 }
+
+export default endpoint
