@@ -1,11 +1,5 @@
-import ProductEndpoint from './product/product.endpoint'
+import ProductEndpoint from './controller/product.controller'
 
 export default class MerkalyClient {
-  private clientId: string
-  public $products = ProductEndpoint
-
-  constructor (clientId: string) {
-    this.clientId = clientId
-  }
-
+  public $products = new ProductEndpoint()
 }

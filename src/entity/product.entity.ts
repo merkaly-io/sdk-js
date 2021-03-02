@@ -1,5 +1,6 @@
-export default interface Product {
-  id: string,
+import Entity from './.entity'
+
+export default interface Product extends Entity {
   name: string
   category: unknown,
   brand: unknown,

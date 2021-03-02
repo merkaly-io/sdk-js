@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 
-export interface EndpointInterface<T extends any> {
+export interface ControllerInterface<T extends any> {
   find (): Promise<AxiosResponse<T[]>>
 
   read (id: string): Promise<AxiosResponse<T>>
