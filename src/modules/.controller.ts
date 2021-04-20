@@ -1,5 +1,5 @@
+import Entity from '@/modules/.entity'
 import { AxiosResponse } from 'axios'
-import Entity from '../entity/.entity'
 
 export default abstract class Controller<T extends Entity> {
   abstract find (): Promise<AxiosResponse<T[]>>
