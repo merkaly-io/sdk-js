@@ -1,10 +1,10 @@
-import Product from '@/entity/product.entity'
-import Controller from '@/modules/.controller'
-import $axios from '@/plugin/axios'
 import { CreateProductValidator, UpdateProductValidator } from '@sk-merkaly/server/src/product/product.validator'
 import { join } from 'path'
+import Product from '../../entity/product.entity'
+import $axios from '../../plugin/axios'
+import Controller from '../.controller'
 
-const prefix = 'products'
+const prefix = '/products'
 
 export default class ProductController extends Controller<Product> {
   find () {

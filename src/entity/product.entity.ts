@@ -1,4 +1,4 @@
-import Entity from '@/modules/.entity'
+import Entity from '../modules/.entity'
 
 export default interface Product extends Entity {
   name: string

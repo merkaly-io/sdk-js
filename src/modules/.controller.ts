@@ -1,4 +1,4 @@
-import Entity from '@/modules/.entity'
+import Entity from '../modules/.entity'
 import { AxiosResponse } from 'axios'
 
 export default abstract class Controller<T extends Entity> {
