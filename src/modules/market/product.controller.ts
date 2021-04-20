@@ -1,29 +1,36 @@
+import ProductEntity from '@sk-merkaly/server/src/product/product.entity'
 import { CreateProductValidator, UpdateProductValidator } from '@sk-merkaly/server/src/product/product.validator'
 import { join } from 'path'
-import Product from '../../entity/product.entity'
-import $axios from '../../plugin/axios'
 import Controller from '../.controller'
 
-const prefix = '/products'
+export default class ProductController extends Controller<ProductEntity> {
+  async find () {
+    const { data } = await this.$axios.get<ProductEntity[]>('/products')
 
-export default class ProductController extends Controller<Product> {
-  find () {
-    return $axios.get(prefix)
+    return data
   }
 
-  read (id: string) {
-    return $axios.get(join(prefix, id))
+  async read (id: string) {
+    const { data } = await this.$axios.get<ProductEntity>(join('/products', id))
+
+    return data
   }
 
-  create (payload: CreateProductValidator) {
-    return $axios.post(prefix, payload)
+  async create (payload: CreateProductValidator) {
+    const { data } = await this.$axios.post<ProductEntity>('/products', payload)
+
+    return data
   }
 
-  update (id: string, payload: UpdateProductValidator) {
-    return $axios.put(join(prefix, id), payload)
+  async update (id: string, payload: UpdateProductValidator) {
+    const { data } = await this.$axios.put<ProductEntity>(join('/products', id), payload)
+
+    return data
   }
 
-  remove (id: string) {
-    return $axios.delete(join(prefix, id))
+  async remove (id: string) {
+    const { data } = await this.$axios.delete<void>(join('/products', id))
+
+    return data
   }
 }

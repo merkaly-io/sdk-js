@@ -1,14 +1,15 @@
-import Entity from '../modules/.entity'
-import { AxiosResponse } from 'axios'
+import $axios from '../plugin/axios'
 
-export default abstract class Controller<T extends Entity> {
-  abstract find (): Promise<AxiosResponse<T[]>>
+export default abstract class Controller<T> {
+  protected readonly $axios = $axios
 
-  abstract read (id: string): Promise<AxiosResponse<T>>
+  protected abstract find (): Promise<T[]>
 
-  abstract create (payload: unknown): Promise<AxiosResponse<T>>
+  protected abstract read (id: string): Promise<T>
 
-  abstract update (id: string, payload: unknown): Promise<AxiosResponse<T>>
+  protected abstract create (payload: unknown): Promise<T>
 
-  abstract remove (id: string): Promise<AxiosResponse<void>>
+  protected abstract update (id: string, payload: unknown): Promise<T>
+
+  protected abstract remove (id: string): Promise<void>
 }

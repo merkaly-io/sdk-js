@@ -1,9 +1,9 @@
 import { CreateProductValidator } from '@sk-merkaly/server/src/product/product.validator'
 import faker from 'faker'
-import ProductController from '../../src/modules/market/product.controller'
+import { MerkalyAdmin } from '../../src/app'
 
 describe('Product Controller', () => {
-  const product = new ProductController()
+  const admin = new MerkalyAdmin()
 
   test('Create new Product', async () => {
 
@@ -14,7 +14,7 @@ describe('Product Controller', () => {
       brand: faker.commerce.productAdjective()
     }
 
-    const result = await product.create(payload)
+    const result = await admin.product.create(payload)
 
     expect(result).toBe(payload)
   })
