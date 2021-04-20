@@ -2,8 +2,8 @@
   "name": "@sk-merkaly/sdk-js",
   "version": "0.0.1",
   "description": "",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/app.js",
+  "types": "./dist/app.d.ts",
   "directories": {
     "test": "test"
   },

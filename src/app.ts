@@ -1,5 +1,15 @@
-import ProductEndpoint from './controller/product.controller'
+export class MerkalyCloud {
 
-export default class MerkalyClient {
-  public $products = new ProductEndpoint()
+}
+
+export class MerkalyAccount {
+
+}
+
+export class MerkalyAdmin {
+
+}
+
+export class MerkalyClient {
+
 }
