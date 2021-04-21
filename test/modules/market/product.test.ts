@@ -1,15 +1,15 @@
-import { CreateProductValidator } from '@sk-merkaly/server/src/product/product.validator'
+import { CreateProductValidator } from '@sk-merkaly/server/src/market/product/product.validator'
 import faker from 'faker'
 import { MerkalyAdmin } from '../../../src/app'
 
 describe('Product Controller', () => {
   const admin = new MerkalyAdmin()
 
-  test('should create a new product', async () => {
+    test('should create a new product', async () => {
 
     const payload: CreateProductValidator = {
       name: faker.commerce.product(),
-      price: Number(faker.commerce.price()),
+      price: faker.commerce.price(),
       category: 'bVgYgCTfHSbP145XIUL5',
       brand: 'bVgYgCTfHSbP145XIUL5'
     }
