@@ -1,11 +1,15 @@
 import { CreateProductValidator } from '@sk-merkaly/server/src/market/product/product.validator'
 import faker from 'faker'
-import { MerkalyAdmin } from '../../../src/app'
+import { Admin } from '../../../src/app'
 
 describe('Product Controller', () => {
-  const admin = new MerkalyAdmin()
+  const admin = new Admin()
 
-    test('should create a new product', async () => {
+  beforeAll(async () => {
+    await admin.auth.login()
+  })
+
+  test('should create a new product', async () => {
 
     const payload: CreateProductValidator = {
       name: faker.commerce.product(),
