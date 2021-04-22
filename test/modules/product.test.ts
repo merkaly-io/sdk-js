@@ -1,4 +1,4 @@
-import { CreateProductValidator } from '@sk-merkaly/server/src/product/product.validator'
+import { CreateProductValidator } from '@sk-merkaly/server/src/market/product/product.validator'
 import faker from 'faker'
 import { MerkalyAdmin } from '../../src/app'
 
@@ -9,7 +9,7 @@ describe('Product Controller', () => {
 
     const payload: CreateProductValidator = {
       name: faker.commerce.product(),
-      price: Number(faker.commerce.price()),
+      price: faker.commerce.price(),
       category: faker.commerce.productMaterial(),
       brand: faker.commerce.productAdjective()
     }

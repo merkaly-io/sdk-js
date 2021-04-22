@@ -1,5 +1,5 @@
-import ProductEntity from '@sk-merkaly/server/src/product/product.entity'
-import { CreateProductValidator, UpdateProductValidator } from '@sk-merkaly/server/src/product/product.validator'
+import ProductEntity from '@sk-merkaly/server/src/market/product/product.entity'
+import { CreateProductValidator, UpdateProductValidator } from '@sk-merkaly/server/src/market/product/product.validator'
 import { join } from 'path'
 import Controller from '../.controller'
 
