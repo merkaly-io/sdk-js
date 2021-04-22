@@ -6,7 +6,7 @@ describe('Product Controller', () => {
   const admin = new Admin()
 
   beforeAll(async () => {
-    await admin.auth.login()
+    await admin.auth.login(String(process.env.username), String(process.env.password))
   })
 
   test('should create a new product', async () => {
