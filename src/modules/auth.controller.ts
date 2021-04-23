@@ -1,9 +1,9 @@
 import $axios from '../plugin/axios'
 
 export default {
-  async login (email: string, password: string) {
+  async login (username: string, password: string) {
 
-    return $axios.post('/auth/login', { email, password })
+    return $axios.post('/auth/login', { username, password })
       .then(({ data }) => {
         $axios.setToken(data.accessToken)
 
