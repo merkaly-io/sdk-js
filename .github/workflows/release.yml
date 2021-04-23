@@ -21,9 +21,10 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
 
       - name: Create .netrc
-        run: ./scripts/netrc.sh
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: little-core-labs/netrc-creds@master
+        with:
+          machine: github.com
+          login: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         run: npm ci
