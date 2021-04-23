@@ -1,27 +1,43 @@
 import AuthController from './modules/auth.controller'
 import ProductController from './modules/market/product.controller'
 
-abstract class Merkaly {
-
-  get auth () {
-    return AuthController
-  }
-}
-
-export class Cloud extends Merkaly {
+class Cloud {
 
 }
 
-export class Account extends Merkaly {
+class Account {
 
 }
 
-export class Admin extends Merkaly {
+class Admin {
   public get product () {
     return new ProductController()
   }
 }
 
-export class MerkalyClient {
+class Client {
 
+}
+
+export default class Merkaly {
+
+  get $auth () {
+    return AuthController
+  }
+
+  get $admin () {
+    return new Admin()
+  }
+
+  get $cloud () {
+    return new Cloud()
+  }
+
+  get $account () {
+    return new Account()
+  }
+
+  get $client () {
+    return new Client()
+  }
 }
