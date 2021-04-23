@@ -9,7 +9,7 @@
   },
   "scripts": {
     "prebuild": "tsc -b --clean",
-    "build": "tsc -b",
+    "build": "tsc -b && cp package.json dist",
     "lint": "tsc --noEmit",
     "test": "jest"
   },
