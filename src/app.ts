@@ -22,7 +22,7 @@ class Client {
 
 export default class Merkaly {
 
-  protected readonly dsn: string
+  protected readonly dsn!: string
 
 
   constructor (dsn: string) {
