@@ -1,0 +1,7 @@
+.husky
+.github
+commitlint.config.js
+src
+coverage
+.idea
+.env
