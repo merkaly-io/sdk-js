@@ -1,17 +1,10 @@
-import $axios from '../src/plugin/axios'
+import AuthController from './modules/auth.controller'
 import ProductController from './modules/market/product.controller'
 
 abstract class Merkaly {
 
   get auth () {
-
-    return {
-      async login (username = process.env.username, password = process.env.password) {
-
-        return $axios.post('/auth/login', { username, password })
-          .then(({ data: { accessToken } }) => $axios.setToken(accessToken))
-      }
-    }
+    return AuthController
   }
 }
 
@@ -24,7 +17,9 @@ export class Account extends Merkaly {
 }
 
 export class Admin extends Merkaly {
-  public product = new ProductController()
+  public get product () {
+    return new ProductController()
+  }
 }
 
 export class MerkalyClient {

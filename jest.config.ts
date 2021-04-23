@@ -3,7 +3,9 @@
  * https://jestjs.io/docs/en/configuration.html
  */
 
-export default {
+import { Config } from '@jest/types'
+
+const config: Config.ProjectConfig | Config.InitialOptions = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -139,7 +141,7 @@ export default {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: 'node',
+  testEnvironment: 'node'
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -174,9 +176,7 @@ export default {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  transform: {
-    '^.+\\.ts?$': 'ts-jest'
-  }
+  // transform: {}
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
@@ -196,3 +196,5 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
 }
+
+export default config

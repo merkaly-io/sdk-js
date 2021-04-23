@@ -10,11 +10,13 @@
     ],
     "esModuleInterop": true,
     "allowJs": true,
-    "sourceMap": true,
+    "declaration": true,
     "outDir": "./dist",
     "rootDir": "./src",
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strictPropertyInitialization": false,
     "strict": true,
-    "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "types": [
@@ -23,8 +25,7 @@
       "@types/jest"
     ]
   },
-  "exclude": [
-    "node_modules",
-    "dist"
+  "include": [
+    "./src"
   ]
 }
