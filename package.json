@@ -8,7 +8,9 @@
     "test": "test"
   },
   "scripts": {
+    "prebuild": "tsc -b --clean",
     "build": "tsc -b",
+    "lint": "tsc --noEmit",
     "test": "jest"
   },
   "repository": {
@@ -37,6 +39,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
+    "@types/auth0": "^2.33.3",
     "@types/faker": "^5.5.3",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.31",
