@@ -1,7 +1,8 @@
+import { LoginValidator } from '@sk-merkaly/server/account/auth/auth.validator'
 import $axios from '../plugin/axios'
 
 export default {
-  async login (username: string, password: string) {
+  async login ({ username, password }: LoginValidator) {
 
     return $axios.post('/auth/login', { username, password })
       .then(({ data }) => {
