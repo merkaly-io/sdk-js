@@ -3,7 +3,7 @@ import faker from 'faker'
 import Merkaly from '../../../src/app'
 
 describe('Product Controller', () => {
-  const $merkaly = new Merkaly()
+  const $merkaly = new Merkaly(String(process.env.baseUrl))
 
   beforeAll(async () => {
     await $merkaly.$auth.login(String(process.env.username), String(process.env.password))

@@ -1,5 +1,6 @@
 import AuthController from './modules/auth.controller'
 import ProductController from './modules/market/product.controller'
+import $axios from './plugin/axios'
 
 class Cloud {
 
@@ -20,6 +21,13 @@ class Client {
 }
 
 export default class Merkaly {
+
+  protected readonly dsn: string
+
+
+  constructor (dsn: string) {
+    $axios.setBaseUrl(dsn)
+  }
 
   get $auth () {
     return AuthController
