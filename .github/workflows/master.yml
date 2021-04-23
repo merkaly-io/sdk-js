@@ -19,6 +19,11 @@ jobs:
         with:
           node-version: 12
 
+      - name: Create .netrc
+        run: ./scripts/netrc.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install dependencies
         run: npm ci
         env:

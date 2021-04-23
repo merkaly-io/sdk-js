@@ -20,6 +20,11 @@ jobs:
           node-version: 12.x
           registry-url: 'https://npm.pkg.github.com'
 
+      - name: Create .netrc
+        run: ./scripts/netrc.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install dependencies
         run: npm ci
         env:
