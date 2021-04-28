@@ -44,7 +44,7 @@
     "@types/auth0": "^2.33.3",
     "@types/faker": "^5.5.3",
     "@types/jest": "^26.0.23",
-    "@types/node": "^15.0.0",
+    "@types/node": "^15.0.1",
     "babel-jest": "^26.6.3",
     "class-transformer": "^0.4.0",
     "dotenv": "^8.2.0",
