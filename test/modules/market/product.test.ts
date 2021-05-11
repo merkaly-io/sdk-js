@@ -5,9 +5,10 @@ import Merkaly from '../../../src/app'
 describe('Product Controller', () => {
   const $merkaly = new Merkaly(String(process.env.baseUrl))
 
-  beforeAll(async () => {
-    await $merkaly.$auth.login(String(process.env.username), String(process.env.password))
-  })
+  beforeAll(async () => $merkaly.$auth.login({
+    username: String(process.env.username),
+    password: String(process.env.password)
+  }))
 
   test('should create a new product', async () => {
 
