@@ -2,14 +2,22 @@
   "name": "@sk-merkaly/sdk-js",
   "version": "0.0.1",
   "description": "",
-  "main": "./dist/app.js",
-  "types": "./dist/app.d.ts",
+  "main": "./src/app.js",
+  "types": "./types/app.d.ts",
+  "files": [
+    "src/**/*.js",
+    "types"
+  ],
+  "engines": {
+    "node": "12"
+  },
   "directories": {
-    "test": "test"
+    "test": "test",
+    "lib": "src"
   },
   "scripts": {
     "prebuild": "tsc -b --clean",
-    "build": "tsc -b && cp package.json dist",
+    "build": "tsc -b",
     "lint": "tsc --noEmit",
     "test": "jest"
   },
