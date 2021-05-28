@@ -1,0 +1,34 @@
+name: Publish NPM Package
+
+env:
+  NPM_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@master
+
+      - name: Setup node env 🏗️
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 12
+
+      - name: Install dependencies 🛠️
+        run: npm install
+
+      - name: Generate declaration files 📦
+        run: npm run build
+
+      - name: Add Auth Token to .npmrc file 💢
+        run: echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> .npmrc
+
+      - name: Publish new version ✍
+        run: npm publish --access public
