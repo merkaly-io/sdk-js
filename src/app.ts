@@ -1,51 +1,38 @@
-import AuthController from './modules/auth.controller'
+import { AxiosStatic } from 'axios'
+import AuthController from './modules/auth/auth.controller'
 import ProductController from './modules/market/product.controller'
 import $axios from './plugin/axios'
 
-class Cloud {
-
-}
-
-class Account {
-
-}
-
-class Admin {
-  public get product () {
-    return new ProductController()
-  }
-}
-
-class Client {
-
-}
-
-export default class Merkaly {
+abstract class Merkaly {
 
   protected readonly dsn!: string
+  protected readonly axios: AxiosStatic
 
-
-  constructor (dsn: string) {
+  protected constructor (dsn: string) {
     $axios.setBaseUrl(dsn)
+    this.axios = $axios
   }
 
   get $auth () {
     return AuthController
   }
 
-  get $admin () {
-    return new Admin()
-  }
+}
 
-  get $cloud () {
-    return new Cloud()
-  }
+export class Cloud {
 
-  get $account () {
-    return new Account()
-  }
+}
 
-  get $client () {
-    return new Client()
+export class Account {
+
+}
+
+export class Admin {
+  public get product () {
+    return new ProductController()
   }
+}
+
+export class Client {
+
 }
