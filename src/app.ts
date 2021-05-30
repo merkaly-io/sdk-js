@@ -1,4 +1,4 @@
-import axios, { AxiosStatic } from 'axios'
+import $axios from 'axios'
 import https from 'https'
 import AuthController from './modules/auth/auth.controller'
 import ProductController from './modules/market/product.controller'
@@ -6,13 +6,11 @@ import ProductController from './modules/market/product.controller'
 abstract class Merkaly {
 
   protected readonly dsn!: string
-  protected readonly axios: AxiosStatic
 
   protected constructor (dsn: string) {
     this.dsn = dsn
-    this.axios = axios
-    this.axios.defaults.baseURL = this.dsn
-    this.axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false })
+    $axios.defaults.baseURL = dsn
+    $axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false })
   }
 
   get $auth () {

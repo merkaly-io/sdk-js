@@ -1,7 +1,4 @@
-import $axios from '../plugin/axios'
-
 export default abstract class Controller<T> {
-  protected readonly $axios = $axios
 
   protected abstract find (): Promise<T[]>
 
