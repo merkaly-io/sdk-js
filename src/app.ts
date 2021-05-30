@@ -1,7 +1,7 @@
-import { AxiosStatic } from 'axios'
+import axios, { AxiosStatic } from 'axios'
+import https from 'https'
 import AuthController from './modules/auth/auth.controller'
 import ProductController from './modules/market/product.controller'
-import $axios from './plugin/axios'
 
 abstract class Merkaly {
 
@@ -9,8 +9,10 @@ abstract class Merkaly {
   protected readonly axios: AxiosStatic
 
   protected constructor (dsn: string) {
-    $axios.setBaseUrl(dsn)
-    this.axios = $axios
+    this.dsn = dsn
+    this.axios = axios
+    this.axios.defaults.baseURL = this.dsn
+    this.axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false })
   }
 
   get $auth () {
@@ -19,20 +21,20 @@ abstract class Merkaly {
 
 }
 
-export class Cloud {
+export class Cloud extends Merkaly {
 
 }
 
-export class Account {
+export class Account extends Merkaly {
 
 }
 
-export class Admin {
+export class Admin extends Merkaly {
   public get product () {
     return new ProductController()
   }
 }
 
-export class Client {
+export class Client extends Merkaly {
 
 }
