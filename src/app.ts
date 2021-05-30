@@ -1,7 +1,7 @@
 import $axios from 'axios'
 import https from 'https'
-import AuthController from './modules/auth/auth.controller'
-import ProductController from './modules/market/product.controller'
+import AuthController from './auth/auth.endpoint'
+import ProductController from './market/product.endpoint'
 
 abstract class Merkaly {
 

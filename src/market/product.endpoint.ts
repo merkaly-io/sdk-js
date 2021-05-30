@@ -1,9 +1,12 @@
 import ProductEntity from '@sk-merkaly/server/dist/market/product/product.entity'
-import { CreateProductValidator, UpdateProductValidator } from '@sk-merkaly/server/dist/market/product/product.validator'
+import {
+  CreateProductValidator,
+  UpdateProductValidator
+} from '@sk-merkaly/server/dist/market/product/product.validator'
 import { join } from 'path'
-import Controller from '../.controller'
+import AbstractEndpoint from '../abstract.endpoint'
 
-export default class ProductController extends Controller<ProductEntity> {
+export default class ProductEndpoint extends AbstractEndpoint<ProductEntity> {
   async find () {
     const { data } = await this.$axios.get<ProductEntity[]>('/products')
 

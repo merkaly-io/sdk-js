@@ -1,4 +1,8 @@
-export default abstract class Controller<T> {
+import axios, { AxiosStatic } from 'axios'
+
+export default abstract class AbstractEndpoint<T> {
+
+  protected $axios: AxiosStatic = axios
 
   protected abstract find (): Promise<T[]>
 
