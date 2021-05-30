@@ -24,8 +24,8 @@ jobs:
       - name: Install dependencies 🛠️
         run: npm install
 
-      - name: Generate declaration files 📦
-        run: npm run build
+      - name: Packing files 📦
+        run: npm pack
 
       - name: Add Auth Token to .npmrc file 💢
         run: echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> .npmrc

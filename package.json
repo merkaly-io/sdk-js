@@ -18,6 +18,7 @@
   "scripts": {
     "prebuild": "tsc -b --clean",
     "build": "tsc -b",
+    "prepack": "npm run build",
     "lint": "tsc --noEmit",
     "test": "jest"
   },
