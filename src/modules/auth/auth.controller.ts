@@ -1,4 +1,4 @@
-import { LoginValidator } from '@sk-merkaly/server/account/auth/auth.validator'
+import { LoginValidator } from '@sk-merkaly/server/dist/account/auth/auth.validator'
 import $axios from '../../plugin/axios'
 
 export default {
