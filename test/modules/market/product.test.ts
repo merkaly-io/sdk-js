@@ -1,9 +1,9 @@
-import { CreateProductValidator } from '@sk-merkaly/server/market/product/product.validator'
+import { CreateProductValidator } from '@sk-merkaly/server/dist/market/product/product.validator'
 import faker from 'faker'
-import Merkaly from '../../../src/app'
+import { Admin } from '../../../src/app'
 
 describe('Product Controller', () => {
-  const $merkaly = new Merkaly(String(process.env.baseUrl))
+  const $merkaly = new Admin(String(process.env.baseUrl))
 
   beforeAll(async () => $merkaly.$auth.login({
     username: String(process.env.username),
@@ -19,13 +19,13 @@ describe('Product Controller', () => {
       brand: 'bVgYgCTfHSbP145XIUL5'
     }
 
-    const result = await $merkaly.$admin.product.create(payload)
+    const result = await $merkaly.$product.create(payload)
 
     expect(result).toBe(payload)
   })
 
   test('should find all products', async () => {
-    const result = await $merkaly.$admin.product.find()
+    const result = await $merkaly.$product.find()
 
     expect(result).toBeInstanceOf(Array)
   })

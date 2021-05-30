@@ -1,16 +1,11 @@
-import axios, { AxiosStatic } from 'axios'
+export default interface AbstractEndpoint<T> {
+  find (): Promise<T[]>
 
-export default abstract class AbstractEndpoint<T> {
+  read (id: string): Promise<T>
 
-  protected $axios: AxiosStatic = axios
+  create (payload: unknown): Promise<T>
 
-  protected abstract find (): Promise<T[]>
+  update (id: string, payload: unknown): Promise<T>
 
-  protected abstract read (id: string): Promise<T>
-
-  protected abstract create (payload: unknown): Promise<T>
-
-  protected abstract update (id: string, payload: unknown): Promise<T>
-
-  protected abstract remove (id: string): Promise<void>
+  remove (id: string): Promise<void>
 }

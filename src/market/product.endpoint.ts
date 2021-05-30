@@ -1,39 +1,39 @@
 import ProductEntity from '@sk-merkaly/server/dist/market/product/product.entity'
-import {
-  CreateProductValidator,
-  UpdateProductValidator
-} from '@sk-merkaly/server/dist/market/product/product.validator'
+import * as validator from '@sk-merkaly/server/dist/market/product/product.validator'
+import $axios from 'axios'
 import { join } from 'path'
 import AbstractEndpoint from '../abstract.endpoint'
 
-export default class ProductEndpoint extends AbstractEndpoint<ProductEntity> {
+const endpoint: AbstractEndpoint<ProductEntity> = {
   async find () {
-    const { data } = await this.$axios.get<ProductEntity[]>('/products')
+    const { data } = await $axios.get('/products')
 
     return data
-  }
+  },
 
   async read (id: string) {
-    const { data } = await this.$axios.get<ProductEntity>(join('/products', id))
+    const { data } = await $axios.get(join('/products', id))
 
     return data
-  }
+  },
 
-  async create (payload: CreateProductValidator) {
-    const { data } = await this.$axios.post<ProductEntity>('/products', payload)
-
-    return data
-  }
-
-  async update (id: string, payload: UpdateProductValidator) {
-    const { data } = await this.$axios.put<ProductEntity>(join('/products', id), payload)
+  async create (payload: validator.CreateProductValidator) {
+    const { data } = await $axios.post('/products', payload)
 
     return data
-  }
+  },
+
+  async update (id: string, payload: validator.UpdateProductValidator) {
+    const { data } = await $axios.put(join('/products', id), payload)
+
+    return data
+  },
 
   async remove (id: string) {
-    const { data } = await this.$axios.delete<void>(join('/products', id))
+    const { data } = await $axios.delete(join('/products', id))
 
     return data
   }
 }
+
+export default endpoint
