@@ -1,8 +1,8 @@
 import { CreateProductValidator } from '@sk-merkaly/server/dist/market/product/product.validator'
 import faker from 'faker'
-import { Admin } from '../../../src/app'
+import { Admin } from '../../src/app'
 
-describe('Product Controller', () => {
+describe('Product Endpoint', () => {
   const $merkaly = new Admin(String(process.env.baseUrl))
 
   beforeAll(async () => $merkaly.$auth.login({

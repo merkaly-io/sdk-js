@@ -1,6 +1,6 @@
 {
   "name": "@sk-merkaly/sdk-js",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "",
   "main": "./src/app.js",
   "types": "./types/app.d.ts",
@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
   "dependencies": {
-    "@sk-merkaly/server": "0.0.5",
+    "@sk-merkaly/server": "0.0.7",
     "axios": "^0.21.1",
     "class-validator": "^0.13.1"
   },
