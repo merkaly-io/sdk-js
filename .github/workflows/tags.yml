@@ -1,7 +1,7 @@
 name: Publish NPM Package
 
 env:
-  NPM_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  NPM_TOKEN: ${{secrets.NPM_TOKEN}}
 
 on:
   push:
@@ -19,16 +19,16 @@ jobs:
       - name: Setup node env 🏗️
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12
+          node-version: 14
+
+      - name: Add Auth Token to .npmrc file 💢
+        run: echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> .npmrc
 
       - name: Install dependencies 🛠️
         run: npm install
 
       - name: Packing files 📦
         run: npm pack
-
-      - name: Add Auth Token to .npmrc file 💢
-        run: echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> .npmrc
 
       - name: Publish new version ✍
         run: npm publish --access public
