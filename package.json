@@ -20,7 +20,8 @@
     "build": "tsc -b",
     "prepack": "npm run build",
     "lint": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "pretest": "npm run build"
   },
   "repository": {
     "type": "git",
