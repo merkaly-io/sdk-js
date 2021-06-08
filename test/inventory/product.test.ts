@@ -1,8 +1,10 @@
+import ProductEntity from '@sk-merkaly/server/dist/market/product/product.entity'
 import { CreateProductValidator } from '@sk-merkaly/server/dist/market/product/product.validator'
+import { isFirebasePushId } from 'class-validator'
 import faker from 'faker'
 import { Admin } from '../../src/app'
 
-describe('Product Endpoint', () => {
+describe('Products Endpoint', () => {
   const $merkaly = new Admin(String(process.env.baseUrl))
 
   beforeAll(async () => $merkaly.$auth.login({
@@ -10,8 +12,8 @@ describe('Product Endpoint', () => {
     password: String(process.env.password)
   }))
 
-  test('should create a new product', async () => {
-
+  describe('when basic product is created', () => {
+    let product: ProductEntity
     const payload: CreateProductValidator = {
       name: faker.commerce.product(),
       price: faker.commerce.price(),
@@ -19,15 +21,32 @@ describe('Product Endpoint', () => {
       brand: 'bVgYgCTfHSbP145XIUL5'
     }
 
-    const result = await $merkaly.$product.create(payload)
+    beforeAll(async () => {
+      product = await $merkaly.$product.create(payload)
 
-    expect(result).toBe(payload)
-  })
+      expect(isFirebasePushId(product.id)).toBeTruthy()
+    })
 
-  test('should find all products', async () => {
-    const result = await $merkaly.$product.find()
+    test('should retrieve the created product', async () => {
+      await $merkaly.$product.read(product.id)
 
-    expect(result).toBeInstanceOf(Array)
+      expect(product.name).toEqual(payload.name)
+      expect(Number(product.price).toFixed(2)).toEqual(payload.price)
+    })
+
+    test('should retrieve all products including the created product', async () => {
+      const result = await $merkaly.$product.find()
+
+      expect(result).toEqual(expect.arrayContaining([expect.objectContaining(product)]))
+
+    })
+
+    afterAll(async () => {
+      await $merkaly.$product.remove(product.id)
+      const result = await $merkaly.$product.read(product.id)
+
+      expect(result).toBeFalsy()
+    })
   })
 
 })
