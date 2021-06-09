@@ -1,5 +1,5 @@
-import ProductEntity from '@sk-merkaly/server/dist/market/product/product.entity'
-import * as validator from '@sk-merkaly/server/dist/market/product/product.validator'
+import ProductEntity from '@sk-merkaly/server/dist/inventory/product/product.entity'
+import * as validator from '@sk-merkaly/server/dist/inventory/product/product.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import AbstractEndpoint from '../abstract.endpoint'

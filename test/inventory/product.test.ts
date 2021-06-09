@@ -1,5 +1,5 @@
-import ProductEntity from '@sk-merkaly/server/dist/market/product/product.entity'
-import { CreateProductValidator } from '@sk-merkaly/server/dist/market/product/product.validator'
+import ProductEntity from '@sk-merkaly/server/dist/inventory/product/product.entity'
+import { CreateProductValidator } from '@sk-merkaly/server/dist/inventory/product/product.validator'
 import { isFirebasePushId } from 'class-validator'
 import faker from 'faker'
 import { Admin } from '../../src/app'
@@ -16,9 +16,7 @@ describe('Products Endpoint', () => {
     let product: ProductEntity
     const payload: CreateProductValidator = {
       name: faker.commerce.product(),
-      price: faker.commerce.price(),
-      category: 'bVgYgCTfHSbP145XIUL5',
-      brand: 'bVgYgCTfHSbP145XIUL5'
+      price: faker.commerce.price()
     }
 
     beforeAll(async () => {
