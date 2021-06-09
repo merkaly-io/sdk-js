@@ -16,7 +16,7 @@ describe('Products Endpoint', () => {
     let product: ProductEntity
     const payload: CreateProductValidator = {
       name: faker.commerce.product(),
-      price: faker.commerce.price()
+      price: Number(faker.commerce.price())
     }
 
     beforeAll(async () => {
@@ -29,7 +29,7 @@ describe('Products Endpoint', () => {
       await $merkaly.$product.read(product.id)
 
       expect(product.name).toEqual(payload.name)
-      expect(Number(product.price).toFixed(2)).toEqual(payload.price)
+      expect(product.price).toEqual(payload.price)
     })
 
     test('should retrieve all products including the created product', async () => {
