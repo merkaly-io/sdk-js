@@ -9,6 +9,8 @@ export const login = async ({ username, password }: LoginValidator) => $axios.po
     return data
   })
 
-export const register = async (email: string, password: string) => $axios.post('/auth/register', { email, password })
+export const register = async (email: string, password: string) =>
+  $axios.post('/auth/register', { email, password })
 
-export const recover = async (email: string) => $axios.post('/auth/recover', { email })
+export const recover = async (email: string) =>
+  $axios.post('/auth/recover', { email })

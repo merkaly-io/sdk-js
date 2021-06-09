@@ -3,34 +3,18 @@ import * as validator from '@sk-merkaly/server/dist/business/customer/customer.v
 import $axios from 'axios'
 import { join } from 'path'
 
-export const find = async () => {
-  const { data } = await $axios.get<CustomerEntity[]>('/customers')
+export const find = async () =>
+  $axios.get<CustomerEntity[]>('/customers')
 
-  return data
-}
+export const read = async (id: string) =>
+  $axios.get<CustomerEntity>(join('/customers', id))
 
-export const read = async (id: string) => {
-  const { data } = await $axios.get<CustomerEntity>(join('/customers', id))
+export const create = async (payload: validator.CreateCustomerValidator) =>
+  $axios.post<CustomerEntity>('/customers', payload)
 
-  return data
-}
+export const update = async (id: string, payload: validator.UpdateCustomerValidator) =>
+  $axios.put<CustomerEntity>(join('/customers', id), payload)
 
-export const create = async (payload: validator.CreateCustomerValidator) => {
-  const { data } = await $axios.post<CustomerEntity>('/customers', payload)
-
-  return data
-}
-
-
-export const update = async (id: string, payload: validator.UpdateCustomerValidator) => {
-  const { data } = await $axios.put<CustomerEntity>(join('/customers', id), payload)
-
-  return data
-}
-
-export const remove = async (id: string) => {
-  const { data } = await $axios.delete<void>(join('/customers', id))
-
-  return data
-}
+export const remove = async (id: string) =>
+  $axios.delete<void>(join('/customers', id))
 
