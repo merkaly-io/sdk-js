@@ -2,24 +2,13 @@ import { LoginValidator } from '@sk-merkaly/server/dist/account/auth/auth.valida
 import { TokenResponse } from 'auth0'
 import $axios from 'axios'
 
-export default {
-  async login ({ username, password }: LoginValidator) {
+export const login = async ({ username, password }: LoginValidator) => $axios.post<TokenResponse>('/auth/login', { username, password })
+  .then(({ data }) => {
+    $axios.defaults.headers['Authorization'] = `Bearer ${data.access_token}`
 
-    return $axios.post<TokenResponse>('/auth/login', { username, password })
-      .then(({ data }) => {
-        $axios.defaults.headers['Authorization'] = `Bearer ${data.access_token}`
+    return data
+  })
 
-        return data
-      })
-  },
+export const register = async (email: string, password: string) => $axios.post('/auth/register', { email, password })
 
-  async register (email: string, password: string) {
-
-    return $axios.post('/auth/register', { email, password })
-  },
-
-  async recover (email: string) {
-
-    return $axios.post('/auth/recover', { email })
-  }
-}
+export const recover = async (email: string) => $axios.post('/auth/recover', { email })

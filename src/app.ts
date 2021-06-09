@@ -1,10 +1,8 @@
 import $axios from 'axios'
 import https from 'https'
-import AuthEndpoint from './auth/auth.endpoint'
-import * as brandEndpoint from './inventory/brand.endpoint'
-import * as categoryEndpoint from './inventory/category.endpoint'
-import * as productEndpoint from './inventory/product.endpoint'
-import * as propertyEndpoint from './inventory/property.endpoint'
+import * as accountEndpoint from './auth'
+import * as businessEndpoint from './business'
+import * as inventoryEndpoint from './inventory'
 
 export abstract class SDK {
 
@@ -19,7 +17,7 @@ export abstract class SDK {
 }
 
 export class Account extends SDK {
-  public readonly $auth = AuthEndpoint
+  public readonly $auth = accountEndpoint.auth
 }
 
 export class Client extends Account {
@@ -27,13 +25,13 @@ export class Client extends Account {
 }
 
 export class Admin extends Client {
-  public readonly $product = productEndpoint
-  public readonly $brand = brandEndpoint
-  public readonly $property = propertyEndpoint
-  public readonly $category = categoryEndpoint
+  public readonly $product = inventoryEndpoint.product
+  public readonly $brand = inventoryEndpoint.brand
+  public readonly $property = inventoryEndpoint.property
+  public readonly $category = inventoryEndpoint.category
 }
 
 export class Cloud extends Admin {
-
+  public readonly $customer = businessEndpoint.customer
 }
 
