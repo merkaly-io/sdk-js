@@ -13,35 +13,36 @@ describe('Category Endpoint', () => {
   }))
 
   describe('when basic category is created', () => {
-    let product: CategoryEntity
+    let category: CategoryEntity
     const payload: CreateCategoryValidator = {
       name: faker.commerce.department()
     }
 
     beforeAll(async () => {
-      product = await $merkaly.$category.create(payload)
+      let { data } = await $merkaly.$category.create(payload)
+      category = data
 
-      expect(isFirebasePushId(product.id)).toBeTruthy()
+      expect(isFirebasePushId(category.id)).toBeTruthy()
     })
 
     test('should retrieve the created category', async () => {
-      await $merkaly.$category.read(product.id)
+      let { data } = await $merkaly.$category.read(category.id)
 
-      expect(product.name).toEqual(payload.name)
+      expect(data.name).toEqual(payload.name)
     })
 
     test('should retrieve all categories including the created category', async () => {
-      const result = await $merkaly.$category.find()
+      let { data: categories } = await $merkaly.$category.find()
 
-      expect(result).toEqual(expect.arrayContaining([expect.objectContaining(product)]))
+      expect(categories).toEqual(expect.arrayContaining([expect.objectContaining(category)]))
 
     })
 
     afterAll(async () => {
-      await $merkaly.$category.remove(product.id)
-      const result = await $merkaly.$category.read(product.id)
+      await $merkaly.$category.remove(category.id)
+      const { data } = await $merkaly.$category.read(category.id)
 
-      expect(result).toBeFalsy()
+      expect(data).toBeFalsy()
     })
   })
 

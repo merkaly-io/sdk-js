@@ -20,30 +20,31 @@ describe('Products Endpoint', () => {
     }
 
     beforeAll(async () => {
-      product = await $merkaly.$product.create(payload)
+      let { data } = await $merkaly.$product.create(payload)
+      product = data
 
       expect(isFirebasePushId(product.id)).toBeTruthy()
     })
 
     test('should retrieve the created product', async () => {
-      await $merkaly.$product.read(product.id)
+      let { data } = await $merkaly.$product.read(product.id)
 
-      expect(product.name).toEqual(payload.name)
-      expect(product.price).toEqual(payload.price)
+      expect(data.name).toEqual(payload.name)
+      expect(data.price).toEqual(payload.price)
     })
 
     test('should retrieve all products including the created product', async () => {
-      const result = await $merkaly.$product.find()
+      let { data: products } = await $merkaly.$product.find()
 
-      expect(result).toEqual(expect.arrayContaining([expect.objectContaining(product)]))
+      expect(products).toEqual(expect.arrayContaining([expect.objectContaining(product)]))
 
     })
 
     afterAll(async () => {
       await $merkaly.$product.remove(product.id)
-      const result = await $merkaly.$product.read(product.id)
+      const { data } = await $merkaly.$product.read(product.id)
 
-      expect(result).toBeFalsy()
+      expect(data).toBeFalsy()
     })
   })
 
