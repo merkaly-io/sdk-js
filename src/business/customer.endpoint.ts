@@ -1,5 +1,5 @@
-import CustomerEntity from '@sk-merkaly/server/dist/business/customer/customer.entity'
-import * as validator from '@sk-merkaly/server/dist/business/customer/customer.validator'
+import CustomerEntity from '@merkaly/server/dist/business/customer/customer.entity'
+import * as validator from '@merkaly/server/dist/business/customer/customer.validator'
 import $axios from 'axios'
 import { join } from 'path'
 

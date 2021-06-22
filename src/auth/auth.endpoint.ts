@@ -1,4 +1,4 @@
-import { LoginValidator } from '@sk-merkaly/server/dist/account/auth/auth.validator'
+import { LoginValidator } from '@merkaly/server/dist/account/auth/auth.validator'
 import { TokenResponse } from 'auth0'
 import $axios from 'axios'
 
