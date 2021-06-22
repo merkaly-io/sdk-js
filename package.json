@@ -1,5 +1,5 @@
 {
-  "name": "@sk-merkaly/sdk-js",
+  "name": "@merkaly/sdk-js",
   "version": "0.0.2",
   "description": "",
   "main": "./src/app.js",
@@ -64,5 +64,8 @@
     "ts-jest": "^27.0.3",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

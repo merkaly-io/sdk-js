@@ -27,8 +27,7 @@ jobs:
       - name: Install dependencies 🛠️
         run: npm install
 
-      - name: Packing files 📦
-        run: npm pack
-
       - name: Publish new version ✍
         run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
