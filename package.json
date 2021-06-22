@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
   "dependencies": {
-    "@sk-merkaly/server": "^0.0.9",
+    "@merkaly/server": "^0.0.8",
     "axios": "^0.21.1",
     "class-validator": "^0.13.1"
   },
