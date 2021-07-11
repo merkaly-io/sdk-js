@@ -1,5 +1,5 @@
-import BrandEntity from '@merkaly/server/dist/inventory/brand/brand.entity'
-import * as validator from '@merkaly/server/dist/inventory/brand/brand.validator'
+import BrandEntity from '@merkaly/api/dist/inventory/brands/brand.entity'
+import * as validator from '@merkaly/api/dist/inventory/brands/brand.validator'
 import $axios from 'axios'
 import { join } from 'path'
 

@@ -1,5 +1,5 @@
-import PropertyEntity from '@merkaly/server/dist/inventory/property/property.entity'
-import * as validator from '@merkaly/server/dist/inventory/property/property.validator'
+import PropertyEntity from '@merkaly/api/dist/inventory/properties/property.entity'
+import * as validator from '@merkaly/api/dist/inventory/properties/property.validator'
 import $axios from 'axios'
 import { join } from 'path'
 

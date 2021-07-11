@@ -1,5 +1,5 @@
-import CustomerEntity from '@merkaly/server/dist/business/customer/customer.entity'
-import * as validator from '@merkaly/server/dist/business/customer/customer.validator'
+import CustomerEntity from '@merkaly/api/dist/account/organizations/organization.controller'
+import * as validator from '@merkaly/api/dist/account/organizations/organization.validator'
 import $axios from 'axios'
 import { join } from 'path'
 
@@ -9,10 +9,10 @@ export const find = async () =>
 export const read = async (id: string) =>
   $axios.get<CustomerEntity>(join('/customers', id))
 
-export const create = async (payload: validator.CreateCustomerValidator) =>
+export const create = async (payload: validator.CreateOrganizationValidator) =>
   $axios.post<CustomerEntity>('/customers', payload)
 
-export const update = async (id: string, payload: validator.UpdateCustomerValidator) =>
+export const update = async (id: string, payload: validator.UpdateOrganizationValidator) =>
   $axios.put<CustomerEntity>(join('/customers', id), payload)
 
 export const remove = async (id: string) =>

@@ -1,5 +1,5 @@
-import CategoryEntity from '@merkaly/server/dist/inventory/category/category.entity'
-import * as validator from '@merkaly/server/dist/inventory/category/category.validator'
+import CategoryEntity from '@merkaly/api/dist/inventory/categories/category.entity'
+import * as validator from '@merkaly/api/dist/inventory/categories/category.validator'
 import $axios from 'axios'
 import { join } from 'path'
 
