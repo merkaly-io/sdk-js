@@ -1,8 +1,8 @@
-import CategoryEntity from '@sk-merkaly/server/dist/inventory/category/category.entity'
-import CreateCategoryValidator from '@sk-merkaly/server/dist/inventory/category/category.validator'
+import CategoryEntity from '@merkaly/api/dist/inventory/categories/category.entity'
+import CreateCategoryValidator from '@merkaly/api/dist/inventory/categories/category.validator'
 import { isFirebasePushId } from 'class-validator'
 import faker from 'faker'
-import { Admin } from '../../src/app'
+import { Admin } from '../../../src/app'
 
 describe('Category Endpoint', () => {
   const $merkaly = new Admin(String(process.env.baseUrl))

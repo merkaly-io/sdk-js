@@ -1,7 +1,7 @@
 import $axios from 'axios'
 import https from 'https'
-import * as accountEndpoint from './auth'
-import * as businessEndpoint from './business'
+import * as accountEndpoint from './account'
+import * as authEndpoint from './auth'
 import * as inventoryEndpoint from './inventory'
 
 export abstract class SDK {
@@ -17,21 +17,37 @@ export abstract class SDK {
 }
 
 export class Account extends SDK {
-  public readonly $auth = accountEndpoint.auth
+  public readonly $auth = authEndpoint.auth
 }
 
-export class Client extends Account {
+export class Client extends SDK {
 
 }
 
-export class Admin extends Client {
-  public readonly $product = inventoryEndpoint.product
-  public readonly $brand = inventoryEndpoint.brand
-  public readonly $property = inventoryEndpoint.property
-  public readonly $category = inventoryEndpoint.category
+export class Admin extends SDK {
+  public get inventory () {
+    return {
+      products: inventoryEndpoint.product,
+      brands: inventoryEndpoint.brand,
+      properties: inventoryEndpoint.property,
+      categories: inventoryEndpoint.category
+    }
+  }
+
+  public get account () {
+    return {
+      users: accountEndpoint.organization,
+      roles: accountEndpoint.organization
+    }
+  }
 }
 
-export class Cloud extends Admin {
-  public readonly $customer = businessEndpoint.customer
+export class Manager extends SDK {
+  public get account () {
+    return {
+      organizations: accountEndpoint.organization,
+      users: accountEndpoint.organization,
+      roles: accountEndpoint.organization
+    }
+  }
 }
-
