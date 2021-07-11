@@ -40,6 +40,7 @@
   "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
   "dependencies": {
     "@merkaly/api": "0.0.8",
+    "auth0-lock": "^11.30.3",
     "axios": "^0.21.1",
     "class-validator": "^0.13.1"
   },
@@ -52,6 +53,7 @@
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "@types/auth0": "^2.33.3",
+    "@types/auth0-lock": "^11.27.2",
     "@types/faker": "^5.5.6",
     "@types/jest": "^26.0.23",
     "@types/node": "^16.0.0",

@@ -1,5 +1,5 @@
-import * as validator from '@merkaly/api/dist/account/roles/role.validator'
 import RoleEntity from '@merkaly/api/dist/account/roles/role.entity'
+import * as validator from '@merkaly/api/dist/account/roles/role.validator'
 import $axios from 'axios'
 import { join } from 'path'
 
