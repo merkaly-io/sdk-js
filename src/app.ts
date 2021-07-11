@@ -46,8 +46,8 @@ export class Manager extends SDK {
   public get account () {
     return {
       organizations: accountEndpoint.organization,
-      users: accountEndpoint.organization,
-      roles: accountEndpoint.organization
+      users: accountEndpoint.user,
+      roles: accountEndpoint.role
     }
   }
 }
