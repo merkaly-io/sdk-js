@@ -12,13 +12,14 @@
     "allowJs": true,
     "declaration": true,
     "skipLibCheck": true,
-    "declarationDir": "./types",
     "rootDir": "./src",
     "strict": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "types": [
       "axios",
+      "@types/auth0",
+      "@types/auth0-lock",
       "@types/node",
       "@types/jest"
     ]

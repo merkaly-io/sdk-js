@@ -118,5 +118,5 @@ dist
 .pnp.*
 
 .idea
-types/*
+src/**/*.d.ts
 src/**/*.js
