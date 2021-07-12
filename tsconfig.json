@@ -18,7 +18,6 @@
     "baseUrl": ".",
     "types": [
       "axios",
-      "@merkaly/api",
       "@types/auth0",
       "@types/auth0-lock",
       "@types/node",

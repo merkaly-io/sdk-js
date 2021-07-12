@@ -1,1 +1,4 @@
-export { Manager as MerkalyManagerSDK, Admin as MerkalyAdminSDK } from './app'
+export * as SDK from './app'
+export * as InventoryModule from './inventory'
+export * as BusinessModule from './business'
+export * as AccountModule from './account'

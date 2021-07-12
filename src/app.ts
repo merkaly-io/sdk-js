@@ -4,7 +4,7 @@ import * as accountEndpoint from './account'
 import * as authEndpoint from './auth'
 import * as inventoryEndpoint from './inventory'
 
-export abstract class SDK {
+abstract class SDK {
 
   private readonly dsn!: string
 
