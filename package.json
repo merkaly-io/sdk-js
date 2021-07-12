@@ -2,8 +2,8 @@
   "name": "@merkaly/sdk-js",
   "version": "0.0.3",
   "description": "",
-  "main": "./src/app.js",
-  "types": "./types/app.d.ts",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "files": [
     "src/**/*.js",
     "types"

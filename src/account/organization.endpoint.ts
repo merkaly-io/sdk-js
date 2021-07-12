@@ -4,16 +4,16 @@ import $axios from 'axios'
 import { join } from 'path'
 
 export const find = async () =>
-  $axios.get<OrganizationEntity[]>('/account/organizations')
+  $axios.get<OrganizationEntity[]>(join('account', 'organizations'))
 
 export const read = async (id: string) =>
-  $axios.get<OrganizationEntity>(join('/account/organizations', id))
+  $axios.get<OrganizationEntity>(join('account', 'organizations', id))
 
 export const create = async (payload: validator.CreateOrganizationValidator) =>
-  $axios.post<OrganizationEntity>('/account/organizations', payload)
+  $axios.post<OrganizationEntity>(join('account', 'organizations'), payload)
 
 export const update = async (id: string, payload: validator.UpdateOrganizationValidator) =>
-  $axios.put<OrganizationEntity>(join('/account/organizations', id), payload)
+  $axios.put<OrganizationEntity>(join('account', 'organizations', id), payload)
 
 export const remove = async (id: string) =>
-  $axios.delete<void>(join('/account/organizations', id))
+  $axios.delete<void>(join('account', 'organizations', id))
