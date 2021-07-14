@@ -1,19 +1,19 @@
-import UserEntity from '@merkaly/api/dist/account/users/user.entity'
 import * as validator from '@merkaly/api/dist/account/users/user.validator'
 import $axios from 'axios'
 import { join } from 'path'
+import UserReference from './user.reference'
 
 export const find = async () =>
-  $axios.get<UserEntity[]>(join('account', 'users'))
+  $axios.get<UserReference[]>(join('account', 'users'))
 
 export const read = async (id: string) =>
-  $axios.get<UserEntity>(join('account', 'users', id))
+  $axios.get<UserReference>(join('account', 'users', id))
 
 export const create = async (payload: validator.CreateUserValidator) =>
-  $axios.post<UserEntity>(join('account', 'users'), payload)
+  $axios.post<UserReference>(join('account', 'users'), payload)
 
 export const update = async (id: string, payload: validator.UpdateUserValidator) =>
-  $axios.put<UserEntity>(join('account', 'users', id), payload)
+  $axios.put<UserReference>(join('account', 'users', id), payload)
 
 export const remove = async (id: string) =>
   $axios.delete<void>(join('account', 'users', id))
