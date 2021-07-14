@@ -6,7 +6,7 @@
   "types": "./src/index.d.ts",
   "files": [
     "src/**/*.js",
-    "types"
+    "src/**/*.ts"
   ],
   "engines": {
     "node": "14"

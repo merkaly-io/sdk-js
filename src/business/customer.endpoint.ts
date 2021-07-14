@@ -1,4 +1,4 @@
-import CustomerEntity from '@merkaly/api/dist/account/organizations/organization.controller'
+import CustomerEntity from '@merkaly/api/dist/account/organizations/organization.entity'
 import * as validator from '@merkaly/api/dist/account/organizations/organization.validator'
 import $axios from 'axios'
 import { join } from 'path'
