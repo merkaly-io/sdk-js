@@ -1,19 +1,19 @@
-import PropertyEntity from '@merkaly/api/dist/inventory/properties/property.entity'
 import * as validator from '@merkaly/api/dist/inventory/properties/property.validator'
 import $axios from 'axios'
 import { join } from 'path'
+import PropertyReference from './property.reference'
 
 export const find = async () =>
-  $axios.get<PropertyEntity[]>('/properties')
+  $axios.get<PropertyReference[]>('/properties')
 
 export const read = async (id: string) =>
-  $axios.get<PropertyEntity>(join('/properties', id))
+  $axios.get<PropertyReference>(join('/properties', id))
 
 export const create = async (payload: validator.default) =>
-  $axios.post<PropertyEntity>('/properties', payload)
+  $axios.post<PropertyReference>('/properties', payload)
 
 export const update = async (id: string, payload: validator.default) =>
-  $axios.put<PropertyEntity>(join('/properties', id), payload)
+  $axios.put<PropertyReference>(join('/properties', id), payload)
 
 export const remove = async (id: string) =>
   $axios.delete<void>(join('/properties', id))
