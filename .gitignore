@@ -118,5 +118,6 @@ dist
 .pnp.*
 
 .idea
+!src/index.d.ts
 src/**/*.d.ts
 src/**/*.js

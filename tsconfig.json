@@ -17,6 +17,9 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "baseUrl": ".",
+    "typeRoots": [
+      "@merkaly/api"
+    ],
     "types": [
       "axios",
       "@types/auth0",
