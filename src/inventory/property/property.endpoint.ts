@@ -1,4 +1,4 @@
-import * as validator from '@merkaly/api/dist/inventory/properties/property.validator'
+import * as validator from '@merkaly/api/src/inventory/properties/property.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import PropertyReference from './property.reference'

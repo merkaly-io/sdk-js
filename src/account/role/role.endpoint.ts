@@ -1,4 +1,4 @@
-import * as validator from '@merkaly/api/dist/account/roles/role.validator'
+import * as validator from '@merkaly/api/src/account/roles/role.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import RoleReference from './role.reference'

@@ -4,50 +4,44 @@ import * as accountEndpoint from './account'
 import * as authEndpoint from './auth'
 import * as inventoryEndpoint from './inventory'
 
-abstract class SDK {
+namespace SDK {
+  $axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false })
 
-  private readonly dsn!: string
-
-  public constructor (dsn: string) {
-    this.dsn = dsn
-    $axios.defaults.baseURL = dsn
-    $axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false })
+  export class Account {
+    public readonly $auth = authEndpoint.auth
   }
 
-}
+  export class Client {
 
-export class Account extends SDK {
-  public readonly $auth = authEndpoint.auth
-}
+  }
 
-export class Client extends SDK {
+  export class Admin {
+    public get inventory () {
+      return {
+        products: inventoryEndpoint.product,
+        brands: inventoryEndpoint.brand,
+        properties: inventoryEndpoint.property,
+        categories: inventoryEndpoint.category
+      }
+    }
 
-}
-
-export class Admin extends SDK {
-  public get inventory () {
-    return {
-      products: inventoryEndpoint.product,
-      brands: inventoryEndpoint.brand,
-      properties: inventoryEndpoint.property,
-      categories: inventoryEndpoint.category
+    public get account () {
+      return {
+        users: accountEndpoint.organization,
+        roles: accountEndpoint.organization
+      }
     }
   }
 
-  public get account () {
-    return {
-      users: accountEndpoint.organization,
-      roles: accountEndpoint.organization
+  export class Manager {
+    public get account () {
+      return {
+        organizations: accountEndpoint.organization,
+        users: accountEndpoint.user,
+        roles: accountEndpoint.role
+      }
     }
   }
 }
 
-export class Manager extends SDK {
-  public get account () {
-    return {
-      organizations: accountEndpoint.organization,
-      users: accountEndpoint.user,
-      roles: accountEndpoint.role
-    }
-  }
-}
+export default SDK

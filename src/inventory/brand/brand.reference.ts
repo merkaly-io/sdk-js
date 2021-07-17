@@ -1,4 +1,4 @@
-import BrandEntity from '@merkaly/api/dist/inventory/brands/brand.entity'
+import BrandEntity from '@merkaly/api/src/inventory/brands/brand.entity'
 
 export default class BrandReference extends BrandEntity {
 

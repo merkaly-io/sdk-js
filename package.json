@@ -1,6 +1,6 @@
 {
   "name": "@merkaly/sdk-js",
-  "version": "0.0.3",
+  "version": "0.0.0-dev",
   "description": "",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
   "dependencies": {
-    "@merkaly/api": "0.0.8",
+    "@merkaly/api": "0.0.0-dev",
     "auth0-lock": "^11.30.3",
     "axios": "^0.21.1",
     "class-validator": "^0.13.1"

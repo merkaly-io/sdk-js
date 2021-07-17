@@ -1,4 +1,4 @@
-import CategoryEntity from '@merkaly/api/dist/inventory/categories/category.entity'
+import CategoryEntity from '@merkaly/api/src/inventory/categories/category.entity'
 
 export default class CategoryReference extends CategoryEntity {
 

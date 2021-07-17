@@ -1,4 +1,4 @@
-import * as validator from '@merkaly/api/dist/account/users/user.validator'
+import * as validator from '@merkaly/api/src/account/users/user.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import UserReference from './user.reference'

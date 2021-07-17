@@ -1,4 +1,4 @@
-import * as validator from '@merkaly/api/dist/account/organizations/organization.validator'
+import * as validator from '@merkaly/api/src/account/organizations/organization.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import OrganizationReference from './organization.reference'

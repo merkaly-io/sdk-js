@@ -1,4 +1,4 @@
-import * as validator from '@merkaly/api/dist/inventory/brands/brand.validator'
+import * as validator from '@merkaly/api/src/inventory/brands/brand.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import BrandReference from './brand.reference'

@@ -1,4 +1,4 @@
-import * as validator from '@merkaly/api/dist/inventory/categories/category.validator'
+import * as validator from '@merkaly/api/src/inventory/categories/category.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import CategoryReference from './category.reference'
