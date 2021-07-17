@@ -1,5 +1,5 @@
-import RoleEntity from '@merkaly/api/dist/account/roles/role.entity'
+import API from '@merkaly/api'
 
-export default class RoleReference extends RoleEntity {
+export default class RoleReference extends API.Account.Role.Entity {
 
 }
