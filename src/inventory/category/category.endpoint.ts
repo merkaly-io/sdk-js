@@ -11,10 +11,10 @@ export const find = async () =>
 export const read = async (id: string) =>
   $axios.get<CategoryReference>(join(InventoryModule.$path, CategoryModule.$path, id))
 
-export const create = async (payload: validator.default) =>
+export const create = async (payload: validator.CreateCategoryValidator) =>
   $axios.post<CategoryReference>(join(InventoryModule.$path, CategoryModule.$path), payload)
 
-export const update = async (id: string, payload: validator.default) =>
+export const update = async (id: string, payload: validator.UpdateCategoryValidator) =>
   $axios.put<CategoryReference>(join(InventoryModule.$path, CategoryModule.$path, id), payload)
 
 export const remove = async (id: string) =>

@@ -9,14 +9,14 @@ export const find = async () =>
   $axios.get<ProductReference[]>(join(InventoryModule.$path, ProductModule.$path))
 
 export const read = async (id: string) =>
-  $axios.get<ProductReference>(join(InventoryModule.$path, id))
+  $axios.get<ProductReference>(join(InventoryModule.$path, ProductModule.$path, id))
 
 export const create = async (payload: validator.CreateProductValidator) =>
-  $axios.post<ProductReference>(join(InventoryModule.$path), payload)
+  $axios.post<ProductReference>(join(InventoryModule.$path, ProductModule.$path), payload)
 
 export const update = async (id: string, payload: validator.UpdateProductValidator) =>
-  $axios.put<ProductReference>(join(InventoryModule.$path, id), payload)
+  $axios.put<ProductReference>(join(InventoryModule.$path, ProductModule.$path, id), payload)
 
 export const remove = async (id: string) =>
-  $axios.delete<void>(join(InventoryModule.$path, id))
+  $axios.delete<void>(join(InventoryModule.$path, ProductModule.$path, id))
 

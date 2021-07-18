@@ -1,5 +1,5 @@
-import API from '@merkaly/api'
+import { User } from 'auth0'
 
-export default class UserReference extends API.Account.User.Entity {
+export default class UserReference implements User {
 
 }

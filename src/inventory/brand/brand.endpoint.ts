@@ -11,10 +11,10 @@ export const find = async () =>
 export const read = async (id: string) =>
   $axios.get<BrandReference>(join(InventoryModule.$path, BrandModule.$path, id))
 
-export const create = async (payload: validator.default) =>
+export const create = async (payload: validator.CreateValidator) =>
   $axios.post<BrandReference>(join(InventoryModule.$path, BrandModule.$path), payload)
 
-export const update = async (id: string, payload: validator.default) =>
+export const update = async (id: string, payload: validator.UpdateValidator) =>
   $axios.put<BrandReference>(join(InventoryModule.$path, BrandModule.$path, id), payload)
 
 export const remove = async (id: string) =>
