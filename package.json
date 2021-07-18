@@ -16,8 +16,9 @@
     "lib": "src"
   },
   "scripts": {
-    "prebuild": "tsc -b --clean",
+    "prebuild": "npm run build:clean",
     "build": "tsc -b",
+    "build:clean": "tsc -b --clean",
     "prepack": "npm run build",
     "lint": "tsc --noEmit",
     "test": "jest",

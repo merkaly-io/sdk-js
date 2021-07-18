@@ -5,7 +5,11 @@ import * as authEndpoint from './auth'
 import * as inventoryEndpoint from './inventory'
 
 namespace SDK {
-  $axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false })
+
+  export const setBaseUrl = (dsn: string) => {
+    $axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false })
+    $axios.defaults.baseURL = dsn
+  }
 
   export class Account {
     public readonly $auth = authEndpoint.auth
