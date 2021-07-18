@@ -31,8 +31,8 @@ namespace SDK {
 
     public get account () {
       return {
-        users: accountEndpoint.organization,
-        roles: accountEndpoint.organization
+        users: accountEndpoint.user,
+        roles: accountEndpoint.role
       }
     }
   }
