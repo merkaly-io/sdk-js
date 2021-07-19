@@ -1,6 +1,6 @@
 {
   "name": "@merkaly/sdk-js",
-  "version": "0.0.0-dev",
+  "version": "0.0.0",
   "description": "",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
