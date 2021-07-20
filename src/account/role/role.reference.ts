@@ -1,5 +1,5 @@
-import { Role } from 'auth0'
+import API from '@merkaly/api/src/index'
 
-export default class RoleReference implements Role {
+export default class RoleReference extends API.Account.Role.Entity {
 
 }

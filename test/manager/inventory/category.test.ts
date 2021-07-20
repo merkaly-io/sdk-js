@@ -1,16 +1,17 @@
-import CategoryEntity from '@merkaly/api/dist/inventory/categories/category.entity'
-import CreateCategoryValidator from '@merkaly/api/dist/inventory/categories/category.validator'
+import CategoryEntity from '@merkaly/api/src/inventory/categories/category.entity'
+import { CreateCategoryValidator } from '@merkaly/api/src/inventory/categories/category.validator'
 import { isFirebasePushId } from 'class-validator'
 import faker from 'faker'
-import { Admin } from '../../../src/app'
+import SDK from '../../../src/app'
 
 describe('Category Endpoint', () => {
-  const $merkaly = new Admin(String(process.env.baseUrl))
+  SDK.setBaseUrl(String(process.env.baseUrl))
+  const $merkaly = new SDK.Admin()
 
-  beforeAll(async () => $merkaly.$auth.login({
-    username: String(process.env.username),
-    password: String(process.env.password)
-  }))
+  // beforeAll(async () => $merkaly.$auth.login({
+  //   username: String(process.env.username),
+  //   password: String(process.env.password)
+  // }))
 
   describe('when basic category is created', () => {
     let category: CategoryEntity
@@ -19,28 +20,28 @@ describe('Category Endpoint', () => {
     }
 
     beforeAll(async () => {
-      let { data } = await $merkaly.$category.create(payload)
+      let { data } = await $merkaly.inventory.categories.create(payload)
       category = data
 
       expect(isFirebasePushId(category.id)).toBeTruthy()
     })
 
     test('should retrieve the created category', async () => {
-      let { data } = await $merkaly.$category.read(category.id)
+      let { data } = await $merkaly.inventory.categories.read(category.id)
 
       expect(data.name).toEqual(payload.name)
     })
 
     test('should retrieve all categories including the created category', async () => {
-      let { data: categories } = await $merkaly.$category.find()
+      let { data: categories } = await $merkaly.inventory.categories.find()
 
       expect(categories).toEqual(expect.arrayContaining([expect.objectContaining(category)]))
 
     })
 
     afterAll(async () => {
-      await $merkaly.$category.remove(category.id)
-      const { data } = await $merkaly.$category.read(category.id)
+      await $merkaly.inventory.categories.remove(category.id)
+      const { data } = await $merkaly.inventory.categories.read(category.id)
 
       expect(data).toBeFalsy()
     })
