@@ -5,17 +5,18 @@ import $axios from 'axios'
 import { join } from 'path'
 import OrganizationReference from './organization.reference'
 
-export const find = async () =>
-  $axios.get<OrganizationReference[]>(join(AccountModule.$path, OrganizationModule.$path))
+const route = (...path: string[]) => join(AccountModule.$path, OrganizationModule.$path, ...path)
 
-export const read = async (id: string) =>
-  $axios.get<OrganizationReference>(join(AccountModule.$path, OrganizationModule.$path, id))
+namespace Organization {
+  export const find = async () => $axios.get<OrganizationReference[]>(route())
 
-export const create = async (payload: validator.CreateOrganizationValidator) =>
-  $axios.post<OrganizationReference>(join(AccountModule.$path, OrganizationModule.$path), payload)
+  export const read = async (id: string) => $axios.get<OrganizationReference>(route(id))
 
-export const update = async (id: string, payload: validator.UpdateOrganizationValidator) =>
-  $axios.put<OrganizationReference>(join(AccountModule.$path, OrganizationModule.$path, id), payload)
+  export const create = async (payload: validator.CreateOrganizationValidator) => $axios.post<OrganizationReference>(route(), payload)
 
-export const remove = async (id: string) =>
-  $axios.delete<void>(join(AccountModule.$path, OrganizationModule.$path, id))
+  export const update = async (id: string, payload: validator.UpdateOrganizationValidator) => $axios.put<OrganizationReference>(route(id), payload)
+
+  export const remove = async (id: string) => $axios.delete<void>(route(id))
+}
+
+export default Organization

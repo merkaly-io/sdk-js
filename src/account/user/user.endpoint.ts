@@ -5,17 +5,18 @@ import $axios from 'axios'
 import { join } from 'path'
 import UserReference from './user.reference'
 
-export const find = async () =>
-  $axios.get<UserReference[]>(join(AccountModule.$path, UserModule.$path))
+const route = (...path: string[]) => join(AccountModule.$path, UserModule.$path, ...path)
 
-export const read = async (id: string) =>
-  $axios.get<UserReference>(join(AccountModule.$path, UserModule.$path, id))
+namespace User {
+  export const find = async () => $axios.get<UserReference[]>(route())
 
-export const create = async (payload: validator.CreateUserValidator) =>
-  $axios.post<UserReference>(join(AccountModule.$path, UserModule.$path), payload)
+  export const read = async (id: string) => $axios.get<UserReference>(route(id))
 
-export const update = async (id: string, payload: validator.UpdateUserValidator) =>
-  $axios.put<UserReference>(join(AccountModule.$path, UserModule.$path, id), payload)
+  export const create = async (payload: validator.CreateUserValidator) => $axios.post<UserReference>(route(), payload)
 
-export const remove = async (id: string) =>
-  $axios.delete<void>(join(AccountModule.$path, UserModule.$path, id))
+  export const update = async (id: string, payload: validator.UpdateUserValidator) => $axios.put<UserReference>(route(id), payload)
+
+  export const remove = async (id: string) => $axios.delete<void>(route(id))
+}
+
+export default User

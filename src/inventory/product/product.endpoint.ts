@@ -5,18 +5,22 @@ import $axios from 'axios'
 import { join } from 'path'
 import ProductReference from './product.reference'
 
-export const find = async () =>
-  $axios.get<ProductReference[]>(join(InventoryModule.$path, ProductModule.$path))
+namespace Product {
+  export const find = async () =>
+    $axios.get<ProductReference[]>(join(InventoryModule.$path, ProductModule.$path))
 
-export const read = async (id: string) =>
-  $axios.get<ProductReference>(join(InventoryModule.$path, ProductModule.$path, id))
+  export const read = async (id: string) =>
+    $axios.get<ProductReference>(join(InventoryModule.$path, ProductModule.$path, id))
 
-export const create = async (payload: validator.CreateProductValidator) =>
-  $axios.post<ProductReference>(join(InventoryModule.$path, ProductModule.$path), payload)
+  export const create = async (payload: validator.CreateProductValidator) =>
+    $axios.post<ProductReference>(join(InventoryModule.$path, ProductModule.$path), payload)
 
-export const update = async (id: string, payload: validator.UpdateProductValidator) =>
-  $axios.put<ProductReference>(join(InventoryModule.$path, ProductModule.$path, id), payload)
+  export const update = async (id: string, payload: validator.UpdateProductValidator) =>
+    $axios.put<ProductReference>(join(InventoryModule.$path, ProductModule.$path, id), payload)
 
-export const remove = async (id: string) =>
-  $axios.delete<void>(join(InventoryModule.$path, ProductModule.$path, id))
+  export const remove = async (id: string) =>
+    $axios.delete<void>(join(InventoryModule.$path, ProductModule.$path, id))
 
+}
+
+export default Product

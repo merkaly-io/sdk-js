@@ -5,17 +5,18 @@ import $axios from 'axios'
 import { join } from 'path'
 import RoleReference from './role.reference'
 
-export const find = async () =>
-  $axios.get<RoleReference[]>(join(AccountModule.$path, RoleModule.$path))
+const route = (...path: string[]) => join(AccountModule.$path, RoleModule.$path, ...path)
 
-export const read = async (id: string) =>
-  $axios.get<RoleReference>(join(AccountModule.$path, RoleModule.$path, id))
+namespace Role {
+  export const find = async () => $axios.get<RoleReference[]>(route())
 
-export const create = async (payload: validator.CreateRoleValidator) =>
-  $axios.post<RoleReference>(join(AccountModule.$path, RoleModule.$path), payload)
+  export const read = async (id: string) => $axios.get<RoleReference>(route(id))
 
-export const update = async (id: string, payload: validator.UpdateRoleValidator) =>
-  $axios.put<RoleReference>(join(AccountModule.$path, RoleModule.$path, id), payload)
+  export const create = async (payload: validator.CreateRoleValidator) => $axios.post<RoleReference>(route(), payload)
 
-export const remove = async (id: string) =>
-  $axios.delete<void>(join(AccountModule.$path, RoleModule.$path, id))
+  export const update = async (id: string, payload: validator.UpdateRoleValidator) => $axios.put<RoleReference>(route(id), payload)
+
+  export const remove = async (id: string) => $axios.delete<void>(route(id))
+}
+
+export default Role
