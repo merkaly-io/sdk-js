@@ -1,11 +1,11 @@
-import AccountModule from '@merkaly/api/src/account/account.module'
-import RoleModule from '@merkaly/api/src/account/roles/role.module'
+import { $path as AccountPath } from '@merkaly/api/src/account'
+import { $path as AccountRolesPath } from '@merkaly/api/src/account/roles'
 import * as validator from '@merkaly/api/src/account/roles/role.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import RoleReference from './role.reference'
 
-const route = (...path: string[]) => join(AccountModule.$path, RoleModule.$path, ...path)
+const route = (...path: string[]) => join(AccountPath, AccountRolesPath, ...path)
 
 namespace Role {
   export const find = async () => $axios.get<RoleReference[]>(route())

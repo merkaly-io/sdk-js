@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
   "dependencies": {
-    "@merkaly/api": "^0.0.3",
+    "@merkaly/api": "^0.0.5",
     "axios": "^0.21.1"
   },
   "devDependencies": {
@@ -51,14 +51,10 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
-    "@types/auth0": "^2.33.3",
-    "@types/auth0-lock": "^11.27.2",
     "@types/faker": "^5.5.6",
     "@types/jest": "^26.0.23",
-    "@types/multer": "^1.4.7",
     "@types/node": "^16.0.0",
     "babel-jest": "^27.0.2",
-    "class-transformer": "^0.4.0",
     "dotenv": "^10.0.0",
     "faker": "^5.5.3",
     "husky": "^7.0.0",

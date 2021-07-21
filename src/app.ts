@@ -1,7 +1,6 @@
 import $axios from 'axios'
 import https from 'https'
 import Account from './account'
-import * as authEndpoint from './auth'
 import Inventory from './inventory'
 
 namespace SDK {

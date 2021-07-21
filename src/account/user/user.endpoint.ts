@@ -1,11 +1,11 @@
-import AccountModule from '@merkaly/api/src/account/account.module'
-import UserModule from '@merkaly/api/src/account/users/user.module'
+import { $path as AccountPath } from '@merkaly/api/src/account'
+import { $path as AccountUsersPath } from '@merkaly/api/src/account/users'
 import * as validator from '@merkaly/api/src/account/users/user.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import UserReference from './user.reference'
 
-const route = (...path: string[]) => join(AccountModule.$path, UserModule.$path, ...path)
+const route = (...path: string[]) => join(AccountPath, AccountUsersPath, ...path)
 
 namespace User {
   export const find = async () => $axios.get<UserReference[]>(route())

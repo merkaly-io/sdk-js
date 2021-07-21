@@ -24,8 +24,6 @@
     "types": [
       "axios",
       "@types/auth0",
-      "@types/multer",
-      "@types/auth0-lock",
       "@types/node",
       "@types/jest"
     ]
