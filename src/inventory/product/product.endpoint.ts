@@ -1,5 +1,5 @@
 import { $path as InventoryPath } from '@merkaly/api/src/inventory'
-import { $path as InventoryProductsPath } from '@merkaly/api/src/inventory/categories'
+import { $path as InventoryProductsPath } from '@merkaly/api/src/inventory/products'
 import * as validator from '@merkaly/api/src/inventory/products/product.validator'
 import $axios from 'axios'
 import { join } from 'path'
