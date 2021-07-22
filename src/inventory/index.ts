@@ -1,4 +1,4 @@
-import brand from '../store/cart/brand.endpoint'
+import brand from './brand/brand.endpoint'
 import category from './category/category.endpoint'
 import product from './product/product.endpoint'
 import property from './property/property.endpoint'

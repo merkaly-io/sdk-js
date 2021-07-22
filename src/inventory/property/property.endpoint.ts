@@ -14,10 +14,10 @@ namespace Property {
   export const read = async (id: string) =>
     $axios.get<PropertyReference>(route(id))
 
-  export const create = async (payload: validator.default) =>
+  export const create = async (payload: validator.CreatePropertyValidator) =>
     $axios.post<PropertyReference>(route(), payload)
 
-  export const update = async (id: string, payload: validator.default) =>
+  export const update = async (id: string, payload: validator.UpdatePropertyValidator) =>
     $axios.put<PropertyReference>(route(id), payload)
 
   export const remove = async (id: string) =>
