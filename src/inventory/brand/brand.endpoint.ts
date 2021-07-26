@@ -1,11 +1,11 @@
+import API from '@merkaly/api'
 import { $path as InventoryPath } from '@merkaly/api/src/inventory'
-import { $path as InventoryBrandsPath } from '@merkaly/api/src/inventory/brands'
 import * as validator from '@merkaly/api/src/inventory/brands/brand.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import BrandReference from './brand.reference'
 
-const route = (...path: string[]) => join(InventoryPath, InventoryBrandsPath, ...path)
+const route = (...path: string[]) => join(InventoryPath, API.Inventory.Brand.$path, ...path)
 
 namespace Brand {
   export const find = async () =>

@@ -1,11 +1,11 @@
+import API from '@merkaly/api'
 import { $path as AccountPath } from '@merkaly/api/src/account'
-import { $path as AccountUsersPath } from '@merkaly/api/src/account/users'
 import * as validator from '@merkaly/api/src/account/users/user.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import UserReference from './user.reference'
 
-const route = (...path: string[]) => join(AccountPath, AccountUsersPath, ...path)
+const route = (...path: string[]) => join(AccountPath, API.Account.User.$path, ...path)
 
 namespace User {
   export const find = async () => $axios.get<UserReference[]>(route())

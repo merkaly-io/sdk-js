@@ -1,11 +1,11 @@
+import API from '@merkaly/api'
 import { $path as InventoryPath } from '@merkaly/api/src/inventory'
-import { $path as InventoryCategoriesPath } from '@merkaly/api/src/inventory/categories'
 import * as validator from '@merkaly/api/src/inventory/categories/category.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import CategoryReference from './category.reference'
 
-const route = (...path: string[]) => join(InventoryPath, InventoryCategoriesPath, ...path)
+const route = (...path: string[]) => join(InventoryPath, API.Inventory.Category.$path, ...path)
 
 namespace Category {
   export const find = async () =>

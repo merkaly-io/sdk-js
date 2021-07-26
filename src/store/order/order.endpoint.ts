@@ -1,11 +1,11 @@
 import API from '@merkaly/api'
-import { $path as AccountPath } from '@merkaly/api/src/account'
+import { $path as StorePath } from '@merkaly/api/src/store'
 import * as validator from '@merkaly/api/src/store/orders/order.validator'
 import $axios from 'axios'
 import { join } from 'path'
 import OrderReference from './order.reference'
 
-const route = (...path: string[]) => join(AccountPath, API.Store.Order.$path, ...path)
+const route = (...path: string[]) => join(StorePath, API.Store.Order.$path, ...path)
 
 namespace Order {
   export const find = async () =>
