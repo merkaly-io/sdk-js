@@ -7,19 +7,19 @@ const route = (...path: string[]) => join(Inventory.$path, Inventory.Brand.Entit
 
 namespace Brand {
   export const find = async () =>
-    $axios.get<BrandReference[]>(route())
+  	$axios.get<BrandReference[]>(route())
 
   export const read = async (id: string) =>
-    $axios.get<BrandReference>(route(id))
+  	$axios.get<BrandReference>(route(id))
 
   export const create = async (payload: Inventory.Brand.validators.CreateBrandValidator) =>
-    $axios.post<BrandReference>(route(), payload)
+  	$axios.post<BrandReference>(route(), payload)
 
   export const update = async (id: string, payload: Inventory.Brand.validators.UpdateBrandValidator) =>
-    $axios.put<BrandReference>(route(id), payload)
+  	$axios.put<BrandReference>(route(id), payload)
 
   export const remove = async (id: string) =>
-    $axios.delete<void>(route(id))
+  	$axios.delete<void>(route(id))
 
 }
 
