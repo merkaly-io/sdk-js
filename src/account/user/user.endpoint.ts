@@ -3,7 +3,7 @@ import $axios from 'axios'
 import { join } from 'path'
 import UserReference from './user.reference'
 
-const route = (...path: string[]) => join(Account.$path, Account.User.Entity.$path, ...path)
+export const route = (...path: string[]) => join(Account.$path, Account.User.Entity.$path, ...path)
 
 namespace User {
   export const find = async () => $axios.get<UserReference[]>(route())
