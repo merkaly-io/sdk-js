@@ -1,5 +1,5 @@
-import CartEntity from '@merkaly/api/src/store/carts/cart.entity'
+import { Store } from '@merkaly/api'
 
-export default class OrderReference extends CartEntity {
+export default class OrderReference extends Store.Order.Entity {
 
 }

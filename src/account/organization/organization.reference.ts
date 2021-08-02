@@ -1,4 +1,4 @@
-import API from '@merkaly/api'
+import { Account } from '@merkaly/api'
 
-export default class OrganizationReference extends API.Account.Organization.Entity {
+export default class OrganizationReference extends Account.Organization.Entity {
 }

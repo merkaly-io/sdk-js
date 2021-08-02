@@ -1,11 +1,9 @@
-import API from '@merkaly/api'
-import { $path as InventoryPath } from '@merkaly/api/src/inventory'
-import * as validator from '@merkaly/api/src/inventory/brands/brand.validator'
+import { Inventory } from '@merkaly/api'
 import $axios from 'axios'
 import { join } from 'path'
 import BrandReference from './brand.reference'
 
-const route = (...path: string[]) => join(InventoryPath, API.Inventory.Brand.$path, ...path)
+const route = (...path: string[]) => join(Inventory.$path, Inventory.Brand.Entity.$path, ...path)
 
 namespace Brand {
   export const find = async () =>
@@ -14,10 +12,10 @@ namespace Brand {
   export const read = async (id: string) =>
     $axios.get<BrandReference>(route(id))
 
-  export const create = async (payload: validator.CreateBrandValidator) =>
+  export const create = async (payload: Inventory.Brand.validators.CreateBrandValidator) =>
     $axios.post<BrandReference>(route(), payload)
 
-  export const update = async (id: string, payload: validator.UpdateBrandValidator) =>
+  export const update = async (id: string, payload: Inventory.Brand.validators.UpdateBrandValidator) =>
     $axios.put<BrandReference>(route(id), payload)
 
   export const remove = async (id: string) =>

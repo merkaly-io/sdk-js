@@ -1,5 +1,5 @@
-import PropertyEntity from '@merkaly/api/src/inventory/properties/property.entity'
+import { Inventory } from '@merkaly/api'
 
-export default class PropertyReference extends PropertyEntity {
+export default class PropertyReference extends Inventory.Property.Entity {
 
 }

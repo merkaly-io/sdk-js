@@ -1,11 +1,9 @@
-import API from '@merkaly/api'
-import { $path as InventoryPath } from '@merkaly/api/src/inventory'
-import * as validator from '@merkaly/api/src/inventory/categories/category.validator'
+import { Inventory } from '@merkaly/api'
 import $axios from 'axios'
 import { join } from 'path'
 import CategoryReference from './category.reference'
 
-const route = (...path: string[]) => join(InventoryPath, API.Inventory.Category.$path, ...path)
+const route = (...path: string[]) => join(Inventory.$path, Inventory.Category.Entity.$path, ...path)
 
 namespace Category {
   export const find = async () =>
@@ -14,10 +12,10 @@ namespace Category {
   export const read = async (id: string) =>
     $axios.get<CategoryReference>(route(id))
 
-  export const create = async (payload: validator.CreateCategoryValidator) =>
+  export const create = async (payload: Inventory.Category.validators.CreateCategoryValidator) =>
     $axios.post<CategoryReference>(route(), payload)
 
-  export const update = async (id: string, payload: validator.UpdateCategoryValidator) =>
+  export const update = async (id: string, payload: Inventory.Category.validators.UpdateCategoryValidator) =>
     $axios.put<CategoryReference>(route(id), payload)
 
   export const remove = async (id: string) =>

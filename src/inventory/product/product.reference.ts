@@ -1,5 +1,5 @@
-import ProductEntity from '@merkaly/api/src/inventory/products/product.entity'
+import { Inventory } from '@merkaly/api'
 
-export default class ProductReference extends ProductEntity {
+export default class ProductReference extends Inventory.Product.Entity {
 
 }

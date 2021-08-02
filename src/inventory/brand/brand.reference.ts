@@ -1,5 +1,5 @@
-import BrandEntity from '@merkaly/api/src/inventory/brands/brand.entity'
+import { Inventory } from '@merkaly/api'
 
-export default class BrandReference extends BrandEntity {
+export default class BrandReference extends Inventory.Brand.Entity {
 
 }

@@ -1,20 +1,18 @@
-import API from '@merkaly/api'
-import { $path as AccountPath } from '@merkaly/api/src/account'
-import * as validator from '@merkaly/api/src/account/users/user.validator'
+import { Account } from '@merkaly/api'
 import $axios from 'axios'
 import { join } from 'path'
 import UserReference from './user.reference'
 
-const route = (...path: string[]) => join(AccountPath, API.Account.User.$path, ...path)
+const route = (...path: string[]) => join(Account.$path, Account.User.Entity.$path, ...path)
 
 namespace User {
   export const find = async () => $axios.get<UserReference[]>(route())
 
   export const read = async (id: string) => $axios.get<UserReference>(route(id))
 
-  export const create = async (payload: validator.CreateUserValidator) => $axios.post<UserReference>(route(), payload)
+  export const create = async (payload: Account.User.validators.CreateUserValidator) => $axios.post<UserReference>(route(), payload)
 
-  export const update = async (id: string, payload: validator.UpdateUserValidator) => $axios.put<UserReference>(route(id), payload)
+  export const update = async (id: string, payload: Account.User.validators.UpdateUserValidator) => $axios.put<UserReference>(route(id), payload)
 
   export const remove = async (id: string) => $axios.delete<void>(route(id))
 }
