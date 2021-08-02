@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
   "dependencies": {
-    "@merkaly/api": "^0.0.12",
+    "@merkaly/api": "^0.0.13",
     "axios": "^0.21.1"
   },
   "devDependencies": {
