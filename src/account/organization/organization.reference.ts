@@ -1,9 +1,14 @@
 import { Account } from '@merkaly/api'
 import $axios from 'axios'
 import { join } from 'path'
+import AppReference from '../../app.reference'
 import { route } from './organization.endpoint'
 
-export default class OrganizationReference extends Account.Organization.Entity {
+export default class OrganizationReference extends AppReference implements Account.Organization.Entity {
+
+  public name: string
+  public display_name: string
+  public branding: Account.Organization.OrganizationBranding
   public members: Account.Organization.Members.Entity[] = []
 
   protected get $route () {
