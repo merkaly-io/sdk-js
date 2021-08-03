@@ -7,7 +7,7 @@ export const route = (...path: string[]) => join(Account.$path, Account.Organiza
 
 namespace Organization {
   export const find = async () => $axios.get<OrganizationReference[]>(route())
-    .then(({ data }) => OrganizationReference.fromArray(data))
+    .then(({ data }) => OrganizationReference.fromArrayOfPlains(data))
 
   export const read = (id: string) => $axios.get<OrganizationReference>(route(id))
     .then(({ data }) => OrganizationReference.fromPlain(data))

@@ -5,7 +5,7 @@ export default class AppReference extends AppEntity {
     return Object.assign(new this, properties)
   }
 
-  public static fromArray<T> (properties: T[]) {
-    return properties.map(this.fromPlain)
+  public static fromArrayOfPlains<T> (properties: T[]) {
+    return properties.map(data => this.fromPlain(data))
   }
 }
