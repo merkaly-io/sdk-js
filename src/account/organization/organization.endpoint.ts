@@ -18,8 +18,8 @@ namespace Organization {
   export const update = async (id: string, payload: Account.Organization.validators.UpdateOrganizationValidator) => $axios.put<OrganizationReference>(route(id), payload)
     .then(({ data }) => OrganizationReference.fromPlain(data))
 
-  export const remove = async (id: string) => $axios.delete(route(id))
-    .then(({ data }) => <void>data)
+  export const remove = async (id: string) => $axios.delete<void>(route(id))
+    .then(({ data }) => data)
 }
 
 export default Organization
