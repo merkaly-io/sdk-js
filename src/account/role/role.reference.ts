@@ -1,9 +1,12 @@
 import { Account } from '@merkaly/api'
 import $axios from 'axios'
 import { join } from 'path'
+import AppReference from '../../app.reference'
 import { route } from './role.endpoint'
 
-export default class RoleReference extends Account.Role.Entity {
+export default class RoleReference extends AppReference implements Account.Role.Entity {
+  public name: string
+  public description: string
   public users: Account.Role.User.Entity[] = []
 
   protected get $route () {
