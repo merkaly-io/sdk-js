@@ -3,9 +3,9 @@ import role from './role/role.endpoint'
 import user from './user/user.endpoint'
 
 namespace Account {
-  export const Organization = organization
-  export const Role = role
-  export const User = user
+  export const useOrganization = () => organization
+  export const roles = () => role
+  export const users = () => user
 }
 
 export default Account

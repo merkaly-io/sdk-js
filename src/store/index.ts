@@ -1,9 +1,9 @@
-import cart from './cart/cart.endpoint'
-import order from './order/order.endpoint'
+import Cart from './cart/cart.endpoint'
+import Order from './order/order.endpoint'
 
 namespace Store {
-  export const Order = order
-  export const Cart = cart
+  export const orders = () => Order
+  export const carts = () => Cart
 }
 
 export default Store

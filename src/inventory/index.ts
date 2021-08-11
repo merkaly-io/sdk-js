@@ -1,13 +1,13 @@
-import brand from './brand/brand.endpoint'
-import category from './category/category.endpoint'
-import product from './product/product.endpoint'
-import property from './property/property.endpoint'
+import Brand from './brand/brand.endpoint'
+import Category from './category/category.endpoint'
+import Product from './product/product.endpoint'
+import Property from './property/property.endpoint'
 
 namespace Inventory {
-  export const Brand = brand
-  export const Category = category
-  export const Product = product
-  export const Property = property
+  export const brands = () => Brand
+  export const categories = () => Category
+  export const products = () => Product
+  export const properties = () => Property
 }
 
 export default Inventory

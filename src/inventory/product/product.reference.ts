@@ -4,10 +4,8 @@ import { route } from '../../account/role/role.endpoint'
 import AppReference from '../../app.reference'
 
 export default class ProductReference extends AppReference<ProductEntity> {
-  // @ts-ignore
   public media: ProductMediaEntity[] = []
 
-  // @ts-ignore
   public variants: ProductVariantEntity[] = []
 
   protected get $route () {

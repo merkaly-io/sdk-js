@@ -13,24 +13,24 @@ namespace SDK {
   export class Admin {
     public get inventory () {
       return {
-        products: Inventory.Product,
-        brands: Inventory.Brand,
-        properties: Inventory.Property,
-        categories: Inventory.Category
+        products: Inventory.products(),
+        brands: Inventory.brands(),
+        properties: Inventory.properties(),
+        categories: Inventory.categories()
       }
     }
 
     public get account () {
       return {
-        users: Account.User,
-        roles: Account.Role
+        users: Account.users(),
+        roles: Account.roles()
       }
     }
 
     public get store () {
       return {
-        orders: Store.Order,
-        carts: Store.Cart
+        orders: Store.orders(),
+        carts: Store.carts()
       }
     }
   }
@@ -38,18 +38,18 @@ namespace SDK {
   export class Manager {
     public get account () {
       return {
-        organizations: Account.Organization,
-        users: Account.User,
-        roles: Account.Role
+        organizations: Account.useOrganization(),
+        users: Account.users(),
+        roles: Account.roles()
       }
     }
 
     public get inventory () {
       return {
-        products: Inventory.Product,
-        properties: Inventory.Property,
-        categories: Inventory.Category,
-        brands: Inventory.Brand
+        products: Inventory.products(),
+        properties: Inventory.properties(),
+        categories: Inventory.categories(),
+        brands: Inventory.brands()
       }
     }
   }
