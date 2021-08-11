@@ -1,9 +1,10 @@
-import { Inventory } from '@merkaly/api'
+import { $InventoryPath, CreateProductValidator, UpdateProductValidator } from '@merkaly/api/src/inventory'
+import { ProductEntity } from '@merkaly/api/src/inventory/products'
 import $axios from 'axios'
 import { join } from 'path'
 import ProductReference from './product.reference'
 
-const route = (...path: string[]) => join(Inventory.$path, Inventory.Product.Entity.$path, ...path)
+const route = (...path: string[]) => join($InventoryPath, ProductEntity.$path, ...path)
 
 namespace Product {
   export const find = async () =>
@@ -12,10 +13,10 @@ namespace Product {
   export const read = async (id: string) =>
     $axios.get<ProductReference>(route(id))
 
-  export const create = async (payload: Inventory.Product.validators.CreateProductValidator) =>
+  export const create = async (payload: CreateProductValidator) =>
     $axios.post<ProductReference>(route(), payload)
 
-  export const update = async (id: string, payload: Inventory.Product.validators.UpdateProductValidator) =>
+  export const update = async (id: string, payload: UpdateProductValidator) =>
     $axios.put<ProductReference>(route(id), payload)
 
   export const remove = async (id: string) =>

@@ -1,11 +1,11 @@
-import { Account } from '@merkaly/api'
+import { UserData, UserEntity, UserRoleEntity } from '@merkaly/api/src/account/users'
 import { Identity } from 'auth0'
 import $axios from 'axios'
 import { join } from 'path'
 import AppReference from '../../app.reference'
 import { route } from './user.endpoint'
 
-export default class UserReference extends AppReference implements Account.User.Entity {
+export default class UserReference extends AppReference<UserEntity> {
   public blocked: boolean | undefined
   public created_at: string | undefined
   public email: string | undefined
@@ -17,7 +17,6 @@ export default class UserReference extends AppReference implements Account.User.
   public last_login: string | undefined
   public last_password_reset: string | undefined
   public logins_count: number | undefined
-  public multifactor: string[] | undefined
   public name: string | undefined
   public nickname: string | undefined
   public phone_number: string | undefined
@@ -25,26 +24,26 @@ export default class UserReference extends AppReference implements Account.User.
   public picture: string | undefined
   public updated_at: string | undefined
   public user_id: string
-  public user_metadata: Account.User.UserData | undefined
+  public user_metadata: UserData | undefined
   public username: string | undefined
-  public roles: Account.User.Role.Entity[] = []
+  public roles: UserRoleEntity[] = []
 
   protected get $route () {
-    return route(this.user_id, Account.User.Role.Entity.$path)
+    return route(this.user_id, UserRoleEntity.$path)
   }
 
   public getRoles () {
-    return $axios.get<Account.User.Role.Entity[]>(route(this.user_id, Account.User.Role.Entity.$path))
+    return $axios.get<UserRoleEntity[]>(route(this.user_id, UserRoleEntity.$path))
       .then(({ data }) => (this.roles = data))
   }
 
   public addRole (id: string) {
-    return $axios.post<Account.User.Role.Entity>(this.$route, { id })
+    return $axios.post<UserRoleEntity>(this.$route, { id })
       .then(({ data: role }) => (this.roles.push(role)))
   }
 
   public removeRole (id: string) {
-    return $axios.delete<Account.User.Role.Entity[]>(join(this.$route + id))
+    return $axios.delete<UserRoleEntity[]>(join(this.$route + id))
       .then(({ data: roles }) => (this.roles = roles))
   }
 }
