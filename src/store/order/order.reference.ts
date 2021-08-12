@@ -1,7 +1,7 @@
 import { OrderEntity } from '@merkaly/api/src/store/orders'
 import $axios from 'axios'
-import AppReference from '../../app.reference'
-import CartReference from '../cart/cart.reference'
+import AppReference from '@/app.reference'
+import CartReference from '@/store/cart/cart.reference'
 
 export default class OrderReference extends AppReference<OrderEntity> {
   number: string

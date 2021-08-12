@@ -1,7 +1,7 @@
 import { RoleEntity, RoleUserEntity } from '@merkaly/api/src/account/roles'
 import $axios from 'axios'
 import { join } from 'path'
-import AppReference from '../../app.reference'
+import AppReference from '@/app.reference'
 import { route } from './role.endpoint'
 
 export default class RoleReference extends AppReference<RoleEntity> {

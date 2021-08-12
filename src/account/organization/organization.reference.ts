@@ -5,7 +5,7 @@ import {
 } from '@merkaly/api/src/account/organizations'
 import $axios from 'axios'
 import { join } from 'path'
-import AppReference from '../../app.reference'
+import AppReference from '@/app.reference'
 import { route } from './organization.endpoint'
 
 export default class OrganizationReference extends AppReference<OrganizationEntity> {

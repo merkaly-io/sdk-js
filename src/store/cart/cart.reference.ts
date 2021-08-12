@@ -1,6 +1,6 @@
 import { CART_STATUS, CartEntity } from '@merkaly/api/src/store/carts'
-import { ItemEntity } from '@merkaly/api/src/store/orders/items/item.entity'
-import AppReference from '../../app.reference'
+import { OrderItemEntity } from '@merkaly/api/src/store/orders/items'
+import AppReference from '@/app.reference'
 
 export default class CartReference extends AppReference<CartEntity> {
 
@@ -8,5 +8,5 @@ export default class CartReference extends AppReference<CartEntity> {
 
   status: CART_STATUS = CART_STATUS.EMPTY
 
-  items: ItemEntity[]
+  items: OrderItemEntity[]
 }

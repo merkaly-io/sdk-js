@@ -17,6 +17,11 @@
     "skipDefaultLibCheck": true,
     "strictPropertyInitialization": false,
     "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
     "typeRoots": [
       "@merkaly/api"
     ],

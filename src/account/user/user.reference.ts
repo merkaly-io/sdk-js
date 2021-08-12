@@ -2,7 +2,7 @@ import { UserData, UserEntity, UserRoleEntity } from '@merkaly/api/src/account/u
 import { Identity } from 'auth0'
 import $axios from 'axios'
 import { join } from 'path'
-import AppReference from '../../app.reference'
+import AppReference from '@/app.reference'
 import { route } from './user.endpoint'
 
 export default class UserReference extends AppReference<UserEntity> {
