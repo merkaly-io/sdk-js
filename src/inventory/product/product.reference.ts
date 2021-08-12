@@ -1,9 +1,10 @@
 import { ProductEntity, ProductMediaEntity, ProductVariantEntity } from '@merkaly/api/src/inventory/products'
 import $axios from 'axios'
-import { route } from '@/account/role/role.endpoint'
-import AppReference from '@/app.reference'
+import { route } from '../../account/role/role.endpoint'
+import AppReference from '../../app.reference'
 
 export default class ProductReference extends AppReference<ProductEntity> {
+
   public media: ProductMediaEntity[] = []
 
   public variants: ProductVariantEntity[] = []
