@@ -4,7 +4,7 @@ import $axios from 'axios'
 import { join } from 'path'
 import OrderReference from './order.reference'
 
-const route = (...path: string[]) => join($StorePath, OrderEntity.$path, ...path)
+export const route = (...path: string[]) => join($StorePath, OrderEntity.$path, ...path)
 
 namespace Order {
   export async function find () {
