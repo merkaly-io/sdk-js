@@ -7,20 +7,30 @@ import BrandReference from './brand.reference'
 const route = (...path: string[]) => join($InventoryPath, BrandEntity.$path, ...path)
 
 namespace Brand {
-  export const find = async () => $axios.get<BrandReference[]>(route())
-    .then(({ data }) => BrandReference.fromArrayOfPlains(data))
+  export async function find () {
+    return $axios.get<BrandReference[]>(route())
+      .then(({ data }) => BrandReference.fromArrayOfPlains(data))
+  }
 
-  export const read = async (id: string) => $axios.get<BrandReference>(route(id))
-    .then(({ data }) => BrandReference.fromPlain(data))
+  export async function read (id: string) {
+    return $axios.get<BrandReference>(route(id))
+      .then(({ data }) => BrandReference.fromPlain(data))
+  }
 
-  export const create = async (payload: CreateBrandValidator) => $axios.post<BrandReference>(route(), payload)
-    .then(({ data }) => BrandReference.fromPlain(data))
+  export async function create (payload: CreateBrandValidator) {
+    return $axios.post<BrandReference>(route(), payload)
+      .then(({ data }) => BrandReference.fromPlain(data))
+  }
 
-  export const update = async (id: string, payload: UpdateBrandValidator) => $axios.put<BrandReference>(route(id), payload)
-    .then(({ data }) => BrandReference.fromPlain(data))
+  export async function update (id: string, payload: UpdateBrandValidator) {
+    return $axios.put<BrandReference>(route(id), payload)
+      .then(({ data }) => BrandReference.fromPlain(data))
+  }
 
-  export const remove = async (id: string) => $axios.delete<void>(route(id))
-    .then(({ data }) => data)
+  export async function remove (id: string) {
+    return $axios.delete<void>(route(id))
+      .then(({ data }) => data)
+  }
 
 }
 

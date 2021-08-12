@@ -6,20 +6,25 @@ import CartReference from './cart.reference'
 const route = (...path: string[]) => join($StorePath, CartEntity.$path, ...path)
 
 namespace Cart {
-  export const find = async () =>
-    $axios.get<CartReference[]>(route())
+  export async function find () {
+    return $axios.get<CartReference[]>(route())
+  }
 
-  export const read = async (id: string) =>
-    $axios.get<CartReference>(route(id))
+  export async function read (id: string) {
+    return $axios.get<CartReference>(route(id))
+  }
 
-  export const create = async (payload: CreateCartValidator) =>
-    $axios.post<CartReference>(route(), payload)
+  export async function create (payload: CreateCartValidator) {
+    return $axios.post<CartReference>(route(), payload)
+  }
 
-  export const update = async (id: string, payload: UpdateCartValidator) =>
-    $axios.put<CartReference>(route(id), payload)
+  export async function update (id: string, payload: UpdateCartValidator) {
+    return $axios.put<CartReference>(route(id), payload)
+  }
 
-  export const remove = async (id: string) =>
-    $axios.delete<void>(route(id))
+  export async function remove (id: string) {
+    return $axios.delete<void>(route(id))
+  }
 
 }
 

@@ -7,15 +7,25 @@ import RoleReference from './role.reference'
 export const route = (...path: string[]) => join($AccountPath, RoleEntity.$path, ...path)
 
 namespace Role {
-  export const find = async () => $axios.get<RoleReference[]>(route())
+  export async function find () {
+    return $axios.get<RoleReference[]>(route())
+  }
 
-  export const read = async (id: string) => $axios.get<RoleReference>(route(id))
+  export async function read (id: string) {
+    return $axios.get<RoleReference>(route(id))
+  }
 
-  export const create = async (payload: CreateRoleValidator) => $axios.post<RoleReference>(route(), payload)
+  export async function create (payload: CreateRoleValidator) {
+    return $axios.post<RoleReference>(route(), payload)
+  }
 
-  export const update = async (id: string, payload: UpdateRoleValidator) => $axios.put<RoleReference>(route(id), payload)
+  export async function update (id: string, payload: UpdateRoleValidator) {
+    return $axios.put<RoleReference>(route(id), payload)
+  }
 
-  export const remove = async (id: string) => $axios.delete<void>(route(id))
+  export async function remove (id: string) {
+    return $axios.delete<void>(route(id))
+  }
 }
 
 export default Role

@@ -7,20 +7,25 @@ import OrderReference from './order.reference'
 const route = (...path: string[]) => join($StorePath, OrderEntity.$path, ...path)
 
 namespace Order {
-  export const find = async () =>
-    $axios.get<OrderReference[]>(route())
+  export async function find () {
+    return $axios.get<OrderReference[]>(route())
+  }
 
-  export const read = async (id: string) =>
-    $axios.get<OrderReference>(route(id))
+  export async function read (id: string) {
+    return $axios.get<OrderReference>(route(id))
+  }
 
-  export const create = async (payload: CreateOrderValidator) =>
-    $axios.post<OrderReference>(route(), payload)
+  export async function create (payload: CreateOrderValidator) {
+    return $axios.post<OrderReference>(route(), payload)
+  }
 
-  export const update = async (id: string, payload: UpdateOrderValidator) =>
-    $axios.put<OrderReference>(route(id), payload)
+  export async function update (id: string, payload: UpdateOrderValidator) {
+    return $axios.put<OrderReference>(route(id), payload)
+  }
 
-  export const remove = async (id: string) =>
-    $axios.delete<void>(route(id))
+  export async function remove (id: string) {
+    return $axios.delete<void>(route(id))
+  }
 
 }
 
