@@ -2,29 +2,30 @@ import { UserData, UserEntity, UserRoleEntity } from '@merkaly/api/src/account/u
 import { Identity } from 'auth0'
 import $axios from 'axios'
 import { join } from 'path'
-import AppReference from '../../app.reference'
+import AppReference, { EntityType } from '../../app.reference'
 import { route } from './user.endpoint'
 
-export default class UserReference extends AppReference<UserEntity> {
-  public blocked: boolean | undefined
-  public created_at: string | undefined
-  public email: string | undefined
-  public email_verified: boolean | undefined
-  public family_name: string | undefined
-  public given_name: string | undefined
-  public identities: Identity[] | undefined
-  public last_ip: string | undefined
-  public last_login: string | undefined
-  public last_password_reset: string | undefined
-  public logins_count: number | undefined
-  public name: string | undefined
-  public nickname: string | undefined
-  public phone_number: string | undefined
-  public phone_verified: boolean | undefined
-  public picture: string | undefined
-  public updated_at: string | undefined
+export default class UserReference extends AppReference<UserEntity> implements EntityType<UserEntity> {
+  public multifactor: string[]
+  public blocked: boolean
+  public created_at: string
+  public email: string
+  public email_verified: boolean
+  public family_name: string
+  public given_name: string
+  public identities: Identity[]
+  public last_ip: string
+  public last_login: string
+  public last_password_reset: string
+  public logins_count: number
+  public name: string
+  public nickname: string
+  public phone_number: string
+  public phone_verified: boolean
+  public picture: string
+  public updated_at: string
   public user_id: string
-  public user_metadata: UserData | undefined
+  public user_metadata: UserData
   public username: string | undefined
   public roles: UserRoleEntity[] = []
 

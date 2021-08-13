@@ -1,9 +1,34 @@
-import { ProductEntity, ProductMediaEntity, ProductVariantEntity } from '@merkaly/api/src/inventory/products'
+import {
+  PRODUCT_STATUS,
+  PRODUCT_UNIT,
+  ProductEntity,
+  ProductMediaEntity,
+  ProductVariantEntity
+} from '@merkaly/api/src/inventory/products'
 import $axios from 'axios'
 import { route } from '../../account/role/role.endpoint'
-import AppReference from '../../app.reference'
+import AppReference, { EntityType } from '../../app.reference'
+import BrandReference from '../brand/brand.reference'
+import CategoryReference from '../category/category.reference'
 
-export default class ProductReference extends AppReference<ProductEntity> {
+export default class ProductReference extends AppReference<ProductEntity> implements EntityType<ProductEntity> {
+  public name: string
+
+  public description: string
+
+  public price: number
+
+  public brand: BrandReference
+
+  public category: CategoryReference
+
+  public hashtags: string[]
+
+  public masterVariant: ProductVariantEntity
+
+  public status: PRODUCT_STATUS
+
+  public unit: PRODUCT_UNIT
 
   public media: ProductMediaEntity[] = []
 

@@ -1,10 +1,10 @@
-import AppReference from '../../app.reference'
-import CartReference from '../cart/cart.reference'
-import { route } from './order.endpoint'
 import { OrderEntity } from '@merkaly/api/src/store/orders'
 import $axios from 'axios'
+import AppReference, { EntityType } from '../../app.reference'
+import CartReference from '../cart/cart.reference'
+import { route } from './order.endpoint'
 
-export default class OrderReference extends AppReference<OrderEntity> {
+export default class OrderReference extends AppReference<OrderEntity> implements EntityType<OrderEntity> {
   protected get $route () {
     return route(this.id)
   }

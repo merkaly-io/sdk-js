@@ -1,6 +1,6 @@
 import { BrandEntity } from '@merkaly/api/src/inventory/brands'
-import AppReference from '../../app.reference'
+import AppReference, { EntityType } from '../../app.reference'
 
-export default class BrandReference extends AppReference<BrandEntity> {
+export default class BrandReference extends AppReference<BrandEntity> implements EntityType<BrandEntity> {
   name: string
 }
