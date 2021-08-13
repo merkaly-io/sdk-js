@@ -3,29 +3,28 @@ import { join } from 'path'
 import axios from '../../app.axios'
 import CartReference from './cart.reference'
 
-const route = (...path: string[]) => join($StorePath, CartEntity.$path, ...path)
+export const route = (...path: string[]) => join($StorePath, CartEntity.$path, ...path)
 
 namespace Cart {
-  export async function find () {
-    return axios.$get<CartReference[]>(route())
+  export async function find (): Promise<CartReference[]> {
+    return axios.$get(route())
   }
 
-  export async function read (id: string) {
-    return axios.$get<CartReference>(route(id))
+  export async function read (id: string): Promise<CartReference> {
+    return axios.$get(route(id))
   }
 
-  export async function create (payload: CreateCartValidator) {
-    return axios.$post<CartReference>(route(), payload)
+  export async function create (payload: CreateCartValidator): Promise<CartReference> {
+    return axios.$post(route(), payload)
   }
 
-  export async function update (id: string, payload: UpdateCartValidator) {
-    return axios.$put<CartReference>(route(id), payload)
+  export async function update (id: string, payload: UpdateCartValidator): Promise<CartReference> {
+    return axios.$put(route(id), payload)
   }
 
-  export async function remove (id: string) {
-    return axios.$delete<void>(route(id))
+  export async function remove (id: string): Promise<void> {
+    return axios.$delete(route(id))
   }
-
 }
 
 export default Cart

@@ -9,13 +9,13 @@ export default class OrderReference extends AppReference<OrderEntity> implements
     return route(this.id)
   }
 
-  number: string
+  public number: string
 
-  client: string
+  public client: string
 
-  price: number
+  public price: number
 
-  cart!: CartReference
+  public cart!: CartReference
 
   public getCart () {
     return $axios.get(this.$route)

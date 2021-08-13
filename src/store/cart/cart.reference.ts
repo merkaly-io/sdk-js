@@ -4,9 +4,9 @@ import AppReference, { EntityType } from '../../app.reference'
 
 export default class CartReference extends AppReference<CartEntity> implements EntityType<CartEntity> {
 
-  user: string
+  public user: string
 
-  status: CART_STATUS = CART_STATUS.EMPTY
+  public status: CART_STATUS = CART_STATUS.EMPTY
 
-  items: OrderItemEntity[]
+  public items: OrderItemEntity[]
 }
