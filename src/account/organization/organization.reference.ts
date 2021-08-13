@@ -3,8 +3,8 @@ import {
   OrganizationEntity,
   OrganizationMemberEntity
 } from '@merkaly/api/src/account/organizations'
-import $axios from 'axios'
 import { join } from 'path'
+import axios from '../../app.axios'
 import AppReference, { EntityType } from '../../app.reference'
 import { route } from './organization.endpoint'
 
@@ -20,17 +20,17 @@ export default class OrganizationReference extends AppReference<OrganizationEnti
   }
 
   public getMembers () {
-    return $axios.get<OrganizationMemberEntity[]>(this.$route)
-      .then(({ data: members }) => (this.members = members))
+    return axios.$get<OrganizationMemberEntity[]>(this.$route)
+      .then((members) => (this.members = members))
   }
 
   public addMember (id: string) {
-    return $axios.post<OrganizationMemberEntity>(this.$route, { id })
-      .then(({ data: member }) => (this.members.push(member)))
+    return axios.$post<OrganizationMemberEntity>(this.$route, { id })
+      .then(member => (this.members.push(member)))
   }
 
   public removeMember (id: string) {
-    return $axios.delete<OrganizationMemberEntity[]>(join(this.$route + id))
-      .then(({ data }) => (this.members = data))
+    return axios.$delete<OrganizationMemberEntity[]>(join(this.$route + id))
+      .then(members => (this.members = members))
   }
 }

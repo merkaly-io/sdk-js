@@ -5,8 +5,8 @@ import {
   ProductMediaEntity,
   ProductVariantEntity
 } from '@merkaly/api/src/inventory/products'
-import $axios from 'axios'
 import { route } from '../../account/role/role.endpoint'
+import axios from '../../app.axios'
 import AppReference, { EntityType } from '../../app.reference'
 import BrandReference from '../brand/brand.reference'
 import CategoryReference from '../category/category.reference'
@@ -42,13 +42,13 @@ export default class ProductReference extends AppReference<ProductEntity> implem
   }
 
   public getVariants () {
-    return $axios.get<ProductVariantEntity[]>(this.$route.variants)
-      .then(({ data: variants }) => (this.variants = variants))
+    return axios.$get<ProductVariantEntity[]>(this.$route.variants)
+      .then(variants => (this.variants = variants))
   }
 
   public getMedia () {
-    return $axios.get<ProductMediaEntity[]>(this.$route.variants)
-      .then(({ data: media }) => (this.media = media))
+    return axios.$get<ProductMediaEntity[]>(this.$route.variants)
+      .then(media => (this.media = media))
   }
 
 }
