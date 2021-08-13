@@ -6,7 +6,7 @@ export default class AppReference<T extends AppEntity> {
   public id: string
 
   public static fromPlain<T> (properties: T) {
-    return Object.assign(new this, properties)
+    return Object.assign({}, properties)
   }
 
   public static fromArrayOfPlains<T> (properties: T[]) {

@@ -1,11 +1,13 @@
 import $axios from 'axios'
 import https from 'https'
 import Account from './account'
+import axios from './app.axios'
 import Inventory from './inventory'
 import Store from './store'
 
 namespace SDK {
   export const setBaseUrl = (dsn: string) => {
+    axios.setBaseUrl(dsn, false)
     $axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false })
     $axios.defaults.baseURL = dsn
   }
