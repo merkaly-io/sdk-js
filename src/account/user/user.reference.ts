@@ -29,22 +29,15 @@ export default class UserReference extends AppReference<UserEntity> implements E
   public username: string | undefined
   public roles: UserRoleEntity[] = []
 
-  protected get $route () {
-    return route(this.user_id, UserRoleEntity.$path)
+  public static getRoles (userId: string): Promise<UserRoleEntity[]> {
+    return axios.$get(route(userId, UserRoleEntity.$path))
   }
 
-  public getRoles () {
-    return axios.$get<UserRoleEntity[]>(route(this.user_id, UserRoleEntity.$path))
-      .then(roles => (this.roles = roles))
+  public static addRole (userId: string, roleId: string): Promise<UserRoleEntity> {
+    return axios.$post(route(userId, UserRoleEntity.$path), { id: roleId })
   }
 
-  public addRole (id: string) {
-    return axios.$post<UserRoleEntity>(this.$route, { id })
-      .then(userRole => (this.roles.push(userRole)))
-  }
-
-  public removeRole (id: string) {
-    return axios.$delete<UserRoleEntity[]>(join(this.$route + id))
-      .then(roles => (this.roles = roles))
+  public static removeRole (userId: string, roleId: string): Promise<void> {
+    return axios.$delete(join(route(userId, UserRoleEntity.$path), roleId))
   }
 }

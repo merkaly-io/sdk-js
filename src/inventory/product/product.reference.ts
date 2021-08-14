@@ -1,10 +1,6 @@
-import {
-  PRODUCT_STATUS,
-  PRODUCT_UNIT,
-  ProductEntity,
-  ProductMediaEntity,
-  ProductVariantEntity
-} from '@merkaly/api/src/inventory/products'
+import { PRODUCT_STATUS, PRODUCT_UNIT, ProductEntity } from '@merkaly/api/src/inventory/products'
+import { ProductMediaEntity } from '@merkaly/api/src/inventory/products/media'
+import { ProductVariantEntity } from '@merkaly/api/src/inventory/products/variants'
 import { route } from '../../account/role/role.endpoint'
 import axios from '../../app.axios'
 import AppReference, { EntityType } from '../../app.reference'
@@ -34,21 +30,15 @@ export default class ProductReference extends AppReference<ProductEntity> implem
 
   public variants: ProductVariantEntity[] = []
 
-  protected get $route () {
-    return {
-      variants: route(this.id, ProductVariantEntity.$path),
-      media: route(this.id, ProductMediaEntity.$path)
-    }
+  public static getMedia (productId: string): Promise<ProductMediaEntity[]> {
+    const path = route(productId, ProductMediaEntity.$path)
+
+    return axios.$get(path)
   }
 
-  public getVariants () {
-    return axios.$get<ProductVariantEntity[]>(this.$route.variants)
-      .then(variants => (this.variants = variants))
-  }
+  public static getVariants (productId: string): Promise<ProductVariantEntity[]> {
+    const path = route(productId, ProductVariantEntity.$path)
 
-  public getMedia () {
-    return axios.$get<ProductMediaEntity[]>(this.$route.variants)
-      .then(media => (this.media = media))
+    return axios.$get(path)
   }
-
 }

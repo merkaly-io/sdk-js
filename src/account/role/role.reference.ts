@@ -9,22 +9,15 @@ export default class RoleReference extends AppReference<RoleEntity> implements E
   public description: string
   public users: RoleUserEntity[] = []
 
-  protected get $route () {
-    return route(this.id, RoleUserEntity.$path)
+  public static getUsers (roleId: string): Promise<RoleUserEntity[]> {
+    return axios.$get(route(roleId, RoleUserEntity.$path))
   }
 
-  public getUsers () {
-    return axios.$get<RoleUserEntity[]>(this.$route)
-      .then(users => (this.users = users))
+  public static addUser (roleId: string, userId: string): Promise<RoleUserEntity> {
+    return axios.$post(route(roleId, RoleUserEntity.$path), { id: userId })
   }
 
-  public addUser (id: string) {
-    return axios.$post<RoleUserEntity>(this.$route, { id })
-      .then(user => this.users.push(user))
-  }
-
-  public removeUser (id: string) {
-    return axios.$delete<RoleUserEntity>(join(this.$route, id))
-      .then(user => this.users.push(user))
+  public static removeUser (roleId: string, userId: string): Promise<void> {
+    return axios.$delete(join(route(roleId, RoleUserEntity.$path), userId))
   }
 }

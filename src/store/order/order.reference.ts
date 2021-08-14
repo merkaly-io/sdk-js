@@ -17,8 +17,7 @@ export default class OrderReference extends AppReference<OrderEntity> implements
 
   public cart!: CartReference
 
-  public getCart () {
-    return axios.$get<CartReference>(this.$route)
-      .then(cart => (this.cart = cart))
+  public static getCart (orderId: string): Promise<CartReference> {
+    return axios.$get(route(orderId))
   }
 }
