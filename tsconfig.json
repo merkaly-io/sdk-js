@@ -10,7 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "esModuleInterop": true,
-    "allowJs": true,
+    "noEmit": true,
     "skipLibCheck": true,
     "rootDir": "./src",
     "strict": true,

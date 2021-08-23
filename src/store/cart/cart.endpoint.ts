@@ -7,23 +7,23 @@ export const route = (...path: string[]) => join($StorePath, CartEntity.$path, .
 
 namespace Cart {
   export async function find (): Promise<CartReference[]> {
-    return axios.$get(route())
+  	return axios.$get(route())
   }
 
   export async function read (id: string): Promise<CartReference> {
-    return axios.$get(route(id))
+  	return axios.$get(route(id))
   }
 
   export async function create (payload: CreateCartValidator): Promise<CartReference> {
-    return axios.$post(route(), payload)
+  	return axios.$post(route(), payload)
   }
 
   export async function update (id: string, payload: UpdateCartValidator): Promise<CartReference> {
-    return axios.$put(route(id), payload)
+  	return axios.$put(route(id), payload)
   }
 
   export async function remove (id: string): Promise<void> {
-    return axios.$delete(route(id))
+  	return axios.$delete(route(id))
   }
 }
 

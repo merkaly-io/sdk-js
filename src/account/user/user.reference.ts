@@ -5,7 +5,7 @@ import axios from '../../app.axios'
 import AppReference, { EntityType } from '../../app.reference'
 import { route } from './user.endpoint'
 
-export default class UserReference extends AppReference<UserEntity> implements EntityType<UserEntity> {
+export default class UserReference extends AppReference implements EntityType<UserEntity> {
   public multifactor: string[]
   public blocked: boolean
   public created_at: string
@@ -30,14 +30,14 @@ export default class UserReference extends AppReference<UserEntity> implements E
   public roles: UserRoleEntity[] = []
 
   public static getRoles (userId: string): Promise<UserRoleEntity[]> {
-    return axios.$get(route(userId, UserRoleEntity.$path))
+  	return axios.$get(route(userId, UserRoleEntity.$path))
   }
 
   public static addRole (userId: string, roleId: string): Promise<UserRoleEntity> {
-    return axios.$post(route(userId, UserRoleEntity.$path), { id: roleId })
+  	return axios.$post(route(userId, UserRoleEntity.$path), { id: roleId })
   }
 
   public static removeRole (userId: string, roleId: string): Promise<void> {
-    return axios.$delete(join(route(userId, UserRoleEntity.$path), roleId))
+  	return axios.$delete(join(route(userId, UserRoleEntity.$path), roleId))
   }
 }

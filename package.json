@@ -5,7 +5,6 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "files": [
-    "src/**/*.js",
     "src/**/*.ts"
   ],
   "engines": {
@@ -16,9 +15,9 @@
     "lib": "src"
   },
   "scripts": {
-    "prebuild": "npm run build:clean",
+    "prebuild": "npm run clean",
     "build": "tsc -b",
-    "build:clean": "tsc -b --clean",
+    "clean": "tsc -b --clean",
     "prepack": "npm run build",
     "lint": "eslint --ext .ts --ignore-path .gitignore .",
     "test": "jest",
@@ -40,7 +39,7 @@
   },
   "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
   "dependencies": {
-    "@merkaly/api": "^0.0.14",
+    "@merkaly/api": "^0.1.0",
     "axios": "^0.21.1"
   },
   "devDependencies": {

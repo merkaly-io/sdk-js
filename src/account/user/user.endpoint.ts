@@ -8,23 +8,23 @@ export const route = (...path: string[]) => join($AccountPath, UserEntity.$path,
 
 namespace User {
   export async function find (): Promise<UserReference[]> {
-    return axios.$get(route())
+  	return axios.$get(route())
   }
 
   export async function read (id: string): Promise<UserReference> {
-    return axios.$get(route(id))
+  	return axios.$get(route(id))
   }
 
   export async function create (payload: CreateUserValidator): Promise<UserReference> {
-    return axios.$post(route(), payload)
+  	return axios.$post(route(), payload)
   }
 
   export async function update (id: string, payload: UpdateUserValidator): Promise<UserReference> {
-    return axios.$put(route(id), payload)
+  	return axios.$put(route(id), payload)
   }
 
   export async function remove (id: string): Promise<void> {
-    return axios.$delete(route(id))
+  	return axios.$delete(route(id))
   }
 }
 
