@@ -40,7 +40,7 @@
   "homepage": "https://github.com/sk-merkaly/sdk-js#readme",
   "dependencies": {
     "@merkaly/api": "^0.1.6",
-    "axios": "^0.22.0"
+    "axios": "^0.23.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
