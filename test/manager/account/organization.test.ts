@@ -4,9 +4,9 @@ import { isFirebasePushId } from 'class-validator'
 import faker from 'faker'
 import SDK from '../../../src/app'
 
-describe('Category Endpoint', () => {
+describe('Manager > Account > Organization', () => {
 	SDK.setBaseUrl(String(process.env.baseUrl))
-	const $merkaly = new SDK.Admin()
+	const $merkaly = new SDK.Manager()
 
 	// beforeAll(async () => $merkaly.$auth.login({
 	//   username: String(process.env.username),
@@ -20,7 +20,7 @@ describe('Category Endpoint', () => {
 			display_name: faker.company.companyName(),
 			logo_url: faker.image.imageUrl(),
 			primary_color: faker.internet.color(),
-			secondary_color: faker.internet.color(),
+			secondary_color: faker.internet.color()
 		}
 
 		beforeAll(async () => {
@@ -29,13 +29,13 @@ describe('Category Endpoint', () => {
 			expect(isFirebasePushId(organization.id)).toBeTruthy()
 		})
 
-		test('should retrieve the created category', async () => {
+		test('should retrieve the created organization', async () => {
 			const createdOrg = await $merkaly.account.organizations.read(organization.id)
 
 			expect(createdOrg.name).toEqual(payload.name)
 		})
 
-		test('should retrieve all categories including the created category', async () => {
+		test('should retrieve all organizations including the created organization', async () => {
 			const organizations = await $merkaly.account.organizations.find()
 
 			expect(organizations).toEqual(expect.arrayContaining([expect.objectContaining(organization)]))

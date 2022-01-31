@@ -20,7 +20,6 @@ namespace SDK {
 
   	public get account () {
   		return {
-  			organizations: Account.organizations(),
   			users: Account.users(),
   			roles: Account.roles()
   		}
