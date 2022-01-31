@@ -2,11 +2,11 @@ import { OrganizationEntity } from '@merkaly/api/src/account/organizations/organ
 import { CreateOrganizationValidator } from '@merkaly/api/src/account/organizations/organization.validator'
 import { isFirebasePushId } from 'class-validator'
 import faker from 'faker'
-import SDK from '../../../src/app'
+import ManagerSDK from '../../../src/sdk.manager'
 
 describe('Manager > Account > Organization', () => {
-	SDK.setBaseUrl(String(process.env.baseUrl))
-	const $merkaly = new SDK.Manager()
+	ManagerSDK.setBaseUrl(String(process.env.baseUrl))
+	const $merkaly = new ManagerSDK()
 
 	// beforeAll(async () => $merkaly.$auth.login({
 	//   username: String(process.env.username),
@@ -35,7 +35,7 @@ describe('Manager > Account > Organization', () => {
 			expect(createdOrg.name).toEqual(payload.name)
 		})
 
-		test('should retrieve all organizations including the created organization', async () => {
+		test('should retrieve all organizatios including the created organization', async () => {
 			const organizations = await $merkaly.account.organizations.find()
 
 			expect(organizations).toEqual(expect.arrayContaining([expect.objectContaining(organization)]))
