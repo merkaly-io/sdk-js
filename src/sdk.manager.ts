@@ -2,7 +2,7 @@ import Account from './account/index'
 import SDK from './app'
 // import Inventory from './inventory/index'
 
-export default class ManagerSDK extends SDK {
+export class ManagerSDK extends SDK {
 	public get account () {
 		return {
 			organizations: Account.organizations(),

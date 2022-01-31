@@ -3,7 +3,7 @@ import SDK from './app'
 import Inventory from './inventory/index'
 import Store from './store/index'
 
-export default class AdminSDK extends SDK {
+export class AdminSDK extends SDK {
 	public get inventory () {
 		return {
 			products: Inventory.products(),
