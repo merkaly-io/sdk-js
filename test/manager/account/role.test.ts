@@ -1,5 +1,5 @@
 import { RoleEntity } from '@merkaly/api/src/account/roles/role.entity'
-import { CreateRoleValidator } from '@merkaly/api/src/account/roles/role.validator'
+import { CreateRoleValidator, UpdateRoleValidator } from '@merkaly/api/src/account/roles/role.validator'
 import faker from 'faker'
 import ManagerSDK from '../../../src/sdk.manager'
 
@@ -14,22 +14,22 @@ describe('Manager > Account > Role', () => {
 
 	describe('when an role is created', () => {
 		let role: RoleEntity
-		const payload: CreateRoleValidator = {
+		const createValidator: CreateRoleValidator = {
 			name: faker.lorem.word(12),
 			description: faker.lorem.paragraph()
 		}
 
 		beforeAll(async () => {
-			role = await $merkaly.account.roles.create(payload)
+			role = await $merkaly.account.roles.create(createValidator)
 
-			expect(role.id.startsWith('role_')).toBeTruthy()
+			expect(role.id.startsWith('rol_')).toBeTruthy()
 		})
 
 		test('should retrieve the created role', async () => {
 			const createdRole = await $merkaly.account.roles.read(role.id)
 
-			expect(createdRole.name).toEqual(payload.name)
-			expect(createdRole.description).toEqual(payload.description)
+			expect(createdRole.name).toEqual(createValidator.name)
+			expect(createdRole.description).toEqual(createValidator.description)
 		})
 
 		test('should retrieve all roles including the created role', async () => {
@@ -37,6 +37,18 @@ describe('Manager > Account > Role', () => {
 
 			expect(roles).toEqual(expect.arrayContaining([expect.objectContaining(role)]))
 
+		})
+
+		test('should update the created organization', async () => {
+			const updateValidator: UpdateRoleValidator = {
+				name: faker.lorem.word(12),
+				description: faker.lorem.paragraph()
+			}
+
+			const updateRole = await $merkaly.account.roles.update(role.id, updateValidator)
+
+			expect(updateRole.name).toEqual(updateValidator.name)
+			expect(updateRole.description).toEqual(updateValidator.description)
 		})
 
 		afterAll(async () => {
