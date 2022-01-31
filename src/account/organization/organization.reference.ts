@@ -24,8 +24,8 @@ export default class OrganizationReference extends AppReference implements Entit
 			.then((members) => (this.members = members))
 	}
 
-	public addMember (id: string) {
-		return axios.$post<OrganizationMemberEntity>(this.$route, { id })
+	public addMember (ids: string[]) {
+		return axios.$post<OrganizationMemberEntity>(join(this.$route, 'members'), ids)
 			.then(member => (this.members.push(member)))
 	}
 

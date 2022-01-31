@@ -1,32 +1,33 @@
-import { OrganizationEntity } from '@merkaly/api/src/account/organizations/organization.entity'
-import { CreateOrganizationValidator, UpdateOrganizationValidator } from '@merkaly/api/src/account/organizations/organization.validator'
+import {
+	CreateOrganizationValidator,
+	UpdateOrganizationValidator
+} from '@merkaly/api/src/account/organizations/organization.validator'
 import faker from 'faker'
+import OrganizationReference from '../../../src/account/organization/organization.reference'
 import ManagerSDK from '../../../src/sdk.manager'
 
 describe('Manager > Account > Organization', () => {
-	ManagerSDK.setBaseUrl(String(process.env.baseUrl))
 	const $merkaly = new ManagerSDK()
+	let organization: OrganizationReference
+	const createValidator: CreateOrganizationValidator = {
+		name: faker.lorem.word(12),
+		display_name: faker.company.companyName(),
+		logo_url: faker.image.avatar(),
+		primary_color: faker.internet.color(),
+		secondary_color: faker.internet.color()
+	}
 
+	beforeAll(async () => {
+		organization = await $merkaly.account.organizations.create(createValidator)
+
+		expect(organization.id.startsWith('org_')).toBeTruthy()
+	})
 	// beforeAll(async () => $merkaly.$auth.login({
 	//   username: String(process.env.username),
 	//   password: String(process.env.password)
 	// }))
 
 	describe('when an organization is created', () => {
-		let organization: OrganizationEntity
-		const createValidator: CreateOrganizationValidator = {
-			name: faker.lorem.word(12),
-			display_name: faker.company.companyName(),
-			logo_url: faker.image.avatar(),
-			primary_color: faker.internet.color(),
-			secondary_color: faker.internet.color()
-		}
-
-		beforeAll(async () => {
-			organization = await $merkaly.account.organizations.create(createValidator)
-
-			expect(organization.id.startsWith('org_')).toBeTruthy()
-		})
 
 		test('should retrieve the created organization', async () => {
 			const createdOrg = await $merkaly.account.organizations.read(organization.id)
@@ -61,12 +62,12 @@ describe('Manager > Account > Organization', () => {
 			expect(updatedOrg.branding.colors.page_background).toEqual(updateValidator.secondary_color)
 		})
 
-		afterAll(async () => {
-			await $merkaly.account.organizations.remove(organization.id)
-			const removedOrganization = await $merkaly.account.organizations.read(organization.id)
-
-			expect(removedOrganization).toBeFalsy()
-		})
 	})
 
+	afterAll(async () => {
+		await $merkaly.account.organizations.remove(organization.id)
+		const removedOrganization = await $merkaly.account.organizations.read(organization.id)
+
+		expect(removedOrganization).toBeFalsy()
+	})
 })

@@ -3,9 +3,20 @@ import { CreateRoleValidator, UpdateRoleValidator } from '@merkaly/api/src/accou
 import faker from 'faker'
 import ManagerSDK from '../../../src/sdk.manager'
 
-describe('Manager > Account > Role', () => {
-	ManagerSDK.setBaseUrl(String(process.env.baseUrl))
+describe('Manager > Account > Role >', () => {
 	const $merkaly = new ManagerSDK()
+
+	let role: RoleEntity
+	const createValidator: CreateRoleValidator = {
+		name: faker.lorem.word(),
+		description: faker.lorem.paragraph()
+	}
+
+	beforeAll(async () => {
+		role = await $merkaly.account.roles.create(createValidator)
+
+		expect(role.id.startsWith('rol_')).toBeTruthy()
+	})
 
 	// beforeAll(async () => $merkaly.$auth.login({
 	//   username: String(process.env.username),
@@ -13,17 +24,6 @@ describe('Manager > Account > Role', () => {
 	// }))
 
 	describe('when an role is created', () => {
-		let role: RoleEntity
-		const createValidator: CreateRoleValidator = {
-			name: faker.lorem.word(12),
-			description: faker.lorem.paragraph()
-		}
-
-		beforeAll(async () => {
-			role = await $merkaly.account.roles.create(createValidator)
-
-			expect(role.id.startsWith('rol_')).toBeTruthy()
-		})
 
 		test('should retrieve the created role', async () => {
 			const createdRole = await $merkaly.account.roles.read(role.id)
@@ -39,9 +39,9 @@ describe('Manager > Account > Role', () => {
 
 		})
 
-		test('should update the created organization', async () => {
+		test('should update the created role', async () => {
 			const updateValidator: UpdateRoleValidator = {
-				name: faker.lorem.word(12),
+				name: faker.lorem.word(),
 				description: faker.lorem.paragraph()
 			}
 
@@ -51,12 +51,13 @@ describe('Manager > Account > Role', () => {
 			expect(updateRole.description).toEqual(updateValidator.description)
 		})
 
-		afterAll(async () => {
-			await $merkaly.account.roles.remove(role.id)
-			const removedRole = await $merkaly.account.roles.read(role.id)
+	})
 
-			expect(removedRole).toBeFalsy()
-		})
+	afterAll(async () => {
+		await $merkaly.account.roles.remove(role.id)
+		const removedRole = await $merkaly.account.roles.read(role.id)
+
+		expect(removedRole).toBeFalsy()
 	})
 
 })
