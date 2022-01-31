@@ -1,6 +1,6 @@
 import Account from './account/index'
 import SDK from './app'
-import Inventory from './inventory/index'
+// import Inventory from './inventory/index'
 
 export default class ManagerSDK extends SDK {
 	public get account () {
@@ -11,12 +11,12 @@ export default class ManagerSDK extends SDK {
 		}
 	}
 
-	public get inventory () {
-		return {
-			products: Inventory.products(),
-			properties: Inventory.properties(),
-			categories: Inventory.categories(),
-			brands: Inventory.brands()
-		}
-	}
+	// public get inventory () {
+	// 	return {
+	// 		products: Inventory.products(),
+	// 		properties: Inventory.properties(),
+	// 		categories: Inventory.categories(),
+	// 		brands: Inventory.brands()
+	// 	}
+	// }
 }
