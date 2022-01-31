@@ -20,10 +20,12 @@ namespace SDK {
 
   	public get account () {
   		return {
+  			organizations: Account.organizations(),
   			users: Account.users(),
   			roles: Account.roles()
   		}
   	}
+
 
   	public get store () {
   		return {
@@ -36,7 +38,7 @@ namespace SDK {
   export class Manager {
   	public get account () {
   		return {
-  			organizations: Account.useOrganization(),
+  			organizations: Account.organizations(),
   			users: Account.users(),
   			roles: Account.roles()
   		}

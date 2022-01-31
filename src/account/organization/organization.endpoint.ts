@@ -8,28 +8,18 @@ import { join } from 'path'
 import axios from '../../app.axios'
 import OrganizationReference from './organization.reference'
 
-export const route = (...path: string[]) => join($AccountPath, OrganizationEntity.$path, ...path)
+export const basePath = (...path: string[]) => join($AccountPath, OrganizationEntity.$path, ...path)
 
 namespace Organization {
-  export async function find (): Promise<OrganizationReference[]> {
-  	return axios.$get(route())
-  }
+	export const find = async (): Promise<OrganizationReference[]> => axios.$get(basePath())
 
-  export function read (id: string): Promise<OrganizationReference> {
-  	return axios.$get(route(id))
-  }
+	export const read = (id: string): Promise<OrganizationReference> => axios.$get(basePath(id))
 
-  export async function create (payload: CreateOrganizationValidator): Promise<OrganizationReference> {
-  	return axios.$post(route(), payload)
-  }
+	export const create = async (payload: CreateOrganizationValidator): Promise<OrganizationReference> => axios.$post(basePath(), payload)
 
-  export async function update (id: string, payload: UpdateOrganizationValidator): Promise<OrganizationReference> {
-  	return axios.$put(route(id), payload)
-  }
+	export const update = async (id: string, payload: UpdateOrganizationValidator): Promise<OrganizationReference> => axios.$patch(basePath(id), payload)
 
-  export async function remove (id: string): Promise<void> {
-  	return axios.$delete(route(id))
-  }
+	export const remove = async (id: string): Promise<void> => axios.$delete(basePath(id))
 }
 
 export default Organization

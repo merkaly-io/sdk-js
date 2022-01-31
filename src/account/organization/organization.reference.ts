@@ -6,7 +6,7 @@ import {
 import { join } from 'path'
 import axios from '../../app.axios'
 import AppReference, { EntityType } from '../../app.reference'
-import { route } from './organization.endpoint'
+import { basePath } from './organization.endpoint'
 
 export default class OrganizationReference extends AppReference implements EntityType<OrganizationEntity> {
 
@@ -16,7 +16,7 @@ export default class OrganizationReference extends AppReference implements Entit
 	public members: OrganizationMemberEntity[] = []
 
 	protected get $route () {
-		return route(this.id, OrganizationMemberEntity.$path)
+		return basePath(this.id, OrganizationMemberEntity.$path)
 	}
 
 	public getMembers () {
