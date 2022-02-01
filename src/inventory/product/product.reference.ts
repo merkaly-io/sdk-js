@@ -2,12 +2,11 @@ import { PRODUCT_STATUS, PRODUCT_UNIT, ProductEntity } from '@merkaly/api/src/in
 import { ProductMediaEntity } from '@merkaly/api/src/inventory/products/media'
 import { ProductVariantEntity } from '@merkaly/api/src/inventory/products/variants'
 import axios from '../../app.axios'
-import AppReference, { EntityType } from '../../app.reference'
 import BrandReference from '../brand/brand.reference'
 import CategoryReference from '../category/category.reference'
 import { route } from './product.endpoint'
 
-export default class ProductReference extends AppReference implements EntityType<ProductEntity> {
+export default class ProductReference extends ProductEntity {
   public name: string
 
   public description: string

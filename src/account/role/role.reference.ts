@@ -1,10 +1,9 @@
 import { join } from 'path'
 import { RoleEntity, RoleUserEntity } from '@merkaly/api/src/account/roles'
 import axios from '../../app.axios'
-import AppReference, { EntityType } from '../../app.reference'
 import { route } from './role.endpoint'
 
-export default class RoleReference extends AppReference implements EntityType<RoleEntity> {
+export default class RoleReference extends RoleEntity {
   public name: string
   public description: string
   public users: RoleUserEntity[] = []
