@@ -27,19 +27,19 @@
     "src/**/*.ts"
   ],
   "scripts": {
-    "prebuild": "npm run clean",
+    "prebuild": "yarn run clean",
     "build": "tsc -b",
     "clean": "tsc -b --clean",
     "dev": "nuxt",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:fix": "yarn lint:js --fix",
-    "prepack": "npm run build",
+    "prepack": "yarn build",
     "prepare": "husky install",
-    "pretest": "npm run build",
+    "pretest": "yarn build",
     "test": "jest"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": "yarn run lint:js --fix"
+    "*.{js,ts,vue}": "yarn run lint:fix"
   },
   "dependencies": {
     "@merkaly/api": "^0.1.6",
