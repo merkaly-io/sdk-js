@@ -6,16 +6,14 @@ import OrderReference from './order.reference'
 
 export const route = (...path: string[]) => join($StorePath, OrderEntity.$path, ...path)
 
-namespace Order {
-  export const find = (): Promise<OrderReference[]> => axios.$get(route())
+export default class Order {
+  public static readonly find = (): Promise<OrderReference[]> => axios.$get(route())
 
-  export const read = (id: string): Promise<OrderReference> => axios.$get(route(id))
+  public static readonly read = (id: string): Promise<OrderReference> => axios.$get(route(id))
 
-  export const create = (payload: CreateOrderValidator): Promise<OrderReference> => axios.$post(route(), payload)
+  public static readonly create = (payload: CreateOrderValidator): Promise<OrderReference> => axios.$post(route(), payload)
 
-  export const update = (id: string, payload: UpdateOrderValidator): Promise<OrderReference> => axios.$put(route(id), payload)
+  public static readonly update = (id: string, payload: UpdateOrderValidator): Promise<OrderReference> => axios.$put(route(id), payload)
 
-  export const remove = (id: string): Promise<void> => axios.$delete(route(id))
+  public static readonly remove = (id: string): Promise<void> => axios.$delete(route(id))
 }
-
-export default Order

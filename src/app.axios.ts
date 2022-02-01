@@ -1,14 +1,9 @@
-import https from 'https'
 import $axios from 'axios'
 
 const request = $axios.create()
 request.interceptors.response.use(({ data }) => data)
 
 namespace axios {
-  export const setBaseUrl = (dsn?: string, rejectUnauthorized = false) => {
-    request.defaults.httpsAgent = new https.Agent({ rejectUnauthorized })
-    request.defaults.baseURL = dsn
-  }
 
   export const $get = <T> (path: string): Promise<T> => request.get(path)
 

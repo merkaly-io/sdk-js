@@ -1,11 +1,9 @@
-import organization from './organization/organization.endpoint'
-import role from './role/role.endpoint'
-import user from './user/user.endpoint'
+import Organization from './organization/organization.endpoint'
+import Role from './role/role.endpoint'
+import User from './user/user.endpoint'
 
-namespace Account {
-  export const organizations = () => organization
-  export const roles = () => role
-  export const users = () => user
+export default class Account {
+  public static readonly organizations = Organization
+  public static readonly roles = Role
+  public static readonly users = User
 }
-
-export default Account

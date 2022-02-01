@@ -6,16 +6,14 @@ import PropertyReference from './property.reference'
 
 const route = (...path: string[]) => join($InventoryPath, PropertyEntity.$path, ...path)
 
-namespace Property {
-  export const find = () => axios.$get<PropertyReference[]>(route())
+export default class Property {
+  public static readonly find = () => axios.$get<PropertyReference[]>(route())
 
-  export const read = (id: string) => axios.$get<PropertyReference>(route(id))
+  public static readonly read = (id: string) => axios.$get<PropertyReference>(route(id))
 
-  export const create = (payload: CreatePropertyValidator) => axios.$post<PropertyReference>(route(), payload)
+  public static readonly create = (payload: CreatePropertyValidator) => axios.$post<PropertyReference>(route(), payload)
 
-  export const update = (id: string, payload: UpdatePropertyValidator) => axios.$put<PropertyReference>(route(id), payload)
+  public static readonly update = (id: string, payload: UpdatePropertyValidator) => axios.$put<PropertyReference>(route(id), payload)
 
-  export const remove = (id: string) => axios.$delete<void>(route(id))
+  public static readonly remove = (id: string) => axios.$delete<void>(route(id))
 }
-
-export default Property
