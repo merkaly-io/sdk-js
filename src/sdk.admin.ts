@@ -1,6 +1,6 @@
 import Account from './account/index'
-import SDK from './app'
 import Inventory from './inventory/index'
+import SDK from './sdk'
 import Store from './store/index'
 
 export class AdminSDK extends SDK {

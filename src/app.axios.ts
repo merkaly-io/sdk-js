@@ -5,7 +5,7 @@ const request = $axios.create()
 request.interceptors.response.use(({ data }) => data)
 
 namespace axios {
-	export const setBaseUrl = (dsn: string, rejectUnauthorized = false) => {
+	export const setBaseUrl = (dsn?: string, rejectUnauthorized = false) => {
 		request.defaults.httpsAgent = new https.Agent({ rejectUnauthorized })
 		request.defaults.baseURL = dsn
 	}
