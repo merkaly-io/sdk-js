@@ -1,6 +1,6 @@
+import { join } from 'path'
 import { UserData, UserEntity, UserRoleEntity } from '@merkaly/api/src/account/users'
 import { Identity } from 'auth0'
-import { join } from 'path'
 import axios from '../../app.axios'
 import AppReference, { EntityType } from '../../app.reference'
 import { route } from './user.endpoint'
@@ -30,14 +30,14 @@ export default class UserReference extends AppReference implements EntityType<Us
   public roles: UserRoleEntity[] = []
 
   public static getRoles (userId: string): Promise<UserRoleEntity[]> {
-  	return axios.$get(route(userId, UserRoleEntity.$path))
+    return axios.$get(route(userId, UserRoleEntity.$path))
   }
 
   public static addRole (userId: string, roleId: string): Promise<UserRoleEntity> {
-  	return axios.$post(route(userId, UserRoleEntity.$path), { id: roleId })
+    return axios.$post(route(userId, UserRoleEntity.$path), { id: roleId })
   }
 
   public static removeRole (userId: string, roleId: string): Promise<void> {
-  	return axios.$delete(join(route(userId, UserRoleEntity.$path), roleId))
+    return axios.$delete(join(route(userId, UserRoleEntity.$path), roleId))
   }
 }

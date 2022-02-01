@@ -12,6 +12,7 @@
     "allowJs": true,
     "sourceMap": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
@@ -31,7 +32,7 @@
       "@types/node",
       "@types/jest",
       "@nuxt/types",
-      "@nuxtjs/axios",
+      "@nuxtjs/axios"
     ]
   },
   "exclude": [

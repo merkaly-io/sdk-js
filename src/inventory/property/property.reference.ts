@@ -8,5 +8,4 @@ export default class PropertyReference extends AppReference implements EntityTyp
   values: string[]
 
   category: CategoryReference
-
 }

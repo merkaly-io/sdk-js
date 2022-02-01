@@ -5,19 +5,16 @@ import CartReference from '../cart/cart.reference'
 import { route } from './order.endpoint'
 
 export default class OrderReference extends AppReference implements EntityType<OrderEntity> {
-	protected get $route () {
-		return route(this.id)
-	}
-
   public number: string
-
   public client: string
-
   public price: number
-
   public cart!: CartReference
 
+  protected get $route () {
+    return route(this.id)
+  }
+
   public static getCart (orderId: string): Promise<CartReference> {
-  	return axios.$get(route(orderId))
+    return axios.$get(route(orderId))
   }
 }

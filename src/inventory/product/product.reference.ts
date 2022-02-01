@@ -8,37 +8,37 @@ import CategoryReference from '../category/category.reference'
 import { route } from './product.endpoint'
 
 export default class ProductReference extends AppReference implements EntityType<ProductEntity> {
-	public name: string
+  public name: string
 
-	public description: string
+  public description: string
 
-	public price: number
+  public price: number
 
-	public brand: BrandReference
+  public brand: BrandReference
 
-	public category: CategoryReference
+  public category: CategoryReference
 
-	public hashtags: string[]
+  public hashtags: string[]
 
-	public masterVariant: ProductVariantEntity
+  public masterVariant: ProductVariantEntity
 
-	public status: PRODUCT_STATUS
+  public status: PRODUCT_STATUS
 
-	public unit: PRODUCT_UNIT
+  public unit: PRODUCT_UNIT
 
-	public media: ProductMediaEntity[] = []
+  public media: ProductMediaEntity[] = []
 
-	public variants: ProductVariantEntity[] = []
+  public variants: ProductVariantEntity[] = []
 
-	public static getMedia (productId: string): Promise<ProductMediaEntity[]> {
-		const path = route(productId, ProductMediaEntity.$path)
+  public static getMedia (productId: string): Promise<ProductMediaEntity[]> {
+    const path = route(productId, ProductMediaEntity.$path)
 
-		return axios.$get(path)
-	}
+    return axios.$get(path)
+  }
 
-	public static getVariants (productId: string): Promise<ProductVariantEntity[]> {
-		const path = route(productId, ProductVariantEntity.$path)
+  public static getVariants (productId: string): Promise<ProductVariantEntity[]> {
+    const path = route(productId, ProductVariantEntity.$path)
 
-		return axios.$get(path)
-	}
+    return axios.$get(path)
+  }
 }
