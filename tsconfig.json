@@ -1,33 +1,42 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
+    "target": "ES2018",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": [
+      "ESNext",
+      "ESNext.AsyncIterable",
+      "DOM"
+    ],
     "esModuleInterop": true,
-    "emitDeclarationOnly": true,
-    "skipLibCheck": true,
-    "rootDir": "./src",
+    "allowJs": true,
+    "sourceMap": true,
     "strict": true,
-    "skipDefaultLibCheck": true,
-    "strictPropertyInitialization": false,
+    "noEmit": true,
+    "experimentalDecorators": true,
     "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ]
+    },
     "typeRoots": [
       "@merkaly/api"
     ],
     "types": [
-      "axios",
       "@types/auth0",
       "@types/node",
-      "@types/jest"
+      "@types/jest",
+      "@nuxt/types",
+      "@nuxtjs/axios",
     ]
   },
-  "include": [
-    "./src"
+  "exclude": [
+    "node_modules",
+    ".nuxt",
+    "dist"
   ]
 }
