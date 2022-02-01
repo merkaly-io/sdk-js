@@ -4,7 +4,6 @@ import {
   OrganizationEntity,
   OrganizationMemberEntity
 } from '@merkaly/api/src/account/organizations'
-import axios from '../../app.axios'
 import { basePath } from './organization.endpoint'
 
 export default class OrganizationReference extends OrganizationEntity {
@@ -18,17 +17,17 @@ export default class OrganizationReference extends OrganizationEntity {
   }
 
   public getMembers () {
-    return axios.$get<OrganizationMemberEntity[]>(this.$route)
-      .then(members => (this.members = members))
+    return $nuxt.$axios.get<OrganizationMemberEntity[]>(this.$route)
+      .then(({ data: members }) => (this.members = members))
   }
 
   public addMember (ids: string[]) {
-    return axios.$post<OrganizationMemberEntity>(join(this.$route, 'members'), ids)
-      .then(member => (this.members.push(member)))
+    return $nuxt.$axios.post<OrganizationMemberEntity>(join(this.$route, 'members'), ids)
+      .then(({ data: member }) => (this.members.push(member)))
   }
 
   public removeMember (id: string) {
-    return axios.$delete<OrganizationMemberEntity[]>(join(this.$route + id))
-      .then(members => (this.members = members))
+    return $nuxt.$axios.delete<OrganizationMemberEntity[]>(join(this.$route + id))
+      .then(({ data: members }) => (this.members = members))
   }
 }

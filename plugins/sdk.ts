@@ -17,7 +17,10 @@ declare module '@nuxt/types' {
 }
 
 export default ({ app, $config }: Context, inject: Function) => {
+  app.$axios.interceptors.response.use(({ data }) => data)
+
   const sdk = new ManagerSDK() || $config.merkaly
+
   app.$merkaly = sdk
   inject('merkaly', sdk)
 }

@@ -71,7 +71,8 @@
     "husky": "^7.0.4",
     "jest": "^27.0.4",
     "lint-staged": "^12.1.2",
-    "typedoc": "^0.22.11"
+    "typedoc": "^0.22.11",
+    "vuex-module-decorators": "^2.0.0"
   },
   "engines": {
     "node": "14"

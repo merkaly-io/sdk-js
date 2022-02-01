@@ -1,7 +1,6 @@
 import { PRODUCT_STATUS, PRODUCT_UNIT, ProductEntity } from '@merkaly/api/src/inventory/products'
 import { ProductMediaEntity } from '@merkaly/api/src/inventory/products/media'
 import { ProductVariantEntity } from '@merkaly/api/src/inventory/products/variants'
-import axios from '../../app.axios'
 import BrandReference from '../brand/brand.reference'
 import CategoryReference from '../category/category.reference'
 import { route } from './product.endpoint'
@@ -34,12 +33,12 @@ export default class ProductReference extends ProductEntity {
   public static getMedia (productId: string): Promise<ProductMediaEntity[]> {
     const path = route(productId, ProductMediaEntity.$path)
 
-    return axios.$get(path)
+    return $nuxt.$axios.get(path)
   }
 
   public static getVariants (productId: string): Promise<ProductVariantEntity[]> {
     const path = route(productId, ProductVariantEntity.$path)
 
-    return axios.$get(path)
+    return $nuxt.$axios.get(path)
   }
 }

@@ -1,5 +1,4 @@
 import { OrderEntity } from '@merkaly/api/src/store/orders'
-import axios from '../../app.axios'
 import CartReference from '../cart/cart.reference'
 import { route } from './order.endpoint'
 
@@ -14,6 +13,6 @@ export default class OrderReference extends OrderEntity {
   }
 
   public static getCart (orderId: string): Promise<CartReference> {
-    return axios.$get(route(orderId))
+    return $nuxt.$axios.get(route(orderId))
   }
 }

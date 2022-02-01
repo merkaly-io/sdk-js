@@ -1,7 +1,6 @@
 import { join } from 'path'
 import { UserData, UserEntity, UserRoleEntity } from '@merkaly/api/src/account/users'
 import { Identity } from 'auth0'
-import axios from '../../app.axios'
 import { route } from './user.endpoint'
 
 export default class UserReference extends UserEntity {
@@ -29,14 +28,14 @@ export default class UserReference extends UserEntity {
   public roles: UserRoleEntity[] = []
 
   public static getRoles (userId: string): Promise<UserRoleEntity[]> {
-    return axios.$get(route(userId, UserRoleEntity.$path))
+    return $nuxt.$axios.get(route(userId, UserRoleEntity.$path))
   }
 
   public static addRole (userId: string, roleId: string): Promise<UserRoleEntity> {
-    return axios.$post(route(userId, UserRoleEntity.$path), { id: roleId })
+    return $nuxt.$axios.post(route(userId, UserRoleEntity.$path), { id: roleId })
   }
 
   public static removeRole (userId: string, roleId: string): Promise<void> {
-    return axios.$delete(join(route(userId, UserRoleEntity.$path), roleId))
+    return $nuxt.$axios.delete(join(route(userId, UserRoleEntity.$path), roleId))
   }
 }
