@@ -1,21 +1,23 @@
 import { Context } from '@nuxt/types'
-import { ManagerSDK } from '@/src'
+import SDK from '@/src/.sdk'
 
 declare module '@nuxt/types' {
   interface Context {
-    $merkaly: ManagerSDK
+    $merkaly: SDK
   }
 
   interface NuxtAppOptions {
-    $merkaly: ManagerSDK
+    $merkaly: SDK
   }
 
   interface Configuration {
-    merkaly?: ManagerSDK
+    merkaly?: SDK
   }
 }
 
 export default ({ app, $config }: Context, inject: Function) => {
-  app.$merkaly = new ManagerSDK($config.merkaly?.baseUrl)
-  inject('merkaly', app.$merkaly)
+  // @ts-ignore
+  const sdk = $config.merkaly
+  app.$merkaly = sdk
+  inject('merkaly', sdk || null)
 }

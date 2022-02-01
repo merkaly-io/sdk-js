@@ -1,9 +1,8 @@
+import MerkalySDK from './.sdk'
 import Account from './account/index'
-import SDK from './sdk'
+import Inventory from './inventory/index'
 
-// import Inventory from './inventory/index'
-
-export class ManagerSDK extends SDK {
+export class ManagerSDK extends MerkalySDK {
   public get account () {
     return {
       organizations: Account.organizations(),
@@ -12,12 +11,12 @@ export class ManagerSDK extends SDK {
     }
   }
 
-  // public get inventory () {
-  //   return {
-  //     products: Inventory.products(),
-  //     properties: Inventory.properties(),
-  //     categories: Inventory.categories(),
-  //     brands: Inventory.brands()
-  //   }
-  // }
+  public get inventory () {
+    return {
+      products: Inventory.products(),
+      properties: Inventory.properties(),
+      categories: Inventory.categories(),
+      brands: Inventory.brands()
+    }
+  }
 }

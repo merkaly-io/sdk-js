@@ -25,8 +25,10 @@ export default class ProductReference extends ProductEntity {
 
   public unit: PRODUCT_UNIT
 
+  // @ts-ignore
   public media: ProductMediaEntity[] = []
 
+  // @ts-ignore
   public variants: ProductVariantEntity[] = []
 
   public static getMedia (productId: string): Promise<ProductMediaEntity[]> {

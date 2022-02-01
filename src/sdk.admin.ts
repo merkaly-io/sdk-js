@@ -1,9 +1,9 @@
+import MerkalySDK from './.sdk'
 import Account from './account/index'
 import Inventory from './inventory/index'
-import SDK from './sdk'
 import Store from './store/index'
 
-export class AdminSDK extends SDK {
+export class AdminSDK extends MerkalySDK {
   public get inventory () {
     return {
       products: Inventory.products(),
