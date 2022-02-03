@@ -7,21 +7,28 @@ declare module '@nuxt/types/config/runtime' {
   }
 }
 
-const MerkalySDKModule: Module = function (sdk: SDK) {
+interface SDKModuleParams {
+  sdk?: () => SDK
+  endpoint?: string
+}
+
+const MerkalySDKModule: Module = function (params: SDKModuleParams) {
   const { options } = this
+  const api = params.endpoint || 'https://api.merkaly.io'
 
-  // @ts-ignore
-  options.publicRuntimeConfig.merkaly = sdk
-  options.plugins.push({ src: '@/plugins/sdk' })
-  // options.plugins.push({ src: '@/plugins/auth' })
-
-  if (!options.auth) {
-    options.auth = {
-      strategies: {
-        local: {}
+  options.auth = {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: (api + '/auth/login'), method: 'post' },
+          logout: { url: (api + '/auth/logout'), method: 'post' },
+          user: { url: (api + '/auth/user'), method: 'get' }
+        }
       }
     }
   }
+
+  options.plugins.push({ src: '@/plugins/sdk' })
 }
 
 export default MerkalySDKModule

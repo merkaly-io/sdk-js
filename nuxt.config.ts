@@ -9,7 +9,10 @@ const config: NuxtConfig = {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     ['@nuxt/typescript-build', {}], // https://go.nuxtjs.dev/typescript
-    [MerkalySDKModule, new ManagerSDK()]
+    [MerkalySDKModule, {
+      sdk: new ManagerSDK(),
+      endpoint: process.env.baseUrl
+    }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
