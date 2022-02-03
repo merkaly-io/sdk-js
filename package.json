@@ -29,14 +29,14 @@
   "scripts": {
     "prebuild": "yarn run clean",
     "build": "tsc -b",
-    "generate": "yarn typedoc",
-    "start": "yarn run generate && http-server ./public",
     "clean": "tsc -b --clean",
     "dev": "nuxt",
-    "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
+    "generate": "yarn typedoc",
     "lint:fix": "yarn lint:js --fix",
+    "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "prepack": "yarn build",
     "prepare": "husky install",
+    "start": "yarn run generate && http-server ./public",
     "pretest": "yarn build",
     "test": "jest"
   },
@@ -51,7 +51,7 @@
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.46.0"
+    "webpack": "^5.68.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
@@ -71,11 +71,8 @@
     "husky": "^7.0.4",
     "jest": "^27.0.4",
     "lint-staged": "^12.1.2",
-    "postcss-html": "^1.3.0",
-    "ts-jest": "^27.0.3",
-    "ts-node": "^10.0.0",
     "typedoc": "^0.22.11",
-    "typescript": "^4.3.4"
+    "vuex-module-decorators": "^2.0.0"
   },
   "engines": {
     "node": "14"
