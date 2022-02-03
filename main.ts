@@ -13,6 +13,15 @@ const MerkalySDKModule: Module = function (sdk: SDK) {
   // @ts-ignore
   options.publicRuntimeConfig.merkaly = sdk
   options.plugins.push({ src: '@/plugins/sdk' })
+  // options.plugins.push({ src: '@/plugins/auth' })
+
+  if (!options.auth) {
+    options.auth = {
+      strategies: {
+        local: {}
+      }
+    }
+  }
 }
 
 export default MerkalySDKModule
