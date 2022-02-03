@@ -5,14 +5,26 @@ import BrandReference from './brand.reference'
 
 export const route = (...path: string[]) => join($InventoryPath, BrandEntity.$path, ...path)
 
-export default class Brand {
-  public static readonly find = (): Promise<BrandReference[]> => $nuxt.$axios.get(route())
+namespace Brand {
+  export const find = (): Promise<BrandReference[]> => {
+    return $nuxt.$axios.get(route())
+  }
 
-  public static readonly read = (id: string): Promise<BrandReference> => $nuxt.$axios.get(route(id))
+  export const read = (id: string): Promise<BrandReference> => {
+    return $nuxt.$axios.get(route(id))
+  }
 
-  public static readonly create = (payload: CreateBrandValidator): Promise<BrandReference> => $nuxt.$axios.post(route(), payload)
+  export const create = (payload: CreateBrandValidator): Promise<BrandReference> => {
+    return $nuxt.$axios.post(route(), payload)
+  }
 
-  public static readonly update = (id: string, payload: UpdateBrandValidator): Promise<BrandReference> => $nuxt.$axios.put(route(id), payload)
+  export const update = (id: string, payload: UpdateBrandValidator): Promise<BrandReference> => {
+    return $nuxt.$axios.put(route(id), payload)
+  }
 
-  public static readonly remove = (id: string): Promise<void> => $nuxt.$axios.delete(route(id))
+  export const remove = (id: string): Promise<void> => {
+    return $nuxt.$axios.delete(route(id))
+  }
 }
+
+export default Brand

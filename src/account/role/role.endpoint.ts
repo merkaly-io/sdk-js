@@ -5,14 +5,26 @@ import RoleReference from './role.reference'
 
 export const route = (...path: string[]) => join($AccountPath, RoleEntity.$path, ...path)
 
-export default class Role {
-  public static readonly find = (): Promise<RoleReference[]> => $nuxt.$axios.get(route())
+namespace Role {
+  export const find = (): Promise<RoleReference[]> => {
+    return $nuxt.$axios.get(route())
+  }
 
-  public static readonly read = (id: string): Promise<RoleReference> => $nuxt.$axios.get(route(id))
+  export const read = (id: string): Promise<RoleReference> => {
+    return $nuxt.$axios.get(route(id))
+  }
 
-  public static readonly create = (payload: CreateRoleValidator): Promise<RoleReference> => $nuxt.$axios.post(route(), payload)
+  export const create = (payload: CreateRoleValidator): Promise<RoleReference> => {
+    return $nuxt.$axios.post(route(), payload)
+  }
 
-  public static readonly update = (id: string, payload: UpdateRoleValidator): Promise<RoleReference> => $nuxt.$axios.put(route(id), payload)
+  export const update = (id: string, payload: UpdateRoleValidator): Promise<RoleReference> => {
+    return $nuxt.$axios.put(route(id), payload)
+  }
 
-  public static readonly remove = (id: string): Promise<void> => $nuxt.$axios.delete(route(id))
+  export const remove = (id: string): Promise<void> => {
+    return $nuxt.$axios.delete(route(id))
+  }
 }
+
+export default Role

@@ -4,14 +4,26 @@ import CartReference from './cart.reference'
 
 export const route = (...path: string[]) => join($StorePath, CartEntity.$path, ...path)
 
-export default class Cart {
-  public static readonly find = (): Promise<CartReference[]> => $nuxt.$axios.get(route())
+namespace Cart {
+  export const find = (): Promise<CartReference[]> => {
+    return $nuxt.$axios.get(route())
+  }
 
-  public static readonly read = (id: string): Promise<CartReference> => $nuxt.$axios.get(route(id))
+  export const read = (id: string): Promise<CartReference> => {
+    return $nuxt.$axios.get(route(id))
+  }
 
-  public static readonly create = (payload: CreateCartValidator): Promise<CartReference> => $nuxt.$axios.post(route(), payload)
+  export const create = (payload: CreateCartValidator): Promise<CartReference> => {
+    return $nuxt.$axios.post(route(), payload)
+  }
 
-  public static readonly update = (id: string, payload: UpdateCartValidator): Promise<CartReference> => $nuxt.$axios.put(route(id), payload)
+  export const update = (id: string, payload: UpdateCartValidator): Promise<CartReference> => {
+    return $nuxt.$axios.put(route(id), payload)
+  }
 
-  public static readonly remove = (id: string): Promise<void> => $nuxt.$axios.delete(route(id))
+  export const remove = (id: string): Promise<void> => {
+    return $nuxt.$axios.delete(route(id))
+  }
 }
+
+export default Cart

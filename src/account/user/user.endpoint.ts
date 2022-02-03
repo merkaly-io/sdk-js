@@ -5,14 +5,26 @@ import UserReference from './user.reference'
 
 export const route = (...path: string[]) => join($AccountPath, UserEntity.$path, ...path)
 
-export default class User {
-  public static readonly find = (): Promise<UserReference[]> => $nuxt.$axios.get(route())
+namespace User {
+  export const find = (): Promise<UserReference[]> => {
+    return $nuxt.$axios.get(route())
+  }
 
-  public static readonly read = (id: string): Promise<UserReference> => $nuxt.$axios.get(route(id))
+  export const read = (id: string): Promise<UserReference> => {
+    return $nuxt.$axios.get(route(id))
+  }
 
-  public static readonly create = (payload: CreateUserValidator): Promise<UserReference> => $nuxt.$axios.post(route(), payload)
+  export const create = (payload: CreateUserValidator): Promise<UserReference> => {
+    return $nuxt.$axios.post(route(), payload)
+  }
 
-  public static readonly update = (id: string, payload: UpdateUserValidator): Promise<UserReference> => $nuxt.$axios.put(route(id), payload)
+  export const update = (id: string, payload: UpdateUserValidator): Promise<UserReference> => {
+    return $nuxt.$axios.put(route(id), payload)
+  }
 
-  public static readonly remove = (id: string): Promise<void> => $nuxt.$axios.delete(route(id))
+  export const remove = (id: string): Promise<void> => {
+    return $nuxt.$axios.delete(route(id))
+  }
 }
+
+export default User

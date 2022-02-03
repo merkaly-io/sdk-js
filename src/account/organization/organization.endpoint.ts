@@ -9,14 +9,26 @@ import OrganizationReference from './organization.reference'
 
 export const basePath = (...path: string[]) => join($AccountPath, OrganizationEntity.$path, ...path)
 
-export default class Organization {
-  public static readonly find = (): Promise<OrganizationReference[]> => $nuxt.$axios.get(basePath())
+namespace Organization {
+  export const find = (): Promise<OrganizationReference[]> => {
+    return $nuxt.$axios.get(basePath())
+  }
 
-  public static readonly read = (id: string): Promise<OrganizationReference> => $nuxt.$axios.get(basePath(id))
+  export const read = (id: string): Promise<OrganizationReference> => {
+    return $nuxt.$axios.get(basePath(id))
+  }
 
-  public static readonly create = (payload: CreateOrganizationValidator): Promise<OrganizationReference> => $nuxt.$axios.post(basePath(), payload)
+  export const create = (payload: CreateOrganizationValidator): Promise<OrganizationReference> => {
+    return $nuxt.$axios.post(basePath(), payload)
+  }
 
-  public static readonly update = (id: string, payload: UpdateOrganizationValidator): Promise<OrganizationReference> => $nuxt.$axios.patch(basePath(id), payload)
+  export const update = (id: string, payload: UpdateOrganizationValidator): Promise<OrganizationReference> => {
+    return $nuxt.$axios.patch(basePath(id), payload)
+  }
 
-  public static readonly remove = (id: string): Promise<void> => $nuxt.$axios.delete(basePath(id))
+  export const remove = (id: string): Promise<void> => {
+    return $nuxt.$axios.delete(basePath(id))
+  }
 }
+
+export default Organization
