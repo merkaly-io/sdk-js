@@ -14,7 +14,7 @@ interface SDKModuleParams {
   sdk?: () => SDK
 }
 
-const MerkalySDKModule: Module = function (params: SDKModuleParams) {
+export const MerkalySDKModule: Module = function (params: SDKModuleParams) {
   const { options } = this
 
   options.auth = {
@@ -30,6 +30,4 @@ const MerkalySDKModule: Module = function (params: SDKModuleParams) {
   this.addPlugin({ src: require.resolve(join(__dirname, '/plugins/sdk')) })
 }
 
-export { AdminSDK } from './src/sdk.admin'
-export { ManagerSDK } from './src/sdk.manager'
 export default MerkalySDKModule

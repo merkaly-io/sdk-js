@@ -18,12 +18,6 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
     },
     "typeRoots": [
       "@merkaly/api"

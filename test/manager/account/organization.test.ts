@@ -3,8 +3,8 @@ import {
   UpdateOrganizationValidator
 } from '@merkaly/api/src/account/organizations/organization.validator'
 import faker from 'faker'
+import { ManagerSDK } from '../../../index'
 import OrganizationReference from '../../../src/account/organization/organization.reference'
-import { ManagerSDK } from '~/main'
 
 describe('Manager > Account > Organization', () => {
   const $merkaly = new ManagerSDK()

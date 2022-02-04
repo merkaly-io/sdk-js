@@ -1,6 +1,6 @@
 import { Context } from '@nuxt/types'
-import SDK from '@/src/.sdk'
-import { ManagerSDK } from '~/main'
+import SDK from '../src/.sdk'
+import { ManagerSDK } from '../index'
 
 declare module '@nuxt/types' {
   interface Context {
