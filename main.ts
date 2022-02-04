@@ -2,12 +2,6 @@ import { join } from 'path'
 import { Module } from '@nuxt/types'
 import SDK from './src/.sdk'
 
-declare module '@nuxt/types/config/runtime' {
-  interface NuxtRuntimeConfig {
-    merkaly: SDK
-  }
-}
-
 interface SDKModuleParams {
   client: string
   domain: string
@@ -18,7 +12,7 @@ interface SDKModuleParams {
 export const MerkalySDKModule: Module = function (params: SDKModuleParams) {
   const { options } = this
 
-  this.addPlugin({ src: require.resolve(join(__dirname, '/plugins/sdk')) })
+  this.addPlugin({ src: require.resolve(join(__dirname, '/plugins/axios')) })
 
   options.auth = {
     ...options.auth,

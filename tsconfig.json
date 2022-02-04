@@ -20,15 +20,15 @@
     "paths": {
     },
     "typeRoots": [
-      "@merkaly/api"
     ],
     "types": [
-      "@types/auth0",
-      "@types/node",
-      "@types/jest",
+      "@merkaly/api",
       "@nuxtjs/auth-next",
       "@nuxtjs/axios",
-      "@nuxt/types"
+      "@nuxt/types",
+      "@types/auth0",
+      "@types/node",
+      "@types/jest"
     ]
   },
   "include": [
