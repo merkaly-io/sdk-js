@@ -24,6 +24,7 @@
     "test": "test"
   },
   "files": [
+    "main.ts",
     "src/**/*.ts"
   ],
   "scripts": {
