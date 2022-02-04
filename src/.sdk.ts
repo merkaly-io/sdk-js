@@ -5,13 +5,21 @@ declare global {
 }
 
 namespace Auth {
-  export const user = () => $nuxt.$auth.user
+  export const user = () => {
+    return $nuxt.$auth.user
+  }
 
-  export const isLoggedIn = () => $nuxt.$auth.loggedIn
+  export const isLoggedIn = () => {
+    return $nuxt.$auth.loggedIn
+  }
 
-  export const login = (username: string, password: string) => $nuxt.$auth.loginWith('local', { data: { username, password } })
+  export const login = async () => {
+    return $nuxt.$auth.loginWith('auth0')
+  }
 
-  export const logout = () => $nuxt.$auth.logout()
+  export const logout = () => {
+    return $nuxt.$auth.logout()
+  }
 }
 
 export default abstract class MerkalySDK {

@@ -11,7 +11,8 @@ const config: NuxtConfig = {
     ['@nuxt/typescript-build', {}], // https://go.nuxtjs.dev/typescript
     [MerkalySDKModule, {
       sdk: new ManagerSDK(),
-      endpoint: process.env.baseUrl
+      client: process.env.AUTH0_CLIENT,
+      domain: process.env.AUTH0_DOMAIN
     }]
   ],
 
@@ -25,6 +26,15 @@ const config: NuxtConfig = {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: process.env.baseUrl
+  },
+
+  auth: {
+    redirect: {
+      home: '/',
+      login: '/auth',
+      logout: '/',
+      callback: '/auth'
+    }
   }
 }
 

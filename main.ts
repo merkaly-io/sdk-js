@@ -8,22 +8,20 @@ declare module '@nuxt/types/config/runtime' {
 }
 
 interface SDKModuleParams {
+  client: string
+  domain?: string
   sdk?: () => SDK
-  endpoint?: string
 }
 
 const MerkalySDKModule: Module = function (params: SDKModuleParams) {
   const { options } = this
-  const api = params.endpoint || 'https://api.merkaly.io'
 
   options.auth = {
+    ...options.auth,
     strategies: {
-      local: {
-        endpoints: {
-          login: { url: (api + '/auth/login'), method: 'post' },
-          logout: { url: (api + '/auth/logout'), method: 'post' },
-          user: { url: (api + '/auth/user'), method: 'get' }
-        }
+      auth0: {
+        domain: params.domain,
+        clientId: params.client
       }
     }
   }
