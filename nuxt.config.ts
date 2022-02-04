@@ -1,6 +1,5 @@
 import { NuxtConfig } from '@nuxt/types'
-import MerkalySDKModule from './main'
-import { ManagerSDK } from './src'
+import MerkalySDKModule, { ManagerSDK } from './main'
 
 const config: NuxtConfig = {
   // Target: https://go.nuxtjs.dev/config-target

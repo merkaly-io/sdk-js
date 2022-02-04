@@ -1,7 +1,7 @@
 import { RoleEntity } from '@merkaly/api/src/account/roles/role.entity'
 import { CreateRoleValidator, UpdateRoleValidator } from '@merkaly/api/src/account/roles/role.validator'
 import faker from 'faker'
-import { ManagerSDK } from '~/src'
+import { ManagerSDK } from '~/main'
 
 describe('Manager > Account > Role >', () => {
   const $merkaly = new ManagerSDK()

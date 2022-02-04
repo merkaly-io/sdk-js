@@ -30,4 +30,6 @@ const MerkalySDKModule: Module = function (params: SDKModuleParams) {
   this.addPlugin({ src: require.resolve(join(__dirname, '/plugins/sdk')) })
 }
 
+export { AdminSDK } from './src/sdk.admin'
+export { ManagerSDK } from './src/sdk.manager'
 export default MerkalySDKModule
