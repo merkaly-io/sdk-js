@@ -93,6 +93,5 @@ sw.*
 # Vim swap files
 *.swp
 
-!src/index.d.ts
-src/**/*.d.ts
-src/**/*.js
+*.d.ts
+*.js

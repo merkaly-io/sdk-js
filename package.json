@@ -23,7 +23,8 @@
     "test": "test"
   },
   "files": [
-    "main.ts",
+    "index.*",
+    "main.*",
     "src/**/*.ts",
     "plugins/**/*.ts"
   ],
