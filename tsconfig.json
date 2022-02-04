@@ -14,13 +14,11 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "skipLibCheck": true,
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
     },
-    "typeRoots": [
-    ],
     "types": [
       "@merkaly/api",
       "@nuxtjs/auth-next",
@@ -33,7 +31,9 @@
   },
   "include": [
     "./plugins/*",
+    "./src/*",
     "./main.ts",
+    "./index.ts"
   ],
   "exclude": [
     "node_modules",

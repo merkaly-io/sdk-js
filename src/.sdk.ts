@@ -1,9 +1,3 @@
-import { Context } from '@nuxt/types'
-
-declare global {
-  const $nuxt: Context
-}
-
 namespace Auth {
   export const user = () => {
     return $nuxt.$auth.user
