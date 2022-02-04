@@ -31,6 +31,10 @@
       "@nuxt/types"
     ]
   },
+  "include": [
+    "./plugins/*",
+    "./main.ts",
+  ],
   "exclude": [
     "node_modules",
     ".nuxt",

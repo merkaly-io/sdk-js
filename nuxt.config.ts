@@ -1,5 +1,5 @@
 import { NuxtConfig } from '@nuxt/types'
-import { ManagerSDK, MerkalySDKModule } from './index'
+import { MerkalySDKModule } from './main'
 
 const config: NuxtConfig = {
   // Target: https://go.nuxtjs.dev/config-target
@@ -9,7 +9,7 @@ const config: NuxtConfig = {
   buildModules: [
     ['@nuxt/typescript-build', {}], // https://go.nuxtjs.dev/typescript
     [MerkalySDKModule, {
-      sdk: new ManagerSDK(),
+      api: process.env.API_ENDPOINT,
       client: process.env.AUTH0_CLIENT,
       domain: process.env.AUTH0_DOMAIN
     }]
@@ -24,7 +24,7 @@ const config: NuxtConfig = {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.baseUrl
+    baseURL: process.env.API_ENDPOINT
   },
 
   auth: {
