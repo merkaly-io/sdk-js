@@ -1,3 +1,4 @@
+import { join } from 'path'
 import { Module } from '@nuxt/types'
 import SDK from './src/.sdk'
 
@@ -26,7 +27,7 @@ const MerkalySDKModule: Module = function (params: SDKModuleParams) {
     }
   }
 
-  options.plugins.push({ src: '@/plugins/sdk' })
+  this.addPlugin({ src: require.resolve(join(__dirname, '/plugins/sdk')) })
 }
 
 export default MerkalySDKModule

@@ -25,7 +25,8 @@
   },
   "files": [
     "main.ts",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "plugins/**/*.ts"
   ],
   "scripts": {
     "prebuild": "yarn run clean",
