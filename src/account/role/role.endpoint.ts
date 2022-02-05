@@ -1,30 +1,31 @@
 import { join } from 'path'
 import { $AccountPath } from '@merkaly/api/src/account'
 import { CreateRoleValidator, RoleEntity, UpdateRoleValidator } from '@merkaly/api/src/account/roles'
+import { NuxtAxiosInstance } from '@nuxtjs/axios'
 import RoleReference from './role.reference'
 
 export const route = (...path: string[]) => join($AccountPath, RoleEntity.$path, ...path)
 
-namespace Role {
-  export const find = (): Promise<RoleReference[]> => {
-    return $nuxt.$request.get(route())
+export default function Role ($axios: NuxtAxiosInstance) {
+  function find (): Promise<RoleReference[]> {
+    return $axios.get(route())
   }
 
-  export const read = (id: string): Promise<RoleReference> => {
-    return $nuxt.$request.get(route(id))
+  function read (id: string): Promise<RoleReference> {
+    return $axios.get(route(id))
   }
 
-  export const create = (payload: CreateRoleValidator): Promise<RoleReference> => {
-    return $nuxt.$request.post(route(), payload)
+  function create (payload: CreateRoleValidator): Promise<RoleReference> {
+    return $axios.post(route(), payload)
   }
 
-  export const update = (id: string, payload: UpdateRoleValidator): Promise<RoleReference> => {
-    return $nuxt.$request.put(route(id), payload)
+  function update (id: string, payload: UpdateRoleValidator): Promise<RoleReference> {
+    return $axios.put(route(id), payload)
   }
 
-  export const remove = (id: string): Promise<void> => {
-    return $nuxt.$request.delete(route(id))
+  function remove (id: string): Promise<void> {
+    return $axios.delete(route(id))
   }
+
+  return { find, read, create, update, remove }
 }
-
-export default Role

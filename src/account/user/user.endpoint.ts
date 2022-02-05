@@ -1,30 +1,31 @@
 import { join } from 'path'
 import { $AccountPath } from '@merkaly/api/src/account'
 import { CreateUserValidator, UpdateUserValidator, UserEntity } from '@merkaly/api/src/account/users'
+import { NuxtAxiosInstance } from '@nuxtjs/axios'
 import UserReference from './user.reference'
 
 export const route = (...path: string[]) => join($AccountPath, UserEntity.$path, ...path)
 
-namespace User {
-  export const find = (): Promise<UserReference[]> => {
-    return $nuxt.$request.get(route())
+export default function User ($axios: NuxtAxiosInstance) {
+  function find (): Promise<UserReference[]> {
+    return $axios.get(route())
   }
 
-  export const read = (id: string): Promise<UserReference> => {
-    return $nuxt.$request.get(route(id))
+  function read (id: string): Promise<UserReference> {
+    return $axios.get(route(id))
   }
 
-  export const create = (payload: CreateUserValidator): Promise<UserReference> => {
-    return $nuxt.$request.post(route(), payload)
+  function create (payload: CreateUserValidator): Promise<UserReference> {
+    return $axios.post(route(), payload)
   }
 
-  export const update = (id: string, payload: UpdateUserValidator): Promise<UserReference> => {
-    return $nuxt.$request.put(route(id), payload)
+  function update (id: string, payload: UpdateUserValidator): Promise<UserReference> {
+    return $axios.put(route(id), payload)
   }
 
-  export const remove = (id: string): Promise<void> => {
-    return $nuxt.$request.delete(route(id))
+  function remove (id: string): Promise<void> {
+    return $axios.delete(route(id))
   }
+
+  return { find, read, create, update, remove }
 }
-
-export default User
