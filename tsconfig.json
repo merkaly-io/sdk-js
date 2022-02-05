@@ -15,7 +15,7 @@
     "strictPropertyInitialization": false,
     "skipLibCheck": true,
     "emitDeclarationOnly": true,
-    "outFile": "./types",
+    "declarationDir": "./types",
     "declaration": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
@@ -33,9 +33,10 @@
     ]
   },
   "include": [
+    "./index.ts",
+    "./main.ts",
     "./plugins/*",
     "./src/*",
-    "./main.ts",
     "nuxt.shim.d.ts"
   ],
   "exclude": [

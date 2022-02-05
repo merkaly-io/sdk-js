@@ -25,10 +25,11 @@
   "files": [
     "index.*",
     "main.*",
+    "types",
     "src/**/*.ts",
     "plugins/**/*.ts"
   ],
-  "types": "types.d.ts",
+  "types": "./types",
   "scripts": {
     "prebuild": "yarn run clean",
     "build": "tsc -b",
