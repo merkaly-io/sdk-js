@@ -28,14 +28,14 @@ export default class UserReference extends UserEntity {
   public roles: UserRoleEntity[] = []
 
   public static getRoles (userId: string): Promise<UserRoleEntity[]> {
-    return $nuxt.$axios.get(route(userId, UserRoleEntity.$path))
+    return $nuxt.$request.get(route(userId, UserRoleEntity.$path))
   }
 
   public static addRole (userId: string, roleId: string): Promise<UserRoleEntity> {
-    return $nuxt.$axios.post(route(userId, UserRoleEntity.$path), { id: roleId })
+    return $nuxt.$request.post(route(userId, UserRoleEntity.$path), { id: roleId })
   }
 
   public static removeRole (userId: string, roleId: string): Promise<void> {
-    return $nuxt.$axios.delete(join(route(userId, UserRoleEntity.$path), roleId))
+    return $nuxt.$request.delete(join(route(userId, UserRoleEntity.$path), roleId))
   }
 }

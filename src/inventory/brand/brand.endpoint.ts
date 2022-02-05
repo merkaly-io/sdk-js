@@ -7,23 +7,23 @@ export const route = (...path: string[]) => join($InventoryPath, BrandEntity.$pa
 
 namespace Brand {
   export const find = (): Promise<BrandReference[]> => {
-    return $nuxt.$axios.get(route())
+    return $nuxt.$request.get(route())
   }
 
   export const read = (id: string): Promise<BrandReference> => {
-    return $nuxt.$axios.get(route(id))
+    return $nuxt.$request.get(route(id))
   }
 
   export const create = (payload: CreateBrandValidator): Promise<BrandReference> => {
-    return $nuxt.$axios.post(route(), payload)
+    return $nuxt.$request.post(route(), payload)
   }
 
   export const update = (id: string, payload: UpdateBrandValidator): Promise<BrandReference> => {
-    return $nuxt.$axios.put(route(id), payload)
+    return $nuxt.$request.put(route(id), payload)
   }
 
   export const remove = (id: string): Promise<void> => {
-    return $nuxt.$axios.delete(route(id))
+    return $nuxt.$request.delete(route(id))
   }
 }
 

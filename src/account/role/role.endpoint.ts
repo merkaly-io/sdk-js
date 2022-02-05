@@ -7,23 +7,23 @@ export const route = (...path: string[]) => join($AccountPath, RoleEntity.$path,
 
 namespace Role {
   export const find = (): Promise<RoleReference[]> => {
-    return $nuxt.$axios.get(route())
+    return $nuxt.$request.get(route())
   }
 
   export const read = (id: string): Promise<RoleReference> => {
-    return $nuxt.$axios.get(route(id))
+    return $nuxt.$request.get(route(id))
   }
 
   export const create = (payload: CreateRoleValidator): Promise<RoleReference> => {
-    return $nuxt.$axios.post(route(), payload)
+    return $nuxt.$request.post(route(), payload)
   }
 
   export const update = (id: string, payload: UpdateRoleValidator): Promise<RoleReference> => {
-    return $nuxt.$axios.put(route(id), payload)
+    return $nuxt.$request.put(route(id), payload)
   }
 
   export const remove = (id: string): Promise<void> => {
-    return $nuxt.$axios.delete(route(id))
+    return $nuxt.$request.delete(route(id))
   }
 }
 

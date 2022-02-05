@@ -13,6 +13,6 @@ export default class OrderReference extends OrderEntity {
   }
 
   public static getCart (orderId: string): Promise<CartReference> {
-    return $nuxt.$axios.get(route(orderId))
+    return $nuxt.$request.get(route(orderId))
   }
 }

@@ -11,23 +11,23 @@ export const basePath = (...path: string[]) => join($AccountPath, OrganizationEn
 
 namespace Organization {
   export const find = (): Promise<OrganizationReference[]> => {
-    return $nuxt.$axios.get(basePath())
+    return $nuxt.$request.get(basePath())
   }
 
   export const read = (id: string): Promise<OrganizationReference> => {
-    return $nuxt.$axios.get(basePath(id))
+    return $nuxt.$request.get(basePath(id))
   }
 
   export const create = (payload: CreateOrganizationValidator): Promise<OrganizationReference> => {
-    return $nuxt.$axios.post(basePath(), payload)
+    return $nuxt.$request.post(basePath(), payload)
   }
 
   export const update = (id: string, payload: UpdateOrganizationValidator): Promise<OrganizationReference> => {
-    return $nuxt.$axios.patch(basePath(id), payload)
+    return $nuxt.$request.patch(basePath(id), payload)
   }
 
   export const remove = (id: string): Promise<void> => {
-    return $nuxt.$axios.delete(basePath(id))
+    return $nuxt.$request.delete(basePath(id))
   }
 }
 

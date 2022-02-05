@@ -1,4 +1,4 @@
-import { join } from 'path'
+import path from 'path'
 import { Module } from '@nuxt/types'
 import SDK from './src/.sdk'
 
@@ -12,6 +12,15 @@ interface SDKModuleParams {
 export const MerkalySDKModule: Module = function (params: SDKModuleParams) {
   const { options } = this
 
+  // @ts-ignore
+  options.publicRuntimeConfig.merkaly = {
+    api: params.api,
+    client: params.client,
+    domain: params.domain
+  }
+
+  this.addPlugin(path.resolve(__dirname, 'plugins/axios.ts'))
+
   options.auth = {
     ...options.auth,
     strategies: {
@@ -22,12 +31,6 @@ export const MerkalySDKModule: Module = function (params: SDKModuleParams) {
     }
   }
 
-  options.axios = {
-    ...options.axios,
-    baseURL: process.env.API_ENDPOINT
-  }
-
-  this.addPlugin({ src: require.resolve(join(__dirname, '/plugins/axios')) })
   this.addModule({ src: '@nuxtjs/axios', options: options.axios })
   this.addModule({ src: '@nuxtjs/auth-next', options: options.auth })
 

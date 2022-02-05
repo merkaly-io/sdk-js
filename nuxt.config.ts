@@ -7,7 +7,10 @@ const config: NuxtConfig = {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    ['@nuxt/typescript-build', {}], // https://go.nuxtjs.dev/typescript
+    ['@nuxt/typescript-build', {}] // https://go.nuxtjs.dev/typescript
+  ],
+
+  modules: [
     [MerkalySDKModule, {
       api: process.env.API_ENDPOINT,
       client: process.env.AUTH0_CLIENT,
