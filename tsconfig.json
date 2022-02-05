@@ -18,14 +18,15 @@
     "declaration": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
-    "paths": {
-    },
-    "types": [
+    "typeRoots": [
       "@merkaly/api",
+      "@nuxt/types",
+      "@nuxtjs/auth-next",
+      "@nuxtjs/axios"
+    ],
+    "types": [
       "@nuxtjs/auth-next",
       "@nuxtjs/axios",
-      "@nuxt/types",
-      "@types/auth0",
       "@types/node",
       "@types/jest"
     ]

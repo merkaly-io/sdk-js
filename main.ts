@@ -13,6 +13,8 @@ export const MerkalySDKModule: Module = function (params: SDKModuleParams) {
   const { options } = this
 
   this.addPlugin({ src: require.resolve(join(__dirname, '/plugins/axios')) })
+  this.addModule({ src: '@nuxtjs/axios' })
+  this.addModule({ src: '@nuxtjs/auth-next' })
 
   options.auth = {
     ...options.auth,
@@ -22,6 +24,11 @@ export const MerkalySDKModule: Module = function (params: SDKModuleParams) {
         clientId: params.client
       }
     }
+  }
+
+  options.axios = {
+    ...options.axios,
+    baseURL: process.env.API_ENDPOINT
   }
 
   if (params.api) {

@@ -15,18 +15,6 @@ const config: NuxtConfig = {
     }]
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    ['@nuxtjs/axios', {}], // https://go.nuxtjs.dev/axios
-    ['@nuxtjs/auth-next', {}] // https://auth.nuxtjs.org/guide/setup
-  ],
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.API_ENDPOINT
-  },
-
   auth: {
     redirect: {
       home: '/',
