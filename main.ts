@@ -12,10 +12,6 @@ interface SDKModuleParams {
 export const MerkalySDKModule: Module = function (params: SDKModuleParams) {
   const { options } = this
 
-  this.addPlugin({ src: require.resolve(join(__dirname, '/plugins/axios')) })
-  this.addModule({ src: '@nuxtjs/axios' })
-  this.addModule({ src: '@nuxtjs/auth-next' })
-
   options.auth = {
     ...options.auth,
     strategies: {
@@ -30,6 +26,10 @@ export const MerkalySDKModule: Module = function (params: SDKModuleParams) {
     ...options.axios,
     baseURL: process.env.API_ENDPOINT
   }
+
+  this.addPlugin({ src: require.resolve(join(__dirname, '/plugins/axios')) })
+  this.addModule({ src: '@nuxtjs/axios', options: options.axios })
+  this.addModule({ src: '@nuxtjs/auth-next', options: options.auth })
 
   if (params.api) {
     options.cli.badgeMessages.push(`-> API: ${params.api}`)
