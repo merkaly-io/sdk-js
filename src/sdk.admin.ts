@@ -1,4 +1,4 @@
-import MerkalySDK from './.sdk'
+import MerkalySDK from './sdk'
 import Account from './account/index'
 // import Inventory from './inventory/index'
 // import Store from './store/index'

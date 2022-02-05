@@ -1,6 +1,6 @@
 import path from 'path'
 import { Module } from '@nuxt/types'
-import SDK from './src/.sdk'
+import SDK from './src/sdk'
 
 interface SDKModuleParams {
   client: string
