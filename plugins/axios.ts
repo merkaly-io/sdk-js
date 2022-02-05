@@ -27,13 +27,6 @@ declare module 'vue/types/vue' {
   }
 }
 
-declare module 'vuex/types/index' {
-  // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
-  interface Store<S> {
-    $request: NuxtAxiosInstance
-  }
-}
-
 const plugin: Plugin = ({ app, $axios, $config }, inject) => {
   const request = $axios.create()
 

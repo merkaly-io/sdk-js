@@ -28,6 +28,7 @@
     "src/**/*.ts",
     "plugins/**/*.ts"
   ],
+  "types": "types.d.ts",
   "scripts": {
     "prebuild": "yarn run clean",
     "build": "tsc -b",

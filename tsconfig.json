@@ -15,6 +15,7 @@
     "strictPropertyInitialization": false,
     "skipLibCheck": true,
     "emitDeclarationOnly": true,
+    "outFile": "./types",
     "declaration": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
