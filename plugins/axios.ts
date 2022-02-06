@@ -3,36 +3,36 @@ import { NuxtAxiosInstance } from '@nuxtjs/axios'
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $request: NuxtAxiosInstance
+    $api: NuxtAxiosInstance
   }
 }
 
 declare module '@nuxt/types' {
   interface Context {
-    $request: NuxtAxiosInstance
+    $api: NuxtAxiosInstance
   }
 
   interface NuxtAppOptions {
-    $request: NuxtAxiosInstance
+    $api: NuxtAxiosInstance
   }
 
   interface Configuration {
-    request?: NuxtAxiosInstance
+    api?: NuxtAxiosInstance
   }
 }
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $request: NuxtAxiosInstance
+    $api: NuxtAxiosInstance
   }
 }
 
 const plugin: Plugin = ({ app, $axios, $config }, inject) => {
-  const request = $axios.create()
-  request.setBaseURL(`/${$config.merkaly.proxy}`)
+  const api = $axios.create()
+  api.setBaseURL(`/${$config.merkaly.proxy}`)
 
-  app.$request = request
-  inject('request', request)
+  app.$api = api
+  inject('api', api)
 }
 
 export default plugin

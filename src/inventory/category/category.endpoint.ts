@@ -7,23 +7,23 @@ const route = (...path: string[]) => join($InventoryPath, CategoryEntity.$path, 
 
 namespace Category {
   export const find = (): Promise<CategoryReference[]> => {
-    return $nuxt.$request.$get(route())
+    return $nuxt.$api.$get(route())
   }
 
   export const read = (id: string): Promise<CategoryReference> => {
-    return $nuxt.$request.$get(route(id))
+    return $nuxt.$api.$get(route(id))
   }
 
   export const create = (payload: CreateCategoryValidator): Promise<CategoryReference> => {
-    return $nuxt.$request.$post(route(), payload)
+    return $nuxt.$api.$post(route(), payload)
   }
 
   export const update = (id: string, payload: UpdateCategoryValidator): Promise<CategoryReference> => {
-    return $nuxt.$request.$put(route(id), payload)
+    return $nuxt.$api.$put(route(id), payload)
   }
 
   export const remove = (id: string): Promise<void> => {
-    return $nuxt.$request.$delete(route(id))
+    return $nuxt.$api.$delete(route(id))
   }
 }
 
