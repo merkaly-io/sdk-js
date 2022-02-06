@@ -5,29 +5,34 @@ import {
   OrganizationEntity,
   UpdateOrganizationValidator
 } from '@merkaly/api/src/account/organizations'
+import { plainToInstance } from 'class-transformer'
 import OrganizationReference from './organization.reference'
 
 export const basePath = (...path: string[]) => join($AccountPath, OrganizationEntity.$path, ...path)
 
 namespace Organization {
-  export const find = (): Promise<OrganizationReference[]> => {
-    return $nuxt.$api.$get(basePath())
+  export const find = () => {
+    return $nuxt.$api.$get<OrganizationReference[]>(basePath())
+      .then(organizations => organizations.map(organization => plainToInstance(OrganizationReference, organization)))
   }
 
-  export const read = (id: string): Promise<OrganizationReference> => {
-    return $nuxt.$api.$get(basePath(id))
+  export const read = (id: string) => {
+    return $nuxt.$api.$get<OrganizationReference>(basePath(id))
+      .then(organization => plainToInstance(OrganizationReference, organization))
   }
 
-  export const create = (payload: CreateOrganizationValidator): Promise<OrganizationReference> => {
-    return $nuxt.$api.$post(basePath(), payload)
+  export const create = (payload: CreateOrganizationValidator) => {
+    return $nuxt.$api.$post<OrganizationReference>(basePath(), payload)
+      .then(organization => plainToInstance(OrganizationReference, organization))
   }
 
-  export const update = (id: string, payload: UpdateOrganizationValidator): Promise<OrganizationReference> => {
-    return $nuxt.$api.$patch(basePath(id), payload)
+  export const update = (id: string, payload: UpdateOrganizationValidator) => {
+    return $nuxt.$api.$patch<OrganizationReference>(basePath(id), payload)
+      .then(organization => plainToInstance(OrganizationReference, organization))
   }
 
-  export const remove = (id: string): Promise<void> => {
-    return $nuxt.$api.$delete(basePath(id))
+  export const remove = (id: string) => {
+    return $nuxt.$api.$delete<void>(basePath(id))
   }
 }
 

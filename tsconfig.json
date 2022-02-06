@@ -31,7 +31,8 @@
       "@nuxtjs/proxy",
       "@types/auth0",
       "@types/jest",
-      "@types/node"
+      "@types/node",
+      "class-transformer"
     ]
   },
   "include": [
