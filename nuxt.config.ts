@@ -18,6 +18,10 @@ const config: NuxtConfig = {
     }]
   ],
 
+  plugins: [
+    { src: './plugins/debug.manager' }
+  ],
+
   auth: {
     redirect: {
       home: '/',

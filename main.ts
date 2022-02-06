@@ -41,6 +41,11 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
     '/api/': { target: params.api, pathRewrite: { '^/api/': '' } }
   }
 
+  options.build = {
+    ...options.build,
+    standalone: true
+  }
+
   this.addModule({ src: '@nuxtjs/axios', options: options.axios })
   this.addModule({ src: '@nuxtjs/auth-next', options: options.auth })
   this.addModule({ src: '@nuxtjs/proxy', options: options.proxy })
