@@ -1,29 +1,34 @@
 import { join } from 'path'
 import { $AccountPath } from '@merkaly/api/src/account'
 import { CreateRoleValidator, RoleEntity, UpdateRoleValidator } from '@merkaly/api/src/account/roles'
+import { plainToInstance } from 'class-transformer'
 import RoleReference from './role.reference'
 
 export const route = (...path: string[]) => join($AccountPath, RoleEntity.$path, ...path)
 
 namespace Role {
-  export const find = (): Promise<RoleReference[]> => {
-    return $nuxt.$api.$get(route())
+  export const find = () => {
+    return $nuxt.$api.$get<RoleReference[]>(route())
+      .then(roles => roles.map(role => plainToInstance(RoleReference, role)))
   }
 
-  export const read = (id: string): Promise<RoleReference> => {
-    return $nuxt.$api.$get(route(id))
+  export const read = (id: string) => {
+    return $nuxt.$api.$get<RoleReference>(route(id))
+      .then(role => plainToInstance(RoleReference, role))
   }
 
-  export const create = (payload: CreateRoleValidator): Promise<RoleReference> => {
-    return $nuxt.$api.$post(route(), payload)
+  export const create = (payload: CreateRoleValidator) => {
+    return $nuxt.$api.$post<RoleReference>(route(), payload)
+      .then(role => plainToInstance(RoleReference, role))
   }
 
-  export const update = (id: string, payload: UpdateRoleValidator): Promise<RoleReference> => {
-    return $nuxt.$api.$put(route(id), payload)
+  export const update = (id: string, payload: UpdateRoleValidator) => {
+    return $nuxt.$api.$put<RoleReference>(route(id), payload)
+      .then(role => plainToInstance(RoleReference, role))
   }
 
-  export const remove = (id: string): Promise<void> => {
-    return $nuxt.$api.$delete(route(id))
+  export const remove = (id: string) => {
+    return $nuxt.$api.$delete<void>(route(id))
   }
 }
 

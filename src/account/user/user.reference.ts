@@ -1,4 +1,3 @@
-import { join } from 'path'
 import { UserData, UserEntity, UserRoleEntity } from '@merkaly/api/src/account/users'
 import { Identity } from 'auth0'
 import { route } from './user.endpoint'
@@ -27,15 +26,15 @@ export default class UserReference extends UserEntity {
   public username: string | undefined
   public roles: UserRoleEntity[] = []
 
-  public static getRoles (userId: string): Promise<UserRoleEntity[]> {
-    return $nuxt.$api.$get(route(userId, UserRoleEntity.$path))
+  public getRoles (): Promise<UserRoleEntity[]> {
+    return $nuxt.$api.$get(route(this.id, UserRoleEntity.$path))
   }
 
-  public static addRole (userId: string, roleId: string): Promise<UserRoleEntity> {
-    return $nuxt.$api.$post(route(userId, UserRoleEntity.$path), { id: roleId })
+  public addRoles (ids: string[]) {
+    return $nuxt.$api.$post<void>(route(this.id, UserRoleEntity.$path), ids)
   }
 
-  public static removeRole (userId: string, roleId: string): Promise<void> {
-    return $nuxt.$api.$delete(join(route(userId, UserRoleEntity.$path), roleId))
+  public removeRoles (ids: string[]) {
+    return $nuxt.$api.$delete<void>(route(this.id, UserRoleEntity.$path), { data: ids })
   }
 }

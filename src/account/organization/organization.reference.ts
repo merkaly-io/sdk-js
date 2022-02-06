@@ -1,10 +1,10 @@
-import { join } from 'path'
 import {
   OrganizationBranding,
   OrganizationEntity,
   OrganizationMemberEntity
 } from '@merkaly/api/src/account/organizations'
-import { basePath } from './organization.endpoint'
+import { plainToInstance } from 'class-transformer'
+import { route } from './organization.endpoint'
 
 export default class OrganizationReference extends OrganizationEntity {
   public name: string
@@ -12,22 +12,18 @@ export default class OrganizationReference extends OrganizationEntity {
   public branding: OrganizationBranding
   public members: OrganizationMemberEntity[] = []
 
-  protected get $route () {
-    return basePath(this.id, OrganizationMemberEntity.$path)
-  }
-
   public getMembers () {
-    return $nuxt.$api.$get<OrganizationMemberEntity[]>(this.$route)
-      .then(members => (this.members = members))
+    return $nuxt.$api.$get<OrganizationMemberEntity[]>(route())
+      .then(members => (this.members = members.map(member => plainToInstance(OrganizationMemberEntity, member))))
   }
 
-  public addMember (ids: string[]) {
-    return $nuxt.$api.$post<OrganizationMemberEntity>(join(this.$route, 'members'), ids)
-      .then(member => (this.members.push(member)))
+  public addMembers (ids: string[]) {
+    return $nuxt.$api.$post<OrganizationMemberEntity>(route(OrganizationMemberEntity.$path), ids)
+      .then(member => (this.members.push(plainToInstance(OrganizationMemberEntity, member))))
   }
 
-  public removeMember (id: string) {
-    return $nuxt.$api.$delete<OrganizationMemberEntity[]>(join(this.$route + id))
+  public removeMembers (ids: string[]) {
+    return $nuxt.$api.$delete<OrganizationMemberEntity[]>(route(), { data: ids })
       .then(members => (this.members = members))
   }
 }

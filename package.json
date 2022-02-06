@@ -27,7 +27,7 @@
     "main.*",
     "types",
     "src/**/*.ts",
-    "plugins/**/*.ts"
+    "plugins/plugin.*.ts"
   ],
   "types": "./types",
   "scripts": {
