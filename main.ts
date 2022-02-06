@@ -9,7 +9,7 @@ interface SDKModuleParams {
   sdk?: () => SDK
 }
 
-export const MerkalySDKModule: Module = function (params: SDKModuleParams) {
+export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
   const { options } = this
 
   // @ts-ignore
