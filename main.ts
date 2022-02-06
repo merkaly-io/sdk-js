@@ -6,6 +6,7 @@ interface SDKModuleParams {
   client: string
   domain: string
   api: string
+  proxy?: string
   sdk?: () => SDK
 }
 
@@ -16,7 +17,8 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
   options.publicRuntimeConfig.merkaly = {
     api: params.api,
     client: params.client,
-    domain: params.domain
+    domain: params.domain,
+    proxy: params.proxy || 'api'
   }
 
   this.addPlugin(path.resolve(__dirname, 'plugins/axios.ts'))
@@ -38,7 +40,7 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
 
   options.proxy = {
     ...options.proxy,
-    '/api/': { target: params.api, pathRewrite: { '^/api/': '' } }
+    [`/${params.proxy}`]: { target: params.api, pathRewrite: { [`^/${params.proxy}`]: '' } }
   }
 
   options.build = {

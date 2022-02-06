@@ -12,6 +12,7 @@ const config: NuxtConfig = {
 
   modules: [
     [MerkalySDKModule, {
+      proxy: process.env.API_PROXY,
       api: process.env.API_ENDPOINT,
       client: process.env.AUTH0_CLIENT,
       domain: process.env.AUTH0_DOMAIN
