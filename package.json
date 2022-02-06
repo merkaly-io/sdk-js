@@ -51,6 +51,7 @@
     "@merkaly/api": "^0.1.6",
     "@nuxtjs/auth-next": "5.0.0-1622918202.e815752",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/proxy": "^2.1.0",
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
     "vue": "^2.6.14",

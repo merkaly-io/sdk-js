@@ -27,10 +27,11 @@
     ],
     "types": [
       "@nuxtjs/auth-next",
-      "@types/auth0",
       "@nuxtjs/axios",
-      "@types/node",
-      "@types/jest"
+      "@nuxtjs/proxy",
+      "@types/auth0",
+      "@types/jest",
+      "@types/node"
     ]
   },
   "include": [
