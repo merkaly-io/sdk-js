@@ -10,6 +10,13 @@ interface SDKModuleParams {
   sdk?: () => SDK
 }
 
+declare module '@nuxt/types/config/runtime' {
+  // @ts-ignore
+  interface NuxtOptionsRuntimeConfig {
+    merkaly: SDKModuleParams
+  }
+}
+
 export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
   const { options } = this
 
@@ -21,14 +28,17 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
     proxy: params.proxy || 'api'
   }
 
+  // @ts-ignore
+  const merkaly = options.publicRuntimeConfig.merkaly
+
   this.addPlugin(path.resolve(__dirname, 'plugins/axios.ts'))
 
   options.auth = {
     ...options.auth,
     strategies: {
       auth0: {
-        domain: params.domain,
-        clientId: params.client
+        domain: merkaly.domain,
+        clientId: merkaly.client
       }
     }
   }
@@ -40,7 +50,7 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
 
   options.proxy = {
     ...options.proxy,
-    [`/${params.proxy}`]: { target: params.api, pathRewrite: { [`^/${params.proxy}`]: '' } }
+    [`/${merkaly.proxy}`]: { target: merkaly.api, pathRewrite: { [`^/${merkaly.proxy}`]: '' } }
   }
 
   options.build = {
@@ -52,12 +62,12 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
   this.addModule({ src: '@nuxtjs/auth-next', options: options.auth })
   this.addModule({ src: '@nuxtjs/proxy', options: options.proxy })
 
-  if (params.api) {
-    options.cli.badgeMessages.push(`-> API: ${params.api}`)
+  if (merkaly.api) {
+    options.cli.badgeMessages.push(`-> API: /${merkaly.proxy} -> ${merkaly.api}`)
   }
 
-  if (params.domain) {
-    options.cli.badgeMessages.push(`-> AUTH0: https://${params.domain}`)
+  if (merkaly.domain) {
+    options.cli.badgeMessages.push(`-> AUTH0: https://${merkaly.domain}`)
   }
 }
 
