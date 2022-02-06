@@ -17,17 +17,17 @@ export default class OrganizationReference extends OrganizationEntity {
   }
 
   public getMembers () {
-    return $nuxt.$request.get<OrganizationMemberEntity[]>(this.$route)
+    return $nuxt.$request.$get<OrganizationMemberEntity[]>(this.$route)
       .then(({ data: members }) => (this.members = members))
   }
 
   public addMember (ids: string[]) {
-    return $nuxt.$request.post<OrganizationMemberEntity>(join(this.$route, 'members'), ids)
+    return $nuxt.$request.$post<OrganizationMemberEntity>(join(this.$route, 'members'), ids)
       .then(({ data: member }) => (this.members.push(member)))
   }
 
   public removeMember (id: string) {
-    return $nuxt.$request.delete<OrganizationMemberEntity[]>(join(this.$route + id))
+    return $nuxt.$request.$delete<OrganizationMemberEntity[]>(join(this.$route + id))
       .then(({ data: members }) => (this.members = members))
   }
 }

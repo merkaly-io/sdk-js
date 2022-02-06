@@ -7,23 +7,23 @@ const route = (...path: string[]) => join($InventoryPath, PropertyEntity.$path, 
 
 namespace Property {
   export const find = () => {
-    return $nuxt.$request.get<PropertyReference[]>(route())
+    return $nuxt.$request.$get<PropertyReference[]>(route())
   }
 
   export const read = (id: string) => {
-    return $nuxt.$request.get<PropertyReference>(route(id))
+    return $nuxt.$request.$get<PropertyReference>(route(id))
   }
 
   export const create = (payload: CreatePropertyValidator) => {
-    return $nuxt.$request.post<PropertyReference>(route(), payload)
+    return $nuxt.$request.$post<PropertyReference>(route(), payload)
   }
 
   export const update = (id: string, payload: UpdatePropertyValidator) => {
-    return $nuxt.$request.put<PropertyReference>(route(id), payload)
+    return $nuxt.$request.$put<PropertyReference>(route(id), payload)
   }
 
   export const remove = (id: string) => {
-    return $nuxt.$request.delete<void>(route(id))
+    return $nuxt.$request.$delete<void>(route(id))
   }
 }
 

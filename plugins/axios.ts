@@ -29,9 +29,7 @@ declare module 'vue/types/vue' {
 
 const plugin: Plugin = ({ app, $axios, $config }, inject) => {
   const request = $axios.create()
-
   request.setBaseURL($config.merkaly.api)
-  request.interceptors.response.use(({ data }) => data)
 
   app.$request = request
   inject('request', request)

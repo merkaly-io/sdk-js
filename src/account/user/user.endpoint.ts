@@ -7,23 +7,23 @@ export const route = (...path: string[]) => join($AccountPath, UserEntity.$path,
 
 namespace User {
   export const find = (): Promise<UserReference[]> => {
-    return $nuxt.$request.get(route())
+    return $nuxt.$request.$get(route())
   }
 
   export const read = (id: string): Promise<UserReference> => {
-    return $nuxt.$request.get(route(id))
+    return $nuxt.$request.$get(route(id))
   }
 
   export const create = (payload: CreateUserValidator): Promise<UserReference> => {
-    return $nuxt.$request.post(route(), payload)
+    return $nuxt.$request.$post(route(), payload)
   }
 
   export const update = (id: string, payload: UpdateUserValidator): Promise<UserReference> => {
-    return $nuxt.$request.put(route(id), payload)
+    return $nuxt.$request.$put(route(id), payload)
   }
 
   export const remove = (id: string): Promise<void> => {
-    return $nuxt.$request.delete(route(id))
+    return $nuxt.$request.$delete(route(id))
   }
 }
 
