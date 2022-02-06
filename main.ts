@@ -1,5 +1,6 @@
 import path from 'path'
 import { Module } from '@nuxt/types'
+import 'reflect-metadata'
 import SDK from './src/sdk'
 
 interface SDKModuleParams {
@@ -50,7 +51,10 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
 
   options.proxy = {
     ...options.proxy,
-    [`/${merkaly.proxy}`]: { target: merkaly.api, pathRewrite: { [`^/${merkaly.proxy}`]: '' } }
+    [`/${merkaly.proxy}`]: {
+      target: merkaly.api,
+      pathRewrite: { [`^/${merkaly.proxy}`]: '' }
+    }
   }
 
   options.build = {
@@ -58,9 +62,18 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
     standalone: true
   }
 
-  this.addModule({ src: '@nuxtjs/axios', options: options.axios })
-  this.addModule({ src: '@nuxtjs/auth-next', options: options.auth })
-  this.addModule({ src: '@nuxtjs/proxy', options: options.proxy })
+  this.addModule({
+    src: '@nuxtjs/axios',
+    options: options.axios
+  })
+  this.addModule({
+    src: '@nuxtjs/auth-next',
+    options: options.auth
+  })
+  this.addModule({
+    src: '@nuxtjs/proxy',
+    options: options.proxy
+  })
 
   if (merkaly.api) {
     options.cli.badgeMessages.push(`-> API: /${merkaly.proxy} -> ${merkaly.api}`)
