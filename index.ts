@@ -1,7 +1,6 @@
 import { Context } from '@nuxt/types'
 import { Auth as NuxtAuth } from '@nuxtjs/auth-next'
 import { UserData } from 'auth0'
-import './plugins/axios'
 
 declare global {
   const $nuxt: Context
