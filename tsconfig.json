@@ -16,6 +16,7 @@
     "skipLibCheck": true,
     "emitDeclarationOnly": true,
     "declarationDir": "./types",
+    "declarationMap": true,
     "declaration": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
