@@ -17,7 +17,7 @@
   },
   "license": "ISC",
   "author": "Randy Tellez Galan",
-  "main": "./index.ts",
+  "main": "./index.d.ts",
   "types": "./",
   "directories": {
     "lib": "src",
