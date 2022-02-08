@@ -33,6 +33,7 @@
   "scripts": {
     "prebuild": "yarn run clean",
     "build": "tsc -b",
+    "postpack": "yarn run clean",
     "clean": "tsc -b --clean",
     "dev": "nuxt",
     "generate": "yarn typedoc",

@@ -39,7 +39,7 @@
     "index.d.ts",
     "./main.ts",
     "./plugins/*",
-    "./src/*"
+    "./src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

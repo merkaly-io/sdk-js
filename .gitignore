@@ -96,5 +96,3 @@ sw.*
 *.d.ts
 *.js
 *.map
-
-!index.d.ts
