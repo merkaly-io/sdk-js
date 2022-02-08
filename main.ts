@@ -84,4 +84,5 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
   }
 }
 
-export default MerkalySDKModule
+export { AdminSDK } from './src/sdk.admin'
+export { ManagerSDK } from './src/sdk.manager'

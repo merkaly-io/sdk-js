@@ -1,5 +1,5 @@
 import { Context } from '@nuxt/types'
-import { ManagerSDK } from '../index'
+import { ManagerSDK } from '../main'
 //
 declare module 'vue/types/vue' {
   interface Vue {
