@@ -1,34 +1,30 @@
-import { join } from 'path'
+import { CreateBrandValidator, UpdateBrandValidator } from '@merkaly/api/src/inventory/brands/brand.validator'
 import { plainToInstance } from 'class-transformer'
-import { $InventoryPath } from '@merkaly/api/src/inventory/'
-import { BrandEntity, CreateBrandValidator, UpdateBrandValidator } from '@merkaly/api/src/inventory/brands'
 import BrandReference from './brand.reference'
-
-export const route = (...path: string[]) => join($InventoryPath, BrandEntity.$path, ...path)
 
 namespace Brand {
   export const find = () => {
-    return $nuxt.$api.$get<BrandReference[]>(route())
+    return $nuxt.$api.$get<BrandReference[]>('/inventory/brands/')
       .then(brands => brands.map(brand => plainToInstance(BrandReference, brand)))
   }
 
   export const read = (id: string) => {
-    return $nuxt.$api.$get<BrandReference>(route(id))
+    return $nuxt.$api.$get<BrandReference>('/inventory/brands/' + id)
       .then(brand => plainToInstance(BrandReference, brand))
   }
 
   export const create = (payload: CreateBrandValidator) => {
-    return $nuxt.$api.$post<BrandReference>(route(), payload)
+    return $nuxt.$api.$post<BrandReference>('/inventory/brands/', payload)
       .then(brand => plainToInstance(BrandReference, brand))
   }
 
   export const update = (id: string, payload: UpdateBrandValidator) => {
-    return $nuxt.$api.$put<BrandReference>(route(id), payload)
+    return $nuxt.$api.$put<BrandReference>('/inventory/brands/' + id, payload)
       .then(brand => plainToInstance(BrandReference, brand))
   }
 
   export const remove = (id: string) => {
-    return $nuxt.$api.$delete<void>(route(id))
+    return $nuxt.$api.$delete<void>('/inventory/brands/' + id)
   }
 }
 

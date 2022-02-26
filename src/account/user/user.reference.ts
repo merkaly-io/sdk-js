@@ -1,6 +1,6 @@
-import { UserData, UserEntity, UserRoleEntity } from '@merkaly/api/src/account/users'
+import { UserRoleEntity } from '@merkaly/api/src/account/users/roles/role.entity'
+import { UserData, UserEntity } from '@merkaly/api/src/account/users/user.entity'
 import { Identity } from 'auth0'
-import { route } from './user.endpoint'
 
 export default class UserReference extends UserEntity {
   public multifactor: string[]
@@ -27,14 +27,14 @@ export default class UserReference extends UserEntity {
   public roles: UserRoleEntity[] = []
 
   public getRoles (): Promise<UserRoleEntity[]> {
-    return $nuxt.$api.$get(route(this.id, UserRoleEntity.$path))
+    return $nuxt.$api.$get('/account/users/' + this.user_id + '/roles')
   }
 
   public addRoles (ids: string[]) {
-    return $nuxt.$api.$post<void>(route(this.id, UserRoleEntity.$path), ids)
+    return $nuxt.$api.$post<void>('/account/users/' + this.user_id + '/roles', ids)
   }
 
   public removeRoles (ids: string[]) {
-    return $nuxt.$api.$delete<void>(route(this.id, UserRoleEntity.$path), { data: ids })
+    return $nuxt.$api.$delete<void>('/account/users/' + this.user_id + '/roles', { data: ids })
   }
 }

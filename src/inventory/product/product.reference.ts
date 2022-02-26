@@ -1,9 +1,9 @@
-import { PRODUCT_STATUS, PRODUCT_UNIT, ProductEntity } from '@merkaly/api/src/inventory/products'
-import { ProductMediaEntity } from '@merkaly/api/src/inventory/products/media'
-import { ProductVariantEntity } from '@merkaly/api/src/inventory/products/variants'
+import { MediaEntity } from '@merkaly/api/src/inventory/products/media/media.entity'
+import { PRODUCT_STATUS, PRODUCT_UNIT, ProductEntity } from '@merkaly/api/src/inventory/products/product.entity'
+import { VariantEntity } from '@merkaly/api/src/inventory/products/variants/variant.entity'
+import { plainToInstance } from 'class-transformer'
 import BrandReference from '../brand/brand.reference'
 import CategoryReference from '../category/category.reference'
-import { route } from './product.endpoint'
 
 export default class ProductReference extends ProductEntity {
   public name: string
@@ -18,27 +18,25 @@ export default class ProductReference extends ProductEntity {
 
   public hashtags: string[]
 
-  public masterVariant: ProductVariantEntity
+  public masterVariant: VariantEntity
 
   public status: PRODUCT_STATUS
 
   public unit: PRODUCT_UNIT
 
   // @ts-ignore
-  public media: ProductMediaEntity[] = []
+  public media: MediaEntity[] = []
 
   // @ts-ignore
-  public variants: ProductVariantEntity[] = []
+  public variants: VariantEntity[] = []
 
-  public static getMedia (productId: string): Promise<ProductMediaEntity[]> {
-    const path = route(productId, ProductMediaEntity.$path)
-
-    return $nuxt.$api.$get(path)
+  public getMedia () {
+    return $nuxt.$api.$get<MediaEntity[]>('/inventory/products/' + this.id + '/members/')
+      .then(media => (this.media = media.map(mediaItem => plainToInstance(MediaEntity, mediaItem))))
   }
 
-  public static getVariants (productId: string): Promise<ProductVariantEntity[]> {
-    const path = route(productId, ProductVariantEntity.$path)
-
-    return $nuxt.$api.$get(path)
+  public getVariants () {
+    return $nuxt.$api.$get<VariantEntity[]>('/inventory/products/' + this.id + '/variants/')
+      .then(media => (this.media = media.map(mediaItem => plainToInstance(VariantEntity, mediaItem))))
   }
 }

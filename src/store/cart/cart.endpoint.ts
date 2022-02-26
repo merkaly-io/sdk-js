@@ -1,28 +1,25 @@
-import { join } from 'path'
-import { $StorePath, CartEntity, CreateCartValidator, UpdateCartValidator } from '@merkaly/api/src/store'
+import { CreateCartValidator, UpdateCartValidator } from '@merkaly/api/src/store/carts/cart.validator'
 import CartReference from './cart.reference'
-
-export const route = (...path: string[]) => join($StorePath, CartEntity.$path, ...path)
 
 namespace Cart {
   export const find = (): Promise<CartReference[]> => {
-    return $nuxt.$api.$get(route())
+    return $nuxt.$api.$get('/store/carts')
   }
 
   export const read = (id: string): Promise<CartReference> => {
-    return $nuxt.$api.$get(route(id))
+    return $nuxt.$api.$get('/store/carts' + id)
   }
 
   export const create = (payload: CreateCartValidator): Promise<CartReference> => {
-    return $nuxt.$api.$post(route(), payload)
+    return $nuxt.$api.$post('/store/carts', payload)
   }
 
   export const update = (id: string, payload: UpdateCartValidator): Promise<CartReference> => {
-    return $nuxt.$api.$put(route(id), payload)
+    return $nuxt.$api.$put('/store/carts' + id, payload)
   }
 
   export const remove = (id: string): Promise<void> => {
-    return $nuxt.$api.$delete(route(id))
+    return $nuxt.$api.$delete('/store/carts' + id)
   }
 }
 

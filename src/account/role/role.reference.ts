@@ -1,5 +1,5 @@
-import { RoleEntity, RoleUserEntity } from '@merkaly/api/src/account/roles'
-import { route } from './role.endpoint'
+import { RoleEntity } from '@merkaly/api/src/account/roles/role.entity'
+import { RoleUserEntity } from '@merkaly/api/src/account/roles/users/user.entity'
 
 export default class RoleReference extends RoleEntity {
   public name: string
@@ -7,14 +7,14 @@ export default class RoleReference extends RoleEntity {
   public users: RoleUserEntity[] = []
 
   public getUsers () {
-    return $nuxt.$api.$get<RoleUserEntity[]>(route(this.id, RoleUserEntity.$path))
+    return $nuxt.$api.$get<RoleUserEntity[]>('/account/roles/' + this.id + '/users')
   }
 
   public addUsers (ids: string[]) {
-    return $nuxt.$api.$post<void>(route(this.id, RoleUserEntity.$path), ids)
+    return $nuxt.$api.$post<void>('/account/roles/' + this.id + '/users', ids)
   }
 
   public removeUsers (ids: string[]) {
-    return $nuxt.$api.$delete<void>(route(this.id, RoleUserEntity.$path), { data: ids })
+    return $nuxt.$api.$delete<void>('/account/roles/' + this.id + '/users', { data: ids })
   }
 }

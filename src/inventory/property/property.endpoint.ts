@@ -1,29 +1,28 @@
-import { join } from 'path'
-import { $InventoryPath, CreatePropertyValidator, UpdatePropertyValidator } from '@merkaly/api/src/inventory'
-import { PropertyEntity } from '@merkaly/api/src/inventory/properties'
+import {
+  CreatePropertyValidator,
+  UpdatePropertyValidator
+} from '@merkaly/api/src/inventory/properties/property.validator'
 import PropertyReference from './property.reference'
-
-const route = (...path: string[]) => join($InventoryPath, PropertyEntity.$path, ...path)
 
 namespace Property {
   export const find = () => {
-    return $nuxt.$api.$get<PropertyReference[]>(route())
+    return $nuxt.$api.$get<PropertyReference[]>('/inventory/properties/')
   }
 
   export const read = (id: string) => {
-    return $nuxt.$api.$get<PropertyReference>(route(id))
+    return $nuxt.$api.$get<PropertyReference>('/inventory/properties/' + id)
   }
 
   export const create = (payload: CreatePropertyValidator) => {
-    return $nuxt.$api.$post<PropertyReference>(route(), payload)
+    return $nuxt.$api.$post<PropertyReference>('/inventory/properties/', payload)
   }
 
   export const update = (id: string, payload: UpdatePropertyValidator) => {
-    return $nuxt.$api.$put<PropertyReference>(route(id), payload)
+    return $nuxt.$api.$put<PropertyReference>('/inventory/properties/' + id, payload)
   }
 
   export const remove = (id: string) => {
-    return $nuxt.$api.$delete<void>(route(id))
+    return $nuxt.$api.$delete<void>('/inventory/properties/' + id)
   }
 }
 

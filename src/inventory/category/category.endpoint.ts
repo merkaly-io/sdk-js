@@ -1,29 +1,28 @@
-import { join } from 'path'
-import { $InventoryPath } from '@merkaly/api/src/inventory'
-import { CategoryEntity, CreateCategoryValidator, UpdateCategoryValidator } from '@merkaly/api/src/inventory/categories'
+import {
+  CreateCategoryValidator,
+  UpdateCategoryValidator
+} from '@merkaly/api/src/inventory/categories/category.validator'
 import CategoryReference from './category.reference'
-
-const route = (...path: string[]) => join($InventoryPath, CategoryEntity.$path, ...path)
 
 namespace Category {
   export const find = (): Promise<CategoryReference[]> => {
-    return $nuxt.$api.$get(route())
+    return $nuxt.$api.$get('/inventory/categories/')
   }
 
   export const read = (id: string): Promise<CategoryReference> => {
-    return $nuxt.$api.$get(route(id))
+    return $nuxt.$api.$get('/inventory/categories/' + id)
   }
 
   export const create = (payload: CreateCategoryValidator): Promise<CategoryReference> => {
-    return $nuxt.$api.$post(route(), payload)
+    return $nuxt.$api.$post('/inventory/categories/', payload)
   }
 
   export const update = (id: string, payload: UpdateCategoryValidator): Promise<CategoryReference> => {
-    return $nuxt.$api.$put(route(id), payload)
+    return $nuxt.$api.$put('/inventory/categories/' + id, payload)
   }
 
   export const remove = (id: string): Promise<void> => {
-    return $nuxt.$api.$delete(route(id))
+    return $nuxt.$api.$delete('/inventory/categories/' + id)
   }
 }
 

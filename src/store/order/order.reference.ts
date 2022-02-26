@@ -1,6 +1,5 @@
-import { OrderEntity } from '@merkaly/api/src/store/orders'
+import { OrderEntity } from '@merkaly/api/src/store/orders/order.entity'
 import CartReference from '../cart/cart.reference'
-import { route } from './order.endpoint'
 
 export default class OrderReference extends OrderEntity {
   public number: string
@@ -8,11 +7,7 @@ export default class OrderReference extends OrderEntity {
   public price: number
   public cart!: CartReference
 
-  protected get $route () {
-    return route(this.id)
-  }
-
-  public static getCart (orderId: string): Promise<CartReference> {
-    return $nuxt.$api.$get(route(orderId))
+  public getCart () {
+    return $nuxt.$api.$get<void>('/store/orders/' + this.id + '/cart')
   }
 }
