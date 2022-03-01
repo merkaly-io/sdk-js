@@ -15,7 +15,7 @@ namespace Cart {
   }
 
   export const update = (id: string, payload: UpdateCartValidator): Promise<CartReference> => {
-    return $nuxt.$api.$put('/store/carts' + id, payload)
+    return $nuxt.$api.$patch('/store/carts' + id, payload)
   }
 
   export const remove = (id: string): Promise<void> => {

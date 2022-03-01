@@ -15,7 +15,7 @@ namespace Order {
   }
 
   export const update = (id: string, payload: UpdateOrderValidator): Promise<OrderReference> => {
-    return $nuxt.$api.$put('/store/orders' + id, payload)
+    return $nuxt.$api.$patch('/store/orders' + id, payload)
   }
 
   export const remove = (id: string): Promise<void> => {

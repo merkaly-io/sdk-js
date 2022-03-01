@@ -18,7 +18,7 @@ namespace Property {
   }
 
   export const update = (id: string, payload: UpdatePropertyValidator) => {
-    return $nuxt.$api.$put<PropertyReference>('/inventory/properties/' + id, payload)
+    return $nuxt.$api.$patch<PropertyReference>('/inventory/properties/' + id, payload)
   }
 
   export const remove = (id: string) => {

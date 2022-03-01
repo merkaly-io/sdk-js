@@ -18,7 +18,7 @@ namespace Category {
   }
 
   export const update = (id: string, payload: UpdateCategoryValidator): Promise<CategoryReference> => {
-    return $nuxt.$api.$put('/inventory/categories/' + id, payload)
+    return $nuxt.$api.$patch('/inventory/categories/' + id, payload)
   }
 
   export const remove = (id: string): Promise<void> => {

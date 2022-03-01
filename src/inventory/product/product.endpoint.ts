@@ -15,7 +15,7 @@ namespace Product {
   }
 
   export const update = (id: string, payload: UpdateProductValidator): Promise<ProductReference> => {
-    return $nuxt.$api.$put('/inventory/products/' + id, payload)
+    return $nuxt.$api.$patch('/inventory/products/' + id, payload)
   }
 
   export const remove = (id: string): Promise<void> => {

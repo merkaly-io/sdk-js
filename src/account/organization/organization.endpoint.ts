@@ -1,4 +1,5 @@
 import {
+  IdOrganizationValidator,
   CreateOrganizationValidator,
   UpdateOrganizationValidator
 } from '@merkaly/api/src/account/organizations/organization.validator'
@@ -11,7 +12,7 @@ namespace Organization {
       .then(organizations => organizations.map(organization => plainToInstance(OrganizationReference, organization)))
   }
 
-  export const read = (id: string) => {
+  export const read = (id: IdOrganizationValidator) => {
     return $nuxt.$api.$get<OrganizationReference>('/account/organizations/' + id)
       .then(organization => plainToInstance(OrganizationReference, organization))
   }
@@ -21,12 +22,12 @@ namespace Organization {
       .then(organization => plainToInstance(OrganizationReference, organization))
   }
 
-  export const update = (id: string, payload: UpdateOrganizationValidator) => {
+  export const update = (id: IdOrganizationValidator, payload: UpdateOrganizationValidator) => {
     return $nuxt.$api.$patch<OrganizationReference>('/account/organizations/' + id, payload)
       .then(organization => plainToInstance(OrganizationReference, organization))
   }
 
-  export const remove = (id: string) => {
+  export const remove = (id: IdOrganizationValidator) => {
     return $nuxt.$api.$delete<void>('/account/organizations/' + id)
   }
 }

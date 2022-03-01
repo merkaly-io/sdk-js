@@ -1369,10 +1369,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     sourcemap-codec "1.4.8"
 
-"@merkaly/api@^0.1.10-1":
-  version "0.1.10-1"
-  resolved "https://registry.yarnpkg.com/@merkaly/api/-/api-0.1.10-1.tgz#a4a716ccf2e38d13d3613bed0f0c8ae7af205d28"
-  integrity sha512-GghsIXKYMaNusW5MHipk1/RCYRJsiCs6pfsJ1+KXUvibBq1loOLhUzUGlWZS7Jq2zeyd5WWyA0rB3RLjBuXmlQ==
+"@merkaly/api@^0.1.10-3":
+  version "0.1.10-3"
+  resolved "https://registry.yarnpkg.com/@merkaly/api/-/api-0.1.10-3.tgz#3df1e805e26f88298adb1be65a2473ba6081909c"
+  integrity sha512-v0Tg0VZ0Vmqjly59KyPDisFBPBvkE8pGy/nt3zH6oe1HyGAkmTVCVuuvvy2JAsXnCpFPvRmg8Cdk9fDk8dnnBg==
   dependencies:
     "@nestjs/axios" "^0.0.6"
     "@nestjs/swagger" "^5.0.9"

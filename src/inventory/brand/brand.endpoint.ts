@@ -19,7 +19,7 @@ namespace Brand {
   }
 
   export const update = (id: string, payload: UpdateBrandValidator) => {
-    return $nuxt.$api.$put<BrandReference>('/inventory/brands/' + id, payload)
+    return $nuxt.$api.$patch<BrandReference>('/inventory/brands/' + id, payload)
       .then(brand => plainToInstance(BrandReference, brand))
   }
 

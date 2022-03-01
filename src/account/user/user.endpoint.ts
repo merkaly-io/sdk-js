@@ -19,7 +19,7 @@ namespace User {
   }
 
   export const update = (id: string, payload: UpdateUserValidator) => {
-    return $nuxt.$api.$put<UserReference>('/account/users/' + id, payload)
+    return $nuxt.$api.$patch<UserReference>('/account/users/' + id, payload)
       .then(user => plainToInstance(UserReference, user))
   }
 

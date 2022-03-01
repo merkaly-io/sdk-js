@@ -19,7 +19,7 @@ namespace Role {
   }
 
   export const update = (id: string, payload: UpdateRoleValidator) => {
-    return $nuxt.$api.$put<RoleReference>('/account/roles/' + id, payload)
+    return $nuxt.$api.$patch<RoleReference>('/account/roles/' + id, payload)
       .then(role => plainToInstance(RoleReference, role))
   }
 
