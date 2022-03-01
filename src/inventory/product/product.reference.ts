@@ -1,28 +1,14 @@
 import { MediaEntity } from '@merkaly/api/src/inventory/products/media/media.entity'
-import { PRODUCT_STATUS, PRODUCT_UNIT, ProductEntity } from '@merkaly/api/src/inventory/products/product.entity'
+import { ProductEntity } from '@merkaly/api/src/inventory/products/product.entity'
 import { VariantEntity } from '@merkaly/api/src/inventory/products/variants/variant.entity'
 import { plainToInstance } from 'class-transformer'
 import BrandReference from '../brand/brand.reference'
 import CategoryReference from '../category/category.reference'
 
 export default class ProductReference extends ProductEntity {
-  public name: string
-
-  public description: string
-
-  public price: number
-
   public brand: BrandReference
 
   public category: CategoryReference
-
-  public hashtags: string[]
-
-  public masterVariant: VariantEntity
-
-  public status: PRODUCT_STATUS
-
-  public unit: PRODUCT_UNIT
 
   // @ts-ignore
   public media: MediaEntity[] = []

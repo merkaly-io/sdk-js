@@ -1,14 +1,15 @@
 import {
-  IdOrganizationValidator,
   CreateOrganizationValidator,
+  FindOrganizationValidator,
+  IdOrganizationValidator,
   UpdateOrganizationValidator
 } from '@merkaly/api/src/account/organizations/organization.validator'
 import { plainToInstance } from 'class-transformer'
 import OrganizationReference from './organization.reference'
 
 namespace Organization {
-  export const find = () => {
-    return $nuxt.$api.$get<OrganizationReference[]>('/account/organizations/')
+  export const find = (params?: FindOrganizationValidator) => {
+    return $nuxt.$api.$get<OrganizationReference[]>('/account/organizations/', { params })
       .then(organizations => organizations.map(organization => plainToInstance(OrganizationReference, organization)))
   }
 

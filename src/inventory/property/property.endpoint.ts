@@ -1,15 +1,17 @@
 import {
   CreatePropertyValidator,
+  FindPropertyValidator,
+  IdPropertyValidator,
   UpdatePropertyValidator
 } from '@merkaly/api/src/inventory/properties/property.validator'
 import PropertyReference from './property.reference'
 
 namespace Property {
-  export const find = () => {
-    return $nuxt.$api.$get<PropertyReference[]>('/inventory/properties/')
+  export const find = (params?: FindPropertyValidator) => {
+    return $nuxt.$api.$get<PropertyReference[]>('/inventory/properties/', { params })
   }
 
-  export const read = (id: string) => {
+  export const read = (id: IdPropertyValidator) => {
     return $nuxt.$api.$get<PropertyReference>('/inventory/properties/' + id)
   }
 
@@ -17,11 +19,11 @@ namespace Property {
     return $nuxt.$api.$post<PropertyReference>('/inventory/properties/', payload)
   }
 
-  export const update = (id: string, payload: UpdatePropertyValidator) => {
+  export const update = (id: IdPropertyValidator, payload: UpdatePropertyValidator) => {
     return $nuxt.$api.$patch<PropertyReference>('/inventory/properties/' + id, payload)
   }
 
-  export const remove = (id: string) => {
+  export const remove = (id: IdPropertyValidator) => {
     return $nuxt.$api.$delete<void>('/inventory/properties/' + id)
   }
 }

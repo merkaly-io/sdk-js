@@ -1,28 +1,35 @@
 import {
   CreateCategoryValidator,
+  FindCategoryValidator,
+  IdCategoryValidator,
   UpdateCategoryValidator
 } from '@merkaly/api/src/inventory/categories/category.validator'
+import { plainToInstance } from 'class-transformer'
 import CategoryReference from './category.reference'
 
 namespace Category {
-  export const find = (): Promise<CategoryReference[]> => {
-    return $nuxt.$api.$get('/inventory/categories/')
+  export const find = (params?: FindCategoryValidator) => {
+    return $nuxt.$api.$get<CategoryReference[]>('/inventory/categories/', { params })
+      .then(categories => categories.map(category => plainToInstance(CategoryReference, category)))
   }
 
-  export const read = (id: string): Promise<CategoryReference> => {
-    return $nuxt.$api.$get('/inventory/categories/' + id)
+  export const read = (id: IdCategoryValidator) => {
+    return $nuxt.$api.$get<CategoryReference>('/inventory/categories/' + id)
+      .then(category => plainToInstance(CategoryReference, category))
   }
 
-  export const create = (payload: CreateCategoryValidator): Promise<CategoryReference> => {
-    return $nuxt.$api.$post('/inventory/categories/', payload)
+  export const create = (payload: CreateCategoryValidator) => {
+    return $nuxt.$api.$post<CategoryReference>('/inventory/categories/', payload)
+      .then(category => plainToInstance(CategoryReference, category))
   }
 
-  export const update = (id: string, payload: UpdateCategoryValidator): Promise<CategoryReference> => {
-    return $nuxt.$api.$patch('/inventory/categories/' + id, payload)
+  export const update = (id: IdCategoryValidator, payload: UpdateCategoryValidator) => {
+    return $nuxt.$api.$patch<CategoryReference>('/inventory/categories/' + id, payload)
+      .then(category => plainToInstance(CategoryReference, category))
   }
 
-  export const remove = (id: string): Promise<void> => {
-    return $nuxt.$api.$delete('/inventory/categories/' + id)
+  export const remove = (id: IdCategoryValidator) => {
+    return $nuxt.$api.$delete<void>('/inventory/categories/' + id)
   }
 }
 

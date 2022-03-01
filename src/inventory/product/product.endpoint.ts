@@ -1,25 +1,34 @@
-import { CreateProductValidator, UpdateProductValidator } from '@merkaly/api/src/inventory/products/product.validator'
+import {
+  CreateProductValidator,
+  IdProductValidator,
+  UpdateProductValidator
+} from '@merkaly/api/src/inventory/products/product.validator'
+import { plainToInstance } from 'class-transformer'
 import ProductReference from './product.reference'
 
 namespace Product {
-  export const find = (): Promise<ProductReference[]> => {
-    return $nuxt.$api.$get('/inventory/products/')
+  export const find = () => {
+    return $nuxt.$api.$get<ProductReference[]>('/inventory/products/')
+      .then(products => products.map(product => plainToInstance(ProductReference, product)))
   }
 
-  export const read = (id: string): Promise<ProductReference> => {
-    return $nuxt.$api.$get('/inventory/products/' + id)
+  export const read = (id: IdProductValidator) => {
+    return $nuxt.$api.$get<ProductReference>('/inventory/products/' + id)
+      .then(product => plainToInstance(ProductReference, product))
   }
 
-  export const create = (payload: CreateProductValidator): Promise<ProductReference> => {
-    return $nuxt.$api.$post('/inventory/products/', payload)
+  export const create = (payload: CreateProductValidator) => {
+    return $nuxt.$api.$post<ProductReference>('/inventory/products/', payload)
+      .then(product => plainToInstance(ProductReference, product))
   }
 
-  export const update = (id: string, payload: UpdateProductValidator): Promise<ProductReference> => {
-    return $nuxt.$api.$patch('/inventory/products/' + id, payload)
+  export const update = (id: IdProductValidator, payload: UpdateProductValidator) => {
+    return $nuxt.$api.$patch<ProductReference>('/inventory/products/' + id, payload)
+      .then(product => plainToInstance(ProductReference, product))
   }
 
-  export const remove = (id: string): Promise<void> => {
-    return $nuxt.$api.$delete('/inventory/products/' + id)
+  export const remove = (id: IdProductValidator) => {
+    return $nuxt.$api.$delete<void>('/inventory/products/' + id)
   }
 }
 
