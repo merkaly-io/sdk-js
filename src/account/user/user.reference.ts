@@ -1,40 +1,36 @@
-import { UserRoleEntity } from '@merkaly/api/src/account/users/roles/role.entity'
-import { UserData, UserEntity } from '@merkaly/api/src/account/users/user.entity'
-import { Identity } from 'auth0'
+import { AppMetadata, Role, UserData, UserMetadata } from 'auth0'
 
-export default class UserReference extends UserEntity {
-  public multifactor: string[]
-  public blocked: boolean
-  public created_at: string
-  public email: string
-  public email_verified: boolean
-  public family_name: string
-  public given_name: string
-  public identities: Identity[]
-  public last_ip: string
-  public last_login: string
-  public last_password_reset: string
-  public logins_count: number
-  public name: string
-  public nickname: string
-  public phone_number: string
-  public phone_verified: boolean
-  public picture: string
-  public updated_at: string
-  public user_id: string
-  public user_metadata: UserData
+export default class UserReference implements UserData {
+  public app_metadata: AppMetadata | undefined
+  public blocked: boolean | undefined
+  public email: string | undefined
+  public email_verified: boolean | undefined
+  public family_name: string | undefined
+  public given_name: string | undefined
+  public name: string | undefined
+  public nickname: string | undefined
+  public password: string | undefined
+  public phone_number: string | undefined
+  public phone_verified: boolean | undefined
+  public picture: string | undefined
+  public user_id: string | undefined
+  public user_metadata: UserMetadata | undefined
   public username: string | undefined
-  public roles: UserRoleEntity[] = []
+  public verify_email: boolean | undefined
 
-  public getRoles (): Promise<UserRoleEntity[]> {
-    return $nuxt.$api.$get('/account/users/' + this.user_id + '/roles')
+  public get id () {
+    return this.user_id
+  }
+
+  public getRoles (): Promise<Role[]> {
+    return $nuxt.$api.$get('/account/users/' + this.id + '/roles')
   }
 
   public addRoles (ids: string[]) {
-    return $nuxt.$api.$post<void>('/account/users/' + this.user_id + '/roles', ids)
+    return $nuxt.$api.$post<void>('/account/users/' + this.id + '/roles', ids)
   }
 
   public removeRoles (ids: string[]) {
-    return $nuxt.$api.$delete<void>('/account/users/' + this.user_id + '/roles', { data: ids })
+    return $nuxt.$api.$delete<void>('/account/users/' + this.id + '/roles', { data: ids })
   }
 }

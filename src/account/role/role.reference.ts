@@ -1,13 +1,13 @@
-import { RoleEntity } from '@merkaly/api/src/account/roles/role.entity'
-import { RoleUserEntity } from '@merkaly/api/src/account/roles/users/user.entity'
+import { Role, User } from 'auth0'
 
-export default class RoleReference extends RoleEntity {
+export default class RoleReference implements Role {
+  public id: string
   public name: string
   public description: string
-  public users: RoleUserEntity[] = []
+  public users: User[] = []
 
   public getUsers () {
-    return $nuxt.$api.$get<RoleUserEntity[]>('/account/roles/' + this.id + '/users')
+    return $nuxt.$api.$get<User[]>('/account/roles/' + this.id + '/users')
   }
 
   public addUsers (ids: string[]) {
