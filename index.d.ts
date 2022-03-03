@@ -1,11 +1,6 @@
-import { Context } from '@nuxt/types'
 import { Auth as NuxtAuth } from '@nuxtjs/auth-next'
 import { NuxtAxiosInstance } from '@nuxtjs/axios'
 import { UserData } from 'auth0'
-
-declare global {
-  const $nuxt: Context
-}
 
 export interface User {
   id: string

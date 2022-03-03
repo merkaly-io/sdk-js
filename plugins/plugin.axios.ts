@@ -1,11 +1,16 @@
 import { Plugin } from '@nuxt/types'
+import useAxios from '../hooks/useAxios'
 
-const plugin: Plugin = ({ app, $axios, $config }, inject) => {
-  const api = $axios.create()
-  api.setBaseURL(`/${$config.merkaly.proxy}`)
+const plugin: Plugin = ({ $axios, $config }) => {
+  useAxios.setBaseURL = $axios.setBaseURL
+  useAxios.setToken = $axios.setToken
+  useAxios.$get = $axios.$get
+  useAxios.$post = $axios.$post
+  useAxios.$put = $axios.$put
+  useAxios.$patch = $axios.$patch
+  useAxios.$delete = $axios.$delete
 
-  app.$api = api
-  inject('api', api)
+  useAxios.setBaseURL(`/${$config.merkaly.proxy}`)
 }
 
 export default plugin

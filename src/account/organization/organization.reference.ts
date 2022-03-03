@@ -4,6 +4,7 @@ import {
 } from '@merkaly/api/src/account/organizations/members/member.validator'
 import { IdOrganizationValidator } from '@merkaly/api/src/account/organizations/organization.validator'
 import { Organization, OrganizationMember, OrganizationConnection } from 'auth0'
+import useAxios from '../../../hooks/useAxios'
 
 export default class OrganizationReference implements Organization {
   public id: IdOrganizationValidator
@@ -14,22 +15,22 @@ export default class OrganizationReference implements Organization {
   public connections: OrganizationConnection[] = []
 
   public getMembers () {
-    return $nuxt.$api.$get<OrganizationMember[]>('/account/organizations/' + this.id + '/members/')
+    return useAxios.$get<OrganizationMember[]>('/account/organizations/' + this.id + '/members/')
       .then(members => (this.members = members))
   }
 
   public addMembers (ids: AddOrganizationMembers) {
-    return $nuxt.$api.$post<OrganizationMember>('/account/organizations/' + this.id + '/members/', ids)
+    return useAxios.$post<OrganizationMember>('/account/organizations/' + this.id + '/members/', ids)
       .then(member => this.members.concat(member))
   }
 
   public removeMembers (ids: RemoveOrganizationMembers) {
-    return $nuxt.$api.$delete<OrganizationMember[]>('/account/organizations/' + this.id + '/members/', { data: ids })
+    return useAxios.$delete<OrganizationMember[]>('/account/organizations/' + this.id + '/members/', { data: ids })
       .then(members => (this.members = members))
   }
 
   public getConnections () {
-    return $nuxt.$api.$get<OrganizationConnection[]>('/account/organizations/' + this.id + '/connections/')
+    return useAxios.$get<OrganizationConnection[]>('/account/organizations/' + this.id + '/connections/')
       .then(connections => (this.connections = connections))
   }
 }
