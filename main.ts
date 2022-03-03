@@ -33,7 +33,6 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
   const merkaly = options.publicRuntimeConfig.merkaly
 
   this.addPlugin(path.resolve(__dirname, 'plugins/plugin.axios.ts'))
-  this.addPlugin(path.resolve(__dirname, 'hooks/useAxios.ts'))
 
   options.auth = {
     ...options.auth,

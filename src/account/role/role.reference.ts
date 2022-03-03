@@ -1,7 +1,7 @@
 import { IdRoleValidator } from '@merkaly/api/src/account/roles/role.validator'
 import { AddRoleUsers, RemoveRoleUsers } from '@merkaly/api/src/account/roles/users/user.validator'
 import { Role, User } from 'auth0'
-import useAxios from '../../../hooks/useAxios'
+import MerkalySDK from '../../sdk'
 
 export default class RoleReference implements Role {
   public id: IdRoleValidator
@@ -10,14 +10,14 @@ export default class RoleReference implements Role {
   public users: User[] = []
 
   public getUsers () {
-    return useAxios.$get<User[]>('/account/roles/' + this.id + '/users')
+    return MerkalySDK.prototype.$axios.$get<User[]>('/account/roles/' + this.id + '/users')
   }
 
   public addUsers (ids: AddRoleUsers) {
-    return useAxios.$post<void>('/account/roles/' + this.id + '/users', ids)
+    return MerkalySDK.prototype.$axios.$post<void>('/account/roles/' + this.id + '/users', ids)
   }
 
   public removeUsers (ids: RemoveRoleUsers) {
-    return useAxios.$delete<void>('/account/roles/' + this.id + '/users', { data: ids })
+    return MerkalySDK.prototype.$axios.$delete<void>('/account/roles/' + this.id + '/users', { data: ids })
   }
 }
