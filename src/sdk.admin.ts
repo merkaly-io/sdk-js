@@ -1,10 +1,11 @@
+import { Account } from './account'
+import { Inventory } from './inventory'
 import MerkalySDK from './sdk'
-import Account from './account/index'
-import Inventory from './inventory/index'
-import Store from './store/index'
+import { Store } from './store'
 
 export class AdminSDK extends MerkalySDK {
-  public readonly account = Account
-  public readonly inventory = Inventory
-  public readonly store = Store
+  public readonly account = new Account()
+  public readonly inventory = new Inventory()
+  public readonly store = new Store()
 }
+ 

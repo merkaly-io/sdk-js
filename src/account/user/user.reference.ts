@@ -20,7 +20,7 @@ export default class UserReference implements UserData {
   public verify_email: UserData['verify_email']
 
   public get id () {
-    return this.user_id
+    return this.user_id as string
   }
 
   public getRoles () {

@@ -8,30 +8,28 @@ import { plainToInstance } from 'class-transformer'
 import MerkalySDK from '../../sdk'
 import RoleReference from './role.reference'
 
-namespace Role {
-  export const find = (params?: FindRoleValidator) => {
+export class Role {
+  public find (params?: FindRoleValidator) {
     return MerkalySDK.$axios.get<RoleReference[]>('/account/roles/', { params })
       .then(roles => roles.map(role => plainToInstance(RoleReference, role)))
   }
 
-  export const read = (id: IdRoleValidator) => {
+  public read (id: IdRoleValidator) {
     return MerkalySDK.$axios.get<RoleReference>('/account/roles/' + id)
       .then(role => plainToInstance(RoleReference, role))
   }
 
-  export const create = (payload: CreateRoleValidator) => {
+  public create (payload: CreateRoleValidator) {
     return MerkalySDK.$axios.post<RoleReference>('/account/roles/', payload)
       .then(role => plainToInstance(RoleReference, role))
   }
 
-  export const update = (id: IdRoleValidator, payload: UpdateRoleValidator) => {
+  public update (id: IdRoleValidator, payload: UpdateRoleValidator) {
     return MerkalySDK.$axios.patch<RoleReference>('/account/roles/' + id, payload)
       .then(role => plainToInstance(RoleReference, role))
   }
 
-  export const remove = (id: IdRoleValidator) => {
+  public remove (id: IdRoleValidator) {
     return MerkalySDK.$axios.delete<void>('/account/roles/' + id)
   }
 }
-
-export default Role
