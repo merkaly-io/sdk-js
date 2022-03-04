@@ -6,6 +6,6 @@ export default class OrderReference extends OrderEntity {
   public cart!: CartReference
 
   public getCart () {
-    return MerkalySDK.prototype.$axios.$get<void>('/store/orders/' + this.id + '/cart')
+    return MerkalySDK.$axios.$get<void>('/store/orders/' + this.id + '/cart')
   }
 }

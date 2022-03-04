@@ -9,7 +9,7 @@ const plugin: Plugin = ({ $axios, $config, req }) => {
     baseURL = 'http://' + baseURL
   }
 
-  MerkalySDK.prototype.$axios = $axios.create({ baseURL })
+  MerkalySDK.$axios = $axios.create({ baseURL })
 }
 
 export default plugin

@@ -18,12 +18,12 @@ export default class ProductReference extends ProductEntity {
   public variants: VariantEntity[] = []
 
   public getMedia () {
-    return MerkalySDK.prototype.$axios.$get<MediaEntity[]>('/inventory/products/' + this.id + '/members/')
+    return MerkalySDK.$axios.$get<MediaEntity[]>('/inventory/products/' + this.id + '/members/')
       .then(media => (this.media = media.map(mediaItem => plainToInstance(MediaEntity, mediaItem))))
   }
 
   public getVariants () {
-    return MerkalySDK.prototype.$axios.$get<VariantEntity[]>('/inventory/products/' + this.id + '/variants/')
+    return MerkalySDK.$axios.$get<VariantEntity[]>('/inventory/products/' + this.id + '/variants/')
       .then(media => (this.media = media.map(mediaItem => plainToInstance(VariantEntity, mediaItem))))
   }
 }

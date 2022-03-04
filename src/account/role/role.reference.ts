@@ -10,14 +10,14 @@ export default class RoleReference implements Role {
   public users: User[] = []
 
   public getUsers () {
-    return MerkalySDK.prototype.$axios.$get<User[]>('/account/roles/' + this.id + '/users')
+    return MerkalySDK.$axios.$get<User[]>('/account/roles/' + this.id + '/users')
   }
 
   public addUsers (ids: AddRoleUsers) {
-    return MerkalySDK.prototype.$axios.$post<void>('/account/roles/' + this.id + '/users', ids)
+    return MerkalySDK.$axios.$post<void>('/account/roles/' + this.id + '/users', ids)
   }
 
   public removeUsers (ids: RemoveRoleUsers) {
-    return MerkalySDK.prototype.$axios.$delete<void>('/account/roles/' + this.id + '/users', { data: ids })
+    return MerkalySDK.$axios.$delete<void>('/account/roles/' + this.id + '/users', { data: ids })
   }
 }

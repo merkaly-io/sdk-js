@@ -15,22 +15,22 @@ export default class OrganizationReference implements Organization {
   public connections: OrganizationConnection[] = []
 
   public getMembers () {
-    return MerkalySDK.prototype.$axios.$get<OrganizationMember[]>('/account/organizations/' + this.id + '/members/')
+    return MerkalySDK.$axios.$get<OrganizationMember[]>('/account/organizations/' + this.id + '/members/')
       .then(members => (this.members = members))
   }
 
   public addMembers (ids: AddOrganizationMembers) {
-    return MerkalySDK.prototype.$axios.$post<OrganizationMember>('/account/organizations/' + this.id + '/members/', ids)
+    return MerkalySDK.$axios.$post<OrganizationMember>('/account/organizations/' + this.id + '/members/', ids)
       .then(member => this.members.concat(member))
   }
 
   public removeMembers (ids: RemoveOrganizationMembers) {
-    return MerkalySDK.prototype.$axios.$delete<OrganizationMember[]>('/account/organizations/' + this.id + '/members/', { data: ids })
+    return MerkalySDK.$axios.$delete<OrganizationMember[]>('/account/organizations/' + this.id + '/members/', { data: ids })
       .then(members => (this.members = members))
   }
 
   public getConnections () {
-    return MerkalySDK.prototype.$axios.$get<OrganizationConnection[]>('/account/organizations/' + this.id + '/connections/')
+    return MerkalySDK.$axios.$get<OrganizationConnection[]>('/account/organizations/' + this.id + '/connections/')
       .then(connections => (this.connections = connections))
   }
 }
