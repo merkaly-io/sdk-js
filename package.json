@@ -1,6 +1,6 @@
 {
   "name": "@merkaly/sdk-js",
-  "version": "0.1.4-3",
+  "version": "0.1.4-4",
   "description": "",
   "keywords": [
     "sdk",
@@ -64,7 +64,6 @@
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@nuxt/types": "^2.15.8",
-    "@types/dotenv": "^8.2.0",
     "@types/faker": "^5.5.9",
     "@types/jest": "^27.0.0",
     "babel-eslint": "^10.1.0",

@@ -28,10 +28,10 @@
       "@nuxtjs/axios",
       "@nuxtjs/proxy",
       "@types/auth0",
-      "@types/dotenv",
       "@types/jest",
       "@types/node",
-      "class-transformer"
+      "class-transformer",
+      "dotenv"
     ],
     "paths": {
       "@merkaly/sdk-js/*": [
