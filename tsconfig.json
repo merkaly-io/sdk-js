@@ -22,14 +22,13 @@
     "typeRoots": [
       "@merkaly/api",
       "@nuxt/types",
-      "@nuxtjs/auth-next",
-      "@nuxtjs/axios"
     ],
     "types": [
       "@nuxtjs/auth-next",
       "@nuxtjs/axios",
       "@nuxtjs/proxy",
       "@types/auth0",
+      "@types/dotenv",
       "@types/jest",
       "@types/node",
       "class-transformer"
@@ -41,14 +40,11 @@
     }
   },
   "include": [
-    "index.d.ts",
-    "./main.ts",
-    "./plugins/*",
+    "./nuxt/**/*.ts",
     "./src/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    ".nuxt",
-    "dist"
+    "test"
   ]
 }
