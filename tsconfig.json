@@ -33,7 +33,12 @@
       "@types/jest",
       "@types/node",
       "class-transformer"
-    ]
+    ],
+    "paths": {
+      "@merkaly/sdk-js/*": [
+        "./*"
+      ]
+    }
   },
   "include": [
     "index.d.ts",
