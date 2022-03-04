@@ -1,7 +1,6 @@
 import { Module } from '@nuxt/types'
-import { resolve } from 'path'
 import 'reflect-metadata'
-import SDK from '../src/sdk'
+import SDK from './src/sdk'
 
 interface SDKModuleParams {
   client: string
@@ -31,8 +30,6 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
 
   // @ts-ignore
   const merkaly = options.publicRuntimeConfig.merkaly
-
-  this.addPlugin(resolve(__dirname, 'plugins/plugin.axios.ts'))
 
   options.auth = {
     ...options.auth,

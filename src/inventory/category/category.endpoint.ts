@@ -10,27 +10,27 @@ import CategoryReference from './category.reference'
 
 namespace Category {
   export const find = (params?: FindCategoryValidator) => {
-    return MerkalySDK.$axios.$get<CategoryReference[]>('/inventory/categories/', { params })
+    return MerkalySDK.$axios.get<CategoryReference[]>('/inventory/categories/', { params })
       .then(categories => categories.map(category => plainToInstance(CategoryReference, category)))
   }
 
   export const read = (id: IdCategoryValidator) => {
-    return MerkalySDK.$axios.$get<CategoryReference>('/inventory/categories/' + id)
+    return MerkalySDK.$axios.get<CategoryReference>('/inventory/categories/' + id)
       .then(category => plainToInstance(CategoryReference, category))
   }
 
   export const create = (payload: CreateCategoryValidator) => {
-    return MerkalySDK.$axios.$post<CategoryReference>('/inventory/categories/', payload)
+    return MerkalySDK.$axios.post<CategoryReference>('/inventory/categories/', payload)
       .then(category => plainToInstance(CategoryReference, category))
   }
 
   export const update = (id: IdCategoryValidator, payload: UpdateCategoryValidator) => {
-    return MerkalySDK.$axios.$patch<CategoryReference>('/inventory/categories/' + id, payload)
+    return MerkalySDK.$axios.patch<CategoryReference>('/inventory/categories/' + id, payload)
       .then(category => plainToInstance(CategoryReference, category))
   }
 
   export const remove = (id: IdCategoryValidator) => {
-    return MerkalySDK.$axios.$delete<void>('/inventory/categories/' + id)
+    return MerkalySDK.$axios.delete<void>('/inventory/categories/' + id)
   }
 }
 

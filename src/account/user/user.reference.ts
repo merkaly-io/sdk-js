@@ -24,14 +24,14 @@ export default class UserReference implements UserData {
   }
 
   public getRoles () {
-    return MerkalySDK.$axios.$get<Role[]>('/account/users/' + this.id + '/roles')
+    return MerkalySDK.$axios.get<Role[]>('/account/users/' + this.id + '/roles')
   }
 
   public addRoles (ids: AddUserRole) {
-    return MerkalySDK.$axios.$post<void>('/account/users/' + this.id + '/roles', ids)
+    return MerkalySDK.$axios.post<void>('/account/users/' + this.id + '/roles', ids)
   }
 
   public removeRoles (ids: RemoveUserRole) {
-    return MerkalySDK.$axios.$delete<void>('/account/users/' + this.id + '/roles', { data: ids })
+    return MerkalySDK.$axios.delete<void>('/account/users/' + this.id + '/roles', { data: ids })
   }
 }

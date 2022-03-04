@@ -95,7 +95,7 @@ const config: Config.ProjectConfig | Config.InitialOptions = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  preset: 'ts-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -176,7 +176,10 @@ const config: Config.ProjectConfig | Config.InitialOptions = {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  transform: {},
+  transform: {
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    "^.+\\.(js|jsx)$": "babel-jest",
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: [

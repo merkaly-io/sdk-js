@@ -8,10 +8,11 @@ import { ManagerSDK } from '../../../src/sdk.manager'
 
 describe('Manager > Account > Organization', () => {
   const $merkaly = new ManagerSDK()
+
   let organization: OrganizationReference
 
   const createValidator = new CreateOrganizationValidator()
-  createValidator.name = faker.lorem.word(12)
+  createValidator.name = faker.datatype.uuid()
   createValidator.display_name = faker.company.companyName()
   createValidator.logo_url = faker.image.avatar()
   createValidator.primary_color = faker.internet.color()
@@ -20,6 +21,7 @@ describe('Manager > Account > Organization', () => {
   beforeAll(async () => {
     organization = await $merkaly.account.organizations.create(createValidator)
 
+    expect(organization).toBeInstanceOf(OrganizationReference)
     expect(organization.id.startsWith('org_')).toBeTruthy()
   })
 
@@ -31,6 +33,8 @@ describe('Manager > Account > Organization', () => {
   describe('when an organization is created', () => {
     test('should retrieve the created organization', async () => {
       const createdOrg = await $merkaly.account.organizations.read(organization.id)
+
+      expect(createdOrg).toBeInstanceOf(OrganizationReference)
 
       expect(createdOrg.name).toEqual(createValidator.name)
       expect(createdOrg.display_name).toEqual(createValidator.display_name)
@@ -53,6 +57,8 @@ describe('Manager > Account > Organization', () => {
       updateValidator.secondary_color = faker.internet.color()
 
       const updatedOrg = await $merkaly.account.organizations.update(organization.id, updateValidator)
+
+      expect(updatedOrg).toBeInstanceOf(OrganizationReference)
 
       expect(updatedOrg.display_name).toEqual(updateValidator.display_name)
       expect(updatedOrg.branding?.logo_url).toEqual(updateValidator.logo_url)

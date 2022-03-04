@@ -10,27 +10,27 @@ import RoleReference from './role.reference'
 
 namespace Role {
   export const find = (params?: FindRoleValidator) => {
-    return MerkalySDK.$axios.$get<RoleReference[]>('/account/roles/', { params })
+    return MerkalySDK.$axios.get<RoleReference[]>('/account/roles/', { params })
       .then(roles => roles.map(role => plainToInstance(RoleReference, role)))
   }
 
   export const read = (id: IdRoleValidator) => {
-    return MerkalySDK.$axios.$get<RoleReference>('/account/roles/' + id)
+    return MerkalySDK.$axios.get<RoleReference>('/account/roles/' + id)
       .then(role => plainToInstance(RoleReference, role))
   }
 
   export const create = (payload: CreateRoleValidator) => {
-    return MerkalySDK.$axios.$post<RoleReference>('/account/roles/', payload)
+    return MerkalySDK.$axios.post<RoleReference>('/account/roles/', payload)
       .then(role => plainToInstance(RoleReference, role))
   }
 
   export const update = (id: IdRoleValidator, payload: UpdateRoleValidator) => {
-    return MerkalySDK.$axios.$patch<RoleReference>('/account/roles/' + id, payload)
+    return MerkalySDK.$axios.patch<RoleReference>('/account/roles/' + id, payload)
       .then(role => plainToInstance(RoleReference, role))
   }
 
   export const remove = (id: IdRoleValidator) => {
-    return MerkalySDK.$axios.$delete<void>('/account/roles/' + id)
+    return MerkalySDK.$axios.delete<void>('/account/roles/' + id)
   }
 }
 

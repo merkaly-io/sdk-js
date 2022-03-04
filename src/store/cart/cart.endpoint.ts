@@ -10,27 +10,27 @@ import CartReference from './cart.reference'
 
 namespace Cart {
   export const find = (params?: FindCartValidator) => {
-    return MerkalySDK.$axios.$get<CartReference[]>('/store/carts', { params })
+    return MerkalySDK.$axios.get<CartReference[]>('/store/carts', { params })
       .then(carts => carts.map(cart => plainToInstance(FindCartValidator, cart)))
   }
 
   export const read = (id: IdCartValidator) => {
-    return MerkalySDK.$axios.$get<CartReference>('/store/carts' + id)
+    return MerkalySDK.$axios.get<CartReference>('/store/carts' + id)
       .then(cart => plainToInstance(FindCartValidator, cart))
   }
 
   export const create = (payload: CreateCartValidator) => {
-    return MerkalySDK.$axios.$post<CartReference>('/store/carts', payload)
+    return MerkalySDK.$axios.post<CartReference>('/store/carts', payload)
       .then(cart => plainToInstance(FindCartValidator, cart))
   }
 
   export const update = (id: IdCartValidator, payload: UpdateCartValidator) => {
-    return MerkalySDK.$axios.$patch<CartReference>('/store/carts' + id, payload)
+    return MerkalySDK.$axios.patch<CartReference>('/store/carts' + id, payload)
       .then(cart => plainToInstance(FindCartValidator, cart))
   }
 
   export const remove = (id: IdCartValidator) => {
-    return MerkalySDK.$axios.$delete<void>('/store/carts' + id)
+    return MerkalySDK.$axios.delete<void>('/store/carts' + id)
   }
 }
 

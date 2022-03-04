@@ -10,27 +10,27 @@ import OrganizationReference from './organization.reference'
 
 namespace Organization {
   export const find = (params?: FindOrganizationValidator) => {
-    return MerkalySDK.$axios.$get<OrganizationReference[]>('/account/organizations/', { params })
+    return MerkalySDK.$axios.get<OrganizationReference[]>('/account/organizations/', { params })
       .then(organizations => organizations.map(organization => plainToInstance(OrganizationReference, organization)))
   }
 
   export const read = (id: IdOrganizationValidator) => {
-    return MerkalySDK.$axios.$get<OrganizationReference>('/account/organizations/' + id)
+    return MerkalySDK.$axios.get<OrganizationReference>('/account/organizations/' + id)
       .then(organization => plainToInstance(OrganizationReference, organization))
   }
 
   export const create = (payload: CreateOrganizationValidator) => {
-    return MerkalySDK.$axios.$post<OrganizationReference>('/account/organizations/', payload)
+    return MerkalySDK.$axios.post<OrganizationReference>('/account/organizations/', payload)
       .then(organization => plainToInstance(OrganizationReference, organization))
   }
 
   export const update = (id: IdOrganizationValidator, payload: UpdateOrganizationValidator) => {
-    return MerkalySDK.$axios.$patch<OrganizationReference>('/account/organizations/' + id, payload)
+    return MerkalySDK.$axios.patch<OrganizationReference>('/account/organizations/' + id, payload)
       .then(organization => plainToInstance(OrganizationReference, organization))
   }
 
   export const remove = (id: IdOrganizationValidator) => {
-    return MerkalySDK.$axios.$delete<void>('/account/organizations/' + id)
+    return MerkalySDK.$axios.delete<void>('/account/organizations/' + id)
   }
 }
 
