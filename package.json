@@ -1,6 +1,6 @@
 {
   "name": "@merkaly/sdk-js",
-  "version": "0.1.4-6",
+  "version": "0.1.4-7",
   "description": "",
   "keywords": [
     "sdk",
@@ -47,7 +47,7 @@
     "*.{js,ts,vue}": "yarn run lint:fix"
   },
   "dependencies": {
-    "@merkaly/api": "^0.1.10-10",
+    "@merkaly/api": "latest",
     "@nuxtjs/auth-next": "^5.0.0-1643791578.532b3d6",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/proxy": "^2.1.0",
