@@ -10,7 +10,13 @@ export default class OrganizationReference implements Organization {
   public id: IdOrganizationValidator
   public name: Organization['name']
   public display_name: Organization['display_name']
-  public branding: Organization['branding']
+  public branding: Organization['branding'] = {
+    logo_url: undefined,
+    colors:{
+      primary: '#ee4034',
+      page_background: '#000000'
+    }
+  }
   public members: OrganizationMember[] = []
   public connections: OrganizationConnection[] = []
 
