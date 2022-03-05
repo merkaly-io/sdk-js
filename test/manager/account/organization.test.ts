@@ -1,17 +1,15 @@
-import {
-  CreateOrganizationValidator,
-  UpdateOrganizationValidator
-} from '@merkaly/api/src/account/organizations/organization.validator'
+import { Account } from '@merkaly/api'
 import faker from 'faker'
 import OrganizationReference from '../../../src/account/organization/organization.reference'
-import { ManagerSDK } from '../../../src/sdk.manager'
+import { ManagerSDK } from '../../../src/sdk'
+import Organization = Account.Organization
 
 describe('Manager > Account > Organization', () => {
   const $merkaly = new ManagerSDK()
 
   let organization: OrganizationReference
 
-  const createValidator = new CreateOrganizationValidator()
+  const createValidator = new Organization.Validator.CreateOrganizationValidator()
   createValidator.name = faker.datatype.uuid()
   createValidator.display_name = faker.company.companyName()
   createValidator.logo_url = faker.image.avatar()
@@ -50,7 +48,7 @@ describe('Manager > Account > Organization', () => {
     })
 
     test('should update the created organization', async () => {
-      const updateValidator = new UpdateOrganizationValidator()
+      const updateValidator = new Organization.Validator.UpdateOrganizationValidator()
       updateValidator.display_name = faker.company.companyName()
       updateValidator.logo_url = faker.image.avatar()
       updateValidator.primary_color = faker.internet.color()

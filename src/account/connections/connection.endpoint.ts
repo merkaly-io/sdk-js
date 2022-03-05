@@ -8,7 +8,7 @@ import MerkalySDK from '../../sdk'
 import ConnectionReference from './connection.reference'
 
 export class Connection {
-  public find (params?: any) {
+  public find (params?: unknown) {
     return MerkalySDK.$axios.get<ConnectionReference[]>('/account/connections/', { params })
       .then(connections => connections.map(connection => plainToInstance(ConnectionReference, connection)))
   }

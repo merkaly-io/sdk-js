@@ -21,7 +21,7 @@
     "baseUrl": ".",
     "typeRoots": [
       "@merkaly/api",
-      "@nuxt/types",
+      "@nuxt/types"
     ],
     "types": [
       "@nuxtjs/auth-next",
@@ -32,12 +32,7 @@
       "@types/node",
       "class-transformer",
       "dotenv"
-    ],
-    "paths": {
-      "@merkaly/sdk-js/*": [
-        "./*"
-      ]
-    }
+    ]
   },
   "include": [
     "./nuxt/**/*.ts",

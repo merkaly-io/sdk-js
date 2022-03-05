@@ -10,16 +10,10 @@ interface SDKModuleParams {
   sdk?: () => SDK
 }
 
-declare module '@nuxt/types/config/runtime' {
-  // @ts-ignore
-  interface NuxtOptionsRuntimeConfig {
-    merkaly: SDKModuleParams
-  }
-}
-
 export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
   const { options } = this
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   options.publicRuntimeConfig.merkaly = {
     api: params.api,
@@ -28,6 +22,7 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
     proxy: params.proxy || 'api'
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const merkaly = options.publicRuntimeConfig.merkaly
 

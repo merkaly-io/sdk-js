@@ -11,9 +11,11 @@ export default class ProductReference extends ProductEntity {
 
   public category: CategoryReference
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   public media: MediaEntity[] = []
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   public variants: VariantEntity[] = []
 

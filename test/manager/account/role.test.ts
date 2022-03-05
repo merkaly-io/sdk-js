@@ -1,19 +1,19 @@
-import { RoleEntity } from '@merkaly/api/src/account/roles/role.entity'
-import { CreateRoleValidator, UpdateRoleValidator } from '@merkaly/api/src/account/roles/role.validator'
+import { Account } from '@merkaly/api'
 import faker from 'faker'
-import { ManagerSDK } from '../../../index'
+import { ManagerSDK } from '../../../src/sdk'
+import Role = Account.Role
 
 describe('Manager > Account > Role >', () => {
   const $merkaly = new ManagerSDK()
 
-  let role: RoleEntity
-  const createValidator: CreateRoleValidator = {
+  let role: Required<Role.Entity>
+  const createValidator: Role.Validator.CreateRoleValidator = {
     name: faker.lorem.word(),
     description: faker.lorem.paragraph()
   }
 
   beforeAll(async () => {
-    role = await $merkaly.account.roles.create(createValidator)
+    role = await $merkaly.account.roles.create(createValidator) as Required<Role.Entity>
 
     expect(role.id.startsWith('rol_')).toBeTruthy()
   })
@@ -38,7 +38,7 @@ describe('Manager > Account > Role >', () => {
     })
 
     test('should update the created role', async () => {
-      const updateValidator: UpdateRoleValidator = {
+      const updateValidator: Role.Validator.UpdateRoleValidator = {
         name: faker.lorem.word(),
         description: faker.lorem.paragraph()
       }

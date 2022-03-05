@@ -1,26 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
-
-declare module 'axios' {
-  interface AxiosInstance {
-    get<R = unknown> (url: string, config?: AxiosRequestConfig): Promise<R>;
-
-    request<R = unknown> (config: AxiosRequestConfig): Promise<R>;
-
-    get<R = unknown> (url: string, config?: AxiosRequestConfig): Promise<R>;
-
-    delete<R = unknown> (url: string, config?: AxiosRequestConfig): Promise<R>;
-
-    head<R = unknown> (url: string, config?: AxiosRequestConfig): Promise<R>;
-
-    options<R = unknown> (url: string, config?: AxiosRequestConfig): Promise<R>;
-
-    post<R = unknown> (url: string, data?: any, config?: AxiosRequestConfig): Promise<R>;
-
-    put<R = unknown> (url: string, data?: any, config?: AxiosRequestConfig): Promise<R>;
-
-    patch<R = unknown> (url: string, data?: any, config?: AxiosRequestConfig): Promise<R>;
-  }
-}
+import { Account } from './account'
+import { Inventory } from './inventory'
+import { Store } from './store'
 
 const $axios = axios.create({
   baseURL: 'https://api.merkaly.io/'
@@ -28,6 +9,24 @@ const $axios = axios.create({
 
 $axios.interceptors.response.use(({ data }) => data)
 
+export const useAxios = {
+  get: <R = unknown> (url: string, config?: AxiosRequestConfig): Promise<R> => $axios.get(url, config),
+  post: <R = unknown> (url: string, data?: unknown, config?: AxiosRequestConfig): Promise<R> => $axios.post(url, data, config),
+  patch: <R = unknown> (url: string, data?: unknown, config?: AxiosRequestConfig): Promise<R> => $axios.patch(url, data, config),
+  delete: <R = void> (url: string, config?: AxiosRequestConfig): Promise<R> => $axios.delete(url, config)
+}
+
 export default abstract class MerkalySDK {
-  public static $axios = $axios
+  public static readonly $axios = useAxios
+}
+
+export class ManagerSDK extends MerkalySDK {
+  public readonly account = new Account()
+  public readonly inventory = Inventory
+}
+
+export class AdminSDK extends MerkalySDK {
+  public readonly account = new Account()
+  public readonly inventory = new Inventory()
+  public readonly store = new Store()
 }

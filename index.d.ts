@@ -1,6 +1,7 @@
 import { Auth as NuxtAuth } from '@nuxtjs/auth-next'
-import { NuxtAxiosInstance } from '@nuxtjs/axios'
 import { UserData } from 'auth0'
+
+export * as API from '@merkaly/api'
 
 export interface User {
   id: string
@@ -24,31 +25,3 @@ declare module 'vuex/types/index' {
     user: UserData & typeof NuxtAuth.prototype.user
   }
 }
-
-declare module 'vue/types/vue' {
-  interface Vue {
-    $api: NuxtAxiosInstance
-  }
-}
-
-declare module '@nuxt/types' {
-  interface Context {
-    $api: NuxtAxiosInstance
-  }
-
-  interface NuxtAppOptions {
-    $api: NuxtAxiosInstance
-  }
-
-  interface Configuration {
-    api?: NuxtAxiosInstance
-  }
-}
-
-declare module 'vue/types/vue' {
-  interface Vue {
-    $api: NuxtAxiosInstance
-  }
-}
-
-export * from '@merkaly/api'
