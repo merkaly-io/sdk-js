@@ -1,6 +1,6 @@
 import { AddUserRole, RemoveUserRole } from '@merkaly/api/src/account/users/roles/role.validator'
 import { Role, UserData } from 'auth0'
-import MerkalySDK from '../../sdk'
+import { useAxios } from '../../axios'
 
 export default class UserReference implements UserData {
   public app_metadata: UserData['app_metadata']
@@ -24,14 +24,14 @@ export default class UserReference implements UserData {
   }
 
   public getRoles () {
-    return MerkalySDK.$axios.get<Role[]>('/account/users/' + this.id + '/roles')
+    return useAxios.get<Role[]>('/account/users/' + this.id + '/roles')
   }
 
   public addRoles (ids: AddUserRole) {
-    return MerkalySDK.$axios.post<void>('/account/users/' + this.id + '/roles', ids)
+    return useAxios.post<void>('/account/users/' + this.id + '/roles', ids)
   }
 
   public removeRoles (ids: RemoveUserRole) {
-    return MerkalySDK.$axios.delete<void>('/account/users/' + this.id + '/roles', { data: ids })
+    return useAxios.delete<void>('/account/users/' + this.id + '/roles', { data: ids })
   }
 }

@@ -1,13 +1,11 @@
 import { Module } from '@nuxt/types'
 import 'reflect-metadata'
-import SDK from './src/sdk'
 
 interface SDKModuleParams {
   client: string
   domain: string
   api: string
   proxy?: string
-  sdk?: () => SDK
 }
 
 export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {

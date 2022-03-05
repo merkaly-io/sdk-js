@@ -1,31 +1,16 @@
-import axios, { AxiosRequestConfig } from 'axios'
 import { Account } from './account'
 import { Inventory } from './inventory'
 import { Store } from './store'
 
-const $axios = axios.create({
-  baseURL: 'https://api.merkaly.io/'
-})
-
-$axios.interceptors.response.use(({ data }) => data)
-
-export const useAxios = {
-  get: <R = unknown> (url: string, config?: AxiosRequestConfig): Promise<R> => $axios.get(url, config),
-  post: <R = unknown> (url: string, data?: unknown, config?: AxiosRequestConfig): Promise<R> => $axios.post(url, data, config),
-  patch: <R = unknown> (url: string, data?: unknown, config?: AxiosRequestConfig): Promise<R> => $axios.patch(url, data, config),
-  delete: <R = void> (url: string, config?: AxiosRequestConfig): Promise<R> => $axios.delete(url, config)
+abstract class SDK {
 }
 
-export default abstract class MerkalySDK {
-  public static readonly $axios = useAxios
-}
-
-export class ManagerSDK extends MerkalySDK {
+export class ManagerSDK extends SDK {
   public readonly account = new Account()
   public readonly inventory = Inventory
 }
 
-export class AdminSDK extends MerkalySDK {
+export class AdminSDK extends SDK {
   public readonly account = new Account()
   public readonly inventory = new Inventory()
   public readonly store = new Store()
