@@ -35,7 +35,7 @@
     ]
   },
   "include": [
-    "./nuxt/**/*.ts",
+    "./nuxt.ts",
     "./src/**/*.ts"
   ],
   "exclude": [

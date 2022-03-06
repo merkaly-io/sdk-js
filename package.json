@@ -18,7 +18,7 @@
   "license": "ISC",
   "author": "Randy Tellez Galan",
   "main": "./index.ts",
-  "types": "./src",
+  "types": "./index.ts",
   "directories": {
     "lib": "src",
     "doc": "public",
@@ -26,7 +26,7 @@
   },
   "files": [
     "index.*",
-    "module.*",
+    "nuxt.*",
     "src/"
   ],
   "scripts": {
@@ -48,7 +48,7 @@
     "*.{js,ts,vue}": "yarn run lint:fix"
   },
   "dependencies": {
-    "@merkaly/api": "latest",
+    "@merkaly/api": "^0.1.10-10",
     "@nuxtjs/auth-next": "^5.0.0-1643791578.532b3d6",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/proxy": "^2.1.0",

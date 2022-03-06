@@ -1408,7 +1408,7 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     sourcemap-codec "1.4.8"
 
-"@merkaly/api@latest":
+"@merkaly/api@^0.1.10-10":
   version "0.1.10-10"
   resolved "https://registry.yarnpkg.com/@merkaly/api/-/api-0.1.10-10.tgz#fc9381cadf777709a4d334d1b2ead7044f24d380"
   integrity sha512-5no0CP7anXC15pSVWZxh0iidSFsCeC9hPWvVVZzaMXRPk1aviPrt3VsrQODR+rju2mLPP3YLyEaJ3piK0iw4kw==
