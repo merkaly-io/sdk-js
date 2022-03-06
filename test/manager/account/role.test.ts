@@ -1,5 +1,5 @@
 import { Account } from '@merkaly/api'
-import faker from 'faker'
+import * as faker from 'faker'
 import { ManagerSDK } from '../../../src/sdk'
 import Role = Account.Role
 

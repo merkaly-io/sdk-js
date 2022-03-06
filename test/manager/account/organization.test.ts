@@ -1,5 +1,5 @@
 import { Account } from '@merkaly/api'
-import faker from 'faker'
+import * as faker from 'faker'
 import OrganizationReference from '../../../src/account/organization/organization.reference'
 import { ManagerSDK } from '../../../src/sdk'
 import Organization = Account.Organization
