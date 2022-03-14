@@ -1,7 +1,7 @@
+import { BrandEntity } from '@merkaly/api/src/inventory/brands/brand.entity'
 import {
   CreateBrandValidator,
   FindBrandValidator,
-  IdBrandValidator,
   UpdateBrandValidator
 } from '@merkaly/api/src/inventory/brands/brand.validator'
 import { plainToInstance } from 'class-transformer'
@@ -14,7 +14,7 @@ export class Brand {
       .then(brands => brands.map(brand => plainToInstance(BrandReference, brand)))
   }
 
-  public read (id: IdBrandValidator) {
+  public read (id: BrandEntity['id']) {
     return useAxios.get<BrandReference>('/inventory/brands/' + id)
       .then(brand => plainToInstance(BrandReference, brand))
   }
@@ -24,12 +24,12 @@ export class Brand {
       .then(brand => plainToInstance(BrandReference, brand))
   }
 
-  public update (id: IdBrandValidator, payload: UpdateBrandValidator) {
+  public update (id: BrandEntity['id'], payload: UpdateBrandValidator) {
     return useAxios.patch<BrandReference>('/inventory/brands/' + id, payload)
       .then(brand => plainToInstance(BrandReference, brand))
   }
 
-  public remove (id: IdBrandValidator) {
+  public remove (id: BrandEntity['id']) {
     return useAxios.delete<void>('/inventory/brands/' + id)
   }
 }

@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
 const $axios = axios.create({
-  baseURL: 'https://api.merkaly.io/'
+  baseURL: process.env.API_ENDPOINT || 'https://api.merkaly.io/'
 })
 
 $axios.interceptors.response.use(({ data }) => data)
