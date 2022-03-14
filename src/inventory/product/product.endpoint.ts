@@ -1,8 +1,4 @@
-import {
-  CreateProductValidator,
-  IdProductValidator,
-  UpdateProductValidator
-} from '@merkaly/api/src/inventory/products/product.validator'
+import { CreateProductValidator, UpdateProductValidator } from '@merkaly/api/src/inventory/products/product.validator'
 import { plainToInstance } from 'class-transformer'
 import { useAxios } from '../../axios'
 import ProductReference from './product.reference'
@@ -13,7 +9,7 @@ export class Product {
       .then(products => products.map(product => plainToInstance(ProductReference, product)))
   }
 
-  public read (id: IdProductValidator) {
+  public read (id: ProductReference['id']) {
     return useAxios.get<ProductReference>('/inventory/products/' + id)
       .then(product => plainToInstance(ProductReference, product))
   }
@@ -23,12 +19,12 @@ export class Product {
       .then(product => plainToInstance(ProductReference, product))
   }
 
-  public update (id: IdProductValidator, payload: UpdateProductValidator) {
+  public update (id: ProductReference['id'], payload: UpdateProductValidator) {
     return useAxios.patch<ProductReference>('/inventory/products/' + id, payload)
       .then(product => plainToInstance(ProductReference, product))
   }
 
-  public remove (id: IdProductValidator) {
+  public remove (id: ProductReference['id']) {
     return useAxios.delete<void>('/inventory/products/' + id)
   }
 }

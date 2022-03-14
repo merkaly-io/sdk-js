@@ -1,7 +1,6 @@
 import {
   CreateCartValidator,
   FindCartValidator,
-  IdCartValidator,
   UpdateCartValidator
 } from '@merkaly/api/src/store/carts/cart.validator'
 import { plainToInstance } from 'class-transformer'
@@ -14,7 +13,7 @@ export class Cart {
       .then(carts => carts.map(cart => plainToInstance(FindCartValidator, cart)))
   }
 
-  public read (id: IdCartValidator) {
+  public read (id: CartReference['id']) {
     return useAxios.get<CartReference>('/store/carts' + id)
       .then(cart => plainToInstance(FindCartValidator, cart))
   }
@@ -24,12 +23,12 @@ export class Cart {
       .then(cart => plainToInstance(FindCartValidator, cart))
   }
 
-  public update (id: IdCartValidator, payload: UpdateCartValidator) {
+  public update (id: CartReference['id'], payload: UpdateCartValidator) {
     return useAxios.patch<CartReference>('/store/carts' + id, payload)
       .then(cart => plainToInstance(FindCartValidator, cart))
   }
 
-  public remove (id: IdCartValidator) {
+  public remove (id: CartReference['id']) {
     return useAxios.delete<void>('/store/carts' + id)
   }
 }

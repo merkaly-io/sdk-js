@@ -1,7 +1,6 @@
 import {
   CreateUserValidator,
   FindUserValidator,
-  IdUserValidator,
   UpdateUserValidator
 } from '@merkaly/api/src/account/users/user.validator'
 import { plainToInstance } from 'class-transformer'
@@ -14,7 +13,7 @@ export class User {
       .then(users => users.map(user => plainToInstance(UserReference, user)))
   }
 
-  public read (id: IdUserValidator) {
+  public read (id: UserReference['id']) {
     return useAxios.get<UserReference>('/account/users/' + id)
       .then(user => plainToInstance(UserReference, user))
   }
@@ -24,12 +23,12 @@ export class User {
       .then(user => plainToInstance(UserReference, user))
   }
 
-  public update (id: IdUserValidator, payload: UpdateUserValidator) {
+  public update (id: UserReference['id'], payload: UpdateUserValidator) {
     return useAxios.patch<UserReference>('/account/users/' + id, payload)
       .then(user => plainToInstance(UserReference, user))
   }
 
-  public remove (id: IdUserValidator) {
+  public remove (id: UserReference['id']) {
     return useAxios.delete<void>('/account/users/' + id)
   }
 }

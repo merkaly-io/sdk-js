@@ -1,7 +1,6 @@
 import {
   CreateOrderValidator,
   FindOrderValidator,
-  IdOrderValidator,
   UpdateOrderValidator
 } from '@merkaly/api/src/store/orders/order.validator'
 import { plainToInstance } from 'class-transformer'
@@ -14,7 +13,7 @@ export class Order {
       .then(orders => orders.map(order => plainToInstance(OrderReference, order)))
   }
 
-  public read (id: IdOrderValidator) {
+  public read (id: OrderReference['id']) {
     return useAxios.get<OrderReference>('/store/orders' + id)
       .then(order => plainToInstance(OrderReference, order))
   }
@@ -24,12 +23,12 @@ export class Order {
       .then(order => plainToInstance(OrderReference, order))
   }
 
-  public update (id: IdOrderValidator, payload: UpdateOrderValidator) {
+  public update (id: OrderReference['id'], payload: UpdateOrderValidator) {
     return useAxios.patch<OrderReference>('/store/orders' + id, payload)
       .then(order => plainToInstance(OrderReference, order))
   }
 
-  public remove (id: IdOrderValidator) {
+  public remove (id: OrderReference['id']) {
     return useAxios.delete<void>('/store/orders' + id)
   }
 }

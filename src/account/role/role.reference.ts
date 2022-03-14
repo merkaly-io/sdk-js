@@ -1,10 +1,9 @@
-import { IdRoleValidator } from '@merkaly/api/src/account/roles/role.validator'
 import { AddRoleUsers, RemoveRoleUsers } from '@merkaly/api/src/account/roles/users/user.validator'
 import { Role, User } from 'auth0'
 import { useAxios } from '../../axios'
 
 export default class RoleReference implements Role {
-  public id: IdRoleValidator
+  public id: Role['id']
   public name: Role['name']
   public description: Role['description']
   public users: User[] = []

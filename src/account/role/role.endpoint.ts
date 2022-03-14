@@ -1,7 +1,6 @@
 import {
   CreateRoleValidator,
   FindRoleValidator,
-  IdRoleValidator,
   UpdateRoleValidator
 } from '@merkaly/api/src/account/roles/role.validator'
 import { plainToInstance } from 'class-transformer'
@@ -14,7 +13,7 @@ export class Role {
       .then(roles => roles.map(role => plainToInstance(RoleReference, role)))
   }
 
-  public read (id: IdRoleValidator) {
+  public read (id: RoleReference['id']) {
     return useAxios.get<RoleReference>('/account/roles/' + id)
       .then(role => plainToInstance(RoleReference, role))
   }
@@ -24,12 +23,12 @@ export class Role {
       .then(role => plainToInstance(RoleReference, role))
   }
 
-  public update (id: IdRoleValidator, payload: UpdateRoleValidator) {
+  public update (id: RoleReference['id'], payload: UpdateRoleValidator) {
     return useAxios.patch<RoleReference>('/account/roles/' + id, payload)
       .then(role => plainToInstance(RoleReference, role))
   }
 
-  public remove (id: IdRoleValidator) {
+  public remove (id: RoleReference['id']) {
     return useAxios.delete<void>('/account/roles/' + id)
   }
 }

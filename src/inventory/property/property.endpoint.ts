@@ -1,7 +1,6 @@
 import {
   CreatePropertyValidator,
   FindPropertyValidator,
-  IdPropertyValidator,
   UpdatePropertyValidator
 } from '@merkaly/api/src/inventory/properties/property.validator'
 import { useAxios } from '../../axios'
@@ -12,7 +11,7 @@ export class Property {
     return useAxios.get<PropertyReference[]>('/inventory/properties/', { params })
   }
 
-  public read (id: IdPropertyValidator) {
+  public read (id: PropertyReference['id']) {
     return useAxios.get<PropertyReference>('/inventory/properties/' + id)
   }
 
@@ -20,11 +19,11 @@ export class Property {
     return useAxios.post<PropertyReference>('/inventory/properties/', payload)
   }
 
-  public update (id: IdPropertyValidator, payload: UpdatePropertyValidator) {
+  public update (id: PropertyReference['id'], payload: UpdatePropertyValidator) {
     return useAxios.patch<PropertyReference>('/inventory/properties/' + id, payload)
   }
 
-  public remove (id: IdPropertyValidator) {
+  public remove (id: PropertyReference['id']) {
     return useAxios.delete<void>('/inventory/properties/' + id)
   }
 }

@@ -2,17 +2,16 @@ import {
   AddOrganizationMembers,
   RemoveOrganizationMembers
 } from '@merkaly/api/src/account/organizations/members/member.validator'
-import { IdOrganizationValidator } from '@merkaly/api/src/account/organizations/organization.validator'
 import { Organization, OrganizationConnection, OrganizationMember } from 'auth0'
 import { useAxios } from '../../axios'
 
 export default class OrganizationReference implements Organization {
-  public id: IdOrganizationValidator
+  public id: Organization['id']
   public name: Organization['name']
   public display_name: Organization['display_name']
-  public branding = {
+  public branding: Organization['branding'] = {
     logo_url: '',
-    colors:{
+    colors: {
       primary: '#c7344e',
       page_background: '#e0e0e0'
     }

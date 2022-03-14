@@ -1,7 +1,6 @@
 import {
   CreateCategoryValidator,
   FindCategoryValidator,
-  IdCategoryValidator,
   UpdateCategoryValidator
 } from '@merkaly/api/src/inventory/categories/category.validator'
 import { plainToInstance } from 'class-transformer'
@@ -14,7 +13,7 @@ export class Category {
       .then(categories => categories.map(category => plainToInstance(CategoryReference, category)))
   }
 
-  public read (id: IdCategoryValidator) {
+  public read (id: CategoryReference['id']) {
     return useAxios.get<CategoryReference>('/inventory/categories/' + id)
       .then(category => plainToInstance(CategoryReference, category))
   }
@@ -24,12 +23,12 @@ export class Category {
       .then(category => plainToInstance(CategoryReference, category))
   }
 
-  public update (id: IdCategoryValidator, payload: UpdateCategoryValidator) {
+  public update (id: CategoryReference['id'], payload: UpdateCategoryValidator) {
     return useAxios.patch<CategoryReference>('/inventory/categories/' + id, payload)
       .then(category => plainToInstance(CategoryReference, category))
   }
 
-  public remove (id: IdCategoryValidator) {
+  public remove (id: CategoryReference['id']) {
     return useAxios.delete<void>('/inventory/categories/' + id)
   }
 }
