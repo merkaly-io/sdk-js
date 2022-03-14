@@ -11,7 +11,7 @@ export default class OrganizationReference implements Organization {
   public name: Organization['name']
   public display_name: Organization['display_name']
   public branding = {
-    logo_url: undefined,
+    logo_url: '',
     colors:{
       primary: '#c7344e',
       page_background: '#e0e0e0'

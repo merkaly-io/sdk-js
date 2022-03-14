@@ -3,29 +3,15 @@ import { ProductEntity } from '@merkaly/api/src/inventory/products/product.entit
 import { VariantEntity } from '@merkaly/api/src/inventory/products/variants/variant.entity'
 import { plainToInstance } from 'class-transformer'
 import { useAxios } from '../../axios'
-import BrandReference from '../brand/brand.reference'
-import CategoryReference from '../category/category.reference'
 
 export default class ProductReference extends ProductEntity {
-  public brand: BrandReference
-
-  public category: CategoryReference
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  public media: MediaEntity[] = []
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  public variants: VariantEntity[] = []
-
   public getMedia () {
-    return useAxios.get<MediaEntity[]>('/inventory/products/' + this.id + '/members/')
+    return useAxios.get<MediaEntity[]>('/inventory/products/' + this.id + '/media/')
       .then(media => (this.media = media.map(mediaItem => plainToInstance(MediaEntity, mediaItem))))
   }
 
   public getVariants () {
     return useAxios.get<VariantEntity[]>('/inventory/products/' + this.id + '/variants/')
-      .then(media => (this.media = media.map(mediaItem => plainToInstance(VariantEntity, mediaItem))))
+      .then(variants => (this.variants = variants.map(mediaItem => plainToInstance(VariantEntity, mediaItem))))
   }
 }
