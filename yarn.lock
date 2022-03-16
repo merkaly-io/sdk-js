@@ -1458,10 +1458,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@merkaly/api@^0.1.11-3":
-  version "0.1.11-3"
-  resolved "https://registry.yarnpkg.com/@merkaly/api/-/api-0.1.11-3.tgz#4f6760b5d26d9a5dc43e1b8ede570a1a929a2adf"
-  integrity sha512-YwdgMC+fKWSUfjlLnVoRtP3FYoKd77/oHkV1de0YQDCkFy+Ya60VHMvVkIwuKxOCJY1uhaDc9bsHKz7vghQsNA==
+"@merkaly/api@^0.1.11-5":
+  version "0.1.11-5"
+  resolved "https://registry.yarnpkg.com/@merkaly/api/-/api-0.1.11-5.tgz#9c3db8d2351fe2e03b59a358eaab90603868a182"
+  integrity sha512-XGow5WL8YzGS51L36MXCqBQOzSdzOvua1t8VXtghwRYfcWy47SEJbuR+TfF1+Kela8ayq1HMkIp9WT28iTwVNg==
   dependencies:
     "@types/auth0" "^2.33.4"
     auth0 "^2.35.0"
