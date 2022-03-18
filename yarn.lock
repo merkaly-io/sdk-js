@@ -1394,10 +1394,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@merkaly/api@^0.1.11-6":
-  version "0.1.11-6"
-  resolved "https://registry.yarnpkg.com/@merkaly/api/-/api-0.1.11-6.tgz#690c1911c14abbbd7fa4f503d00ba3aafe4a2ea6"
-  integrity sha512-BdW7T7xHSEM3uAnXfPIBjb1AnaUiO2AuFT2c4vLrX/yaikVgp7teLtY/TFXsFZfzy6AAz3b6do8d9+YjmOXqsQ==
+"@merkaly/api@^0.1.12-0":
+  version "0.1.12-0"
+  resolved "https://registry.yarnpkg.com/@merkaly/api/-/api-0.1.12-0.tgz#be1f9a9379f0de5d4157f547af37b0fd65dc3816"
+  integrity sha512-apNImtSBO6Vz+Va1Kd5i/YpbYSr8l8PhOgFUs5S3FJE+BPT+vdW30HEj7EVEsyhPU8BTdRONbIdYrxFJNBoHLg==
   dependencies:
     "@types/auth0" "^2.33.4"
     auth0 "^2.35.0"
@@ -8127,8 +8127,10 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
+    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
