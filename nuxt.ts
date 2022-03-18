@@ -25,7 +25,7 @@ export const MerkalySDK: Module<SDKModuleParams> = async function (params) {
   // @ts-ignore
   const merkaly = options.publicRuntimeConfig.merkaly
 
-  await this.addPlugin({
+  await this.addTemplate({
     src: resolve(__dirname, './nuxt.auth.ts'),
     filename: './nuxt.auth.ts'
   })
