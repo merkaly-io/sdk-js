@@ -3,7 +3,7 @@ import {
   UpdateConnectionValidator
 } from '@merkaly/api/src/account/connections/connection.validator'
 import { plainToInstance } from 'class-transformer'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 import ConnectionReference from './connection.reference'
 
 export class Connection {

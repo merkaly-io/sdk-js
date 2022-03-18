@@ -1,4 +1,5 @@
 import { Module } from '@nuxt/types'
+import { join, resolve } from 'path'
 import 'reflect-metadata'
 
 interface SDKModuleParams {
@@ -8,24 +9,35 @@ interface SDKModuleParams {
   proxy?: string
 }
 
-export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
+export const MerkalySDK: Module<SDKModuleParams> = async function (params) {
   const { options } = this
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   options.publicRuntimeConfig.merkaly = {
-    api: params.api,
+    api: params.api || 'https://api.merkaly.io',
     client: params.client,
     domain: params.domain,
-    proxy: params.proxy || 'api'
+    proxy: params.proxy || '/api'
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const merkaly = options.publicRuntimeConfig.merkaly
 
+  await this.addPlugin({
+    src: resolve(__dirname, './nuxt.auth.ts'),
+    filename: './nuxt.auth.ts'
+  })
+
+  await this.addTemplate({
+    src: resolve(__dirname, './nuxt.axios.ts'),
+    filename: './nuxt.axios.ts'
+  })
+
   options.auth = {
     ...options.auth,
+    plugins: [join(options.buildDir, './nuxt.auth.ts')],
     strategies: {
       auth0: {
         domain: merkaly.domain,
@@ -36,14 +48,17 @@ export const MerkalySDKModule: Module<SDKModuleParams> = function (params) {
 
   options.axios = {
     ...options.axios,
-    proxy: true
+    proxy: true,
+    https: true
   }
+
+  const target = merkaly.api.split('//').pop()
 
   options.proxy = {
     ...options.proxy,
-    [`/${merkaly.proxy}`]: {
-      target: merkaly.api,
-      pathRewrite: { [`^/${merkaly.proxy}`]: '' }
+    [`${merkaly.proxy}`]: {
+      target: `http://${target}`,
+      pathRewrite: { [`^${merkaly.proxy}`]: '' }
     }
   }
 

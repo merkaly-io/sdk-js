@@ -4,7 +4,7 @@ import {
   UpdateCategoryValidator
 } from '@merkaly/api/src/inventory/categories/category.validator'
 import { plainToInstance } from 'class-transformer'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 import CategoryReference from './category.reference'
 
 export class Category {

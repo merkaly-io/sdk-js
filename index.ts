@@ -20,4 +20,4 @@ declare module 'vuex/types/index' {
 }
 
 export { ManagerSDK, AdminSDK } from './src/sdk'
-export { MerkalySDKModule } from './nuxt'
+export { MerkalySDK } from './nuxt'

@@ -4,7 +4,7 @@ import {
   UpdateUserValidator
 } from '@merkaly/api/src/account/users/user.validator'
 import { plainToInstance } from 'class-transformer'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 import UserReference from './user.reference'
 
 export class User {

@@ -1,6 +1,6 @@
 import { AddRoleUsers, RemoveRoleUsers } from '@merkaly/api/src/account/roles/users/user.validator'
 import { Role, User } from 'auth0'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 
 export default class RoleReference implements Role {
   public id: Role['id']

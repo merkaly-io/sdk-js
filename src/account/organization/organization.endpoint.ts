@@ -4,7 +4,7 @@ import {
   UpdateOrganizationValidator
 } from '@merkaly/api/src/account/organizations/organization.validator'
 import { plainToInstance } from 'class-transformer'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 import OrganizationReference from './organization.reference'
 
 export class Organization {

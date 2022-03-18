@@ -3,7 +3,7 @@ import {
   RemoveOrganizationMembers
 } from '@merkaly/api/src/account/organizations/members/member.validator'
 import { Organization, OrganizationConnection, OrganizationMember } from 'auth0'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 
 export default class OrganizationReference implements Organization {
   public id: Organization['id']

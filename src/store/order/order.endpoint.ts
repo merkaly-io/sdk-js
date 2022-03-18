@@ -4,7 +4,7 @@ import {
   UpdateOrderValidator
 } from '@merkaly/api/src/store/orders/order.validator'
 import { plainToInstance } from 'class-transformer'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 import OrderReference from './order.reference'
 
 export class Order {

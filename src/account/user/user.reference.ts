@@ -1,6 +1,6 @@
 import { AddUserRole, RemoveUserRole } from '@merkaly/api/src/account/users/roles/role.validator'
 import { Role, UserData } from 'auth0'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 
 export default class UserReference implements UserData {
   public app_metadata: UserData['app_metadata']

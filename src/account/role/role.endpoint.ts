@@ -4,7 +4,7 @@ import {
   UpdateRoleValidator
 } from '@merkaly/api/src/account/roles/role.validator'
 import { plainToInstance } from 'class-transformer'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 import RoleReference from './role.reference'
 
 export class Role {

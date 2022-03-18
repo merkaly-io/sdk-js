@@ -1,6 +1,6 @@
 import { CreateProductValidator, UpdateProductValidator } from '@merkaly/api/src/inventory/products/product.validator'
 import { plainToInstance } from 'class-transformer'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 import ProductReference from './product.reference'
 
 export class Product {

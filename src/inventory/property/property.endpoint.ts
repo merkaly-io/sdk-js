@@ -3,7 +3,7 @@ import {
   FindPropertyValidator,
   UpdatePropertyValidator
 } from '@merkaly/api/src/inventory/properties/property.validator'
-import { useAxios } from '../../axios'
+import { useAxios } from '../../../nuxt.axios'
 import PropertyReference from './property.reference'
 
 export class Property {
