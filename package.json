@@ -76,7 +76,7 @@
     "eslint": "^8.4.1",
     "faker": "^5.5.3",
     "http-server": "^14.1.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "jest": "^27.5.1",
     "lint-staged": "^12.1.2",
     "reflect-metadata": "^0.1.13",
