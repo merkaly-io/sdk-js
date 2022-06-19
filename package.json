@@ -61,7 +61,7 @@
     "@babel/plugin-proposal-decorators": "^7.17.2",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
-    "@commitlint/cli": "^16.1.0",
+    "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^16.0.0",
     "@nuxt/types": "^2.15.8",
     "@types/faker": "^5.5.9",
