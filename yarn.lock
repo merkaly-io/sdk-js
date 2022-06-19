@@ -1441,9 +1441,9 @@
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
 "@merkaly/api@^0.1.12-0":
-  version "0.1.12-0"
-  resolved "https://registry.yarnpkg.com/@merkaly/api/-/api-0.1.12-0.tgz#be1f9a9379f0de5d4157f547af37b0fd65dc3816"
-  integrity sha512-apNImtSBO6Vz+Va1Kd5i/YpbYSr8l8PhOgFUs5S3FJE+BPT+vdW30HEj7EVEsyhPU8BTdRONbIdYrxFJNBoHLg==
+  version "0.1.12-1"
+  resolved "https://registry.yarnpkg.com/@merkaly/api/-/api-0.1.12-1.tgz#51b893e3d2f102e6ed88184efd785ec1cba22d47"
+  integrity sha512-06h5kmW8qSJhkzsFChAhZoDfshp317W2vpHGexuYIf+Bn+fkwDqbJYhTea73Ou888blC5meYyNWCy8VCGBSyQw==
   dependencies:
     "@types/auth0" "^2.33.4"
     auth0 "^2.35.0"
