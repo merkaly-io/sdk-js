@@ -5,13 +5,14 @@ import { Store } from './store'
 abstract class SDK {
 }
 
-export class ManagerSDK extends SDK {
+export class DashboardSDK extends SDK {
   public readonly account = new Account()
-  public readonly inventory = Inventory
+  public readonly inventory = new Inventory()
+  public readonly sales = new Store()
 }
 
 export class AdminSDK extends SDK {
   public readonly account = new Account()
   public readonly inventory = new Inventory()
-  public readonly store = new Store()
+  public readonly sales = new Store()
 }
